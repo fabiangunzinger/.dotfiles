@@ -1,6 +1,9 @@
 [includeIf "gitdir:~/dev/projects/"]
     path = ~/.gitconfig.personal
 
+[includeIf "gitdir:~/.dotfiles"]
+    path = ~/.gitconfig.personal
+
 [includeIf "gitdir:~/dev/jet/"]
     path = ~/.gitconfig.work
 
