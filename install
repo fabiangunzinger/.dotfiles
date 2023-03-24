@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+
+STOW_FOLDERS="git nvim scripts ssh starship tmux zsh"
+
+for folder in $(echo $STOW_FOLDERS)
+do
+    stow -D $folder
+    stow $folder
+done
