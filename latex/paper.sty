@@ -1,0 +1,111 @@
+%   paper.sty, fabian gunzinger
+%   setup for academic paper
+
+
+% Basic packages
+\usepackage{
+    adjustbox,
+    amsmath,   % math notation
+    amssymb,   %math symbols
+    booktabs,   % nice tables
+    float,   % required for H figure placement specifier
+    fontawesome,   % internet symbols
+    graphicx,   % graphics/figures support
+    lscape,   % landscape pages
+    pgffor,   % for loops
+    setspace,   % linespacing
+    tabularx,   % custom table width
+    threeparttable,   % pretty reg table notes layout
+    subcaption   % create labelled subfigures
+    % amsfonts,
+    % bbm,
+    % calc,
+    % epstopdf,
+    % enumerate,
+    % enumitem,
+    % endnotes,
+    % latexsym,
+    % morefloats,
+    % fancyhdr,
+    % url,
+    % caption,
+    % threeparttable,
+    % dcolumn,
+    % tikz,
+    % xfrac,
+    % xcolor
+}
+
+
+% \usepackage[margin=2.5cm]{geometry}   % page margins
+\usepackage[left=4cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry} % thesis
+
+\usepackage[utf8, ansinew]{inputenc}    % unicode encoding
+\usepackage{csquotes}
+\usepackage[ngerman, english]{babel}    % required for umlaute
+\usepackage[T1]{fontenc}                % required for umlaute
+
+% \usepackage[section]{placeins}
+% \usepackage{placeins}
+% \usepackage{adjustbox}
+
+% Hyper refs
+\usepackage[
+    colorlinks,
+    breaklinks,
+    bookmarks=false,
+    pdfstartview=Fit,  % for fitting entire page; FitW just fits width
+    pdfview=Fit,       % after traversing a hyperlink
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=blue,
+    hyperfootnotes=false
+]{hyperref}
+% \usepackage[figure,table]{hypcap}
+
+% Bibliography style settings.
+\usepackage[
+	backend=biber,
+    bibencoding=utf8,
+	style=authoryear,
+	maxcitenames=2,
+    maxbibnames=30,
+	isbn=false,
+	eprint=false,
+	url=true
+]{biblatex}
+\renewcommand*{\multicitedelim}{,\space}
+\DeclareFieldFormat[techreport,report,unpublished]{title}{\mkbibquote{#1}}
+\AtEveryBibitem{% Clean up the bibtex rather than editing it
+ \clearfield{date}
+ \clearfield{eprint}
+ \clearfield{isbn}
+ \clearfield{issn}
+ \clearfield{month}
+ \clearfield{note}
+ \clearfield{language}
+ \ifentrytype{article}{
+  \clearfield{url}
+  \clearfield{doi}
+ }
+}
+
+% Block quotes
+% \usepackage{etoolbox}
+% \AtBeginEnvironment{quote}{\singlespacing\small}
+
+% Command shortcuts
+\newcommand{\citet}[1]{\textcite{#1}}
+\newcommand{\citep}[1]{\parencite{#1}}
+\newcommand{\citef}[1]{\footcite{#1}}
+\newcommand{\paper}[1]{\citet{#1}: \citetitle{#1}}
+\newcommand{\edit}[1]{{\noindent\color{red}{#1}}}
+\newcommand{\gap}{{\color{red}...\#...}}
+\newcommand{\notes}[1]{\newlineNotes: #1}
+\newcommand{\fignote}[2]{{\center\parbox[c]{#1}{\scriptsize Notes: #2}}}
+\newcommand{\tabnote}[2]{{\center\parbox[c]{#1}{\footnotesize Notes: #2}}}
+\newcommand{\source}[1]{{\center\scriptsize Source: #1}}
+\newcommand{\what}[1]{{\noindent\textit{\color{blue}{#1}}}}
+
+% Title case format
+% \captionsetup{labelfont=bf, font=bf}

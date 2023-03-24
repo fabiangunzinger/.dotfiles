@@ -1,0 +1,17 @@
+windows:
+  - name: tracker
+    root: ~/dev
+    layout: even-vertical
+    panes:
+      - commands:
+        - atco
+        - sleep 3
+        - dtr
+        - gs
+        name: vm
+      - commands:
+        - aum
+        - atmo
+        - dre
+        - gs
+        name: local

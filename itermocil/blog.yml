@@ -1,0 +1,12 @@
+windows:
+  - name: blog
+    root: ~/dev
+    layout: even-vertical
+    panes:
+      - commands:
+        - dbl; cd _posts
+        - gs
+        name: blog
+      - commands:
+        - dbl; cd _posts
+        - ll

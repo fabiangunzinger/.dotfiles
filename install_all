@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+if [[ -z $STOW_FOLDERS ]]; then
+    STOW_FOLDERS="nvim, git"
+fi
+
+STOW_FOLDERS=$STOW_FOLDERS
+

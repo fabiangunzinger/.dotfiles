@@ -1,0 +1,83 @@
+#################################################
+# fabmac config
+#################################################
+
+export FABIB=~/dev/projects/dotfiles/latex/fabib.bib
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"      # use gnu grep
+export PATH="/Users/fgu/.local/bin:$PATH"                   # add poetry topath
+export EDITOR=nvim
+export VISUAL="$EDITOR"
+
+export PATH="/Users/fabian.gunzinger/.local/bin:$PATH"
+
+#################################################
+# fabmac aliases
+#################################################
+
+# # system shutdown (also shuts down aws instance) and reboots
+alias ss='atesp; sudo shutdown -h now'
+alias sr='sudo shutdown -r now'
+
+# start of day
+alias jk='open /System/Applications/Calendar.app; open /System/Applications/Notes.app'
+
+# misc. directories
+alias dju='cd /Users/fgu/Library/Jupyter/snippets'
+alias dic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+alias dfab='dic; cd fab'
+alias dre='dfab; cd library/resources'
+alias dpa='dfab; cd library/papers'
+
+# open directories
+alias ore='dre; open .'
+alias opa='dpa; open .'
+
+# conda
+alias ci='conda install '
+alias cl='conda list'
+alias clg='conda list | grep '
+alias ce='conda env export > environment.yml'
+alias ceh='conda env export --from-history > environment.yml'
+function cc() { conda create --name $1; }
+function ccb() { conda create --name $1 python=3.9 pandas scipy scikit-learn matplotlib seaborn jupyterlab statsmodels linearmodels jupyterlab_code_formatter black isort s3fs pyarrow; }
+function cr() { conda remove --name $1 --all; }
+function ccf() { conda env create --file $1; }
+function ca() { conda activate "$1"; }
+cda='conda deactivate'
+
+# aws
+mac_ip=$(curl -s ifconfig.me)
+mac_remote=/Users/fgu/dev/remote
+vm_remote=/home/fgu/dev/remote
+localhost_forward=9999:localhost:9999 
+
+te_keypair=/Users/fgu/.aws/3di.pem
+instance_id=i-0d38c6fcdfb909b7b
+tail='--region eu-west-2 --profile 3di'
+
+alias get_dns="aws ec2 describe-instances \
+    --instance-ids $instance_id \
+    --query 'Reservations[*].Instances[*].PublicDnsName' \
+    --profile '3di' \
+    --region 'eu-west-2' \
+    --output 'text'"
+
+## start and stop instance
+alias atesp='aws ec2 stop-instances --instance-ids $instance_id $tail'
+alias atest='aws ec2 start-instances --instance-ids $instance_id $tail'
+
+## connect to ec2 instances
+alias atec='ssh -i $te_keypair fgu@$(get_dns)'
+alias atect='ssh -i $te_keypair te@$(get_dns)'
+alias atecu='ssh -i $te_keypair -L $localhost_forward ubuntu@$(get_dns)'
+
+## fetch latest fable data
+source=s3://fd-eu-rowlevel-v2
+destination=s3://3di-data-fable/raw/
+alias getfable="aws s3 sync $source $destination --profile '3di'"
+
+## copy files from a to b
+function acp() { aws s3 cp $1 $2; }
+function acpt() { aws s3 cp $1 $2 --profile '3di'; }
+
+

@@ -1,0 +1,5 @@
+# ssh config, fabian gunzinger
+
+# # Automatically manage keys
+# Host *
+#     AddKeysToAgent yes

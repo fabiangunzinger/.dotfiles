@@ -1,0 +1,3 @@
+# jetmac zsh config
+
+GOOGLE_APPLICATION_CREDENTIALS="/root/.config/gcloud/application_default_credentials.json"

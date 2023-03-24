@@ -1,0 +1,295 @@
+#################################################
+# general alises
+#################################################
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+
+# ssh
+function sshn() { ssh-keygen -t ed25519 -C $1; }
+
+# pip
+alias pi='pip install'
+
+# nvim
+alias vi='nvim'
+alias vii='nvim +CommandT'
+
+# misc.
+# alias rm='rm -I'
+# alias rmr='rm -r'
+# alias ll='exa -l'
+# alias la='exa -l -a'
+alias lg='la | grep $1'
+alias lt="exa --tree -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints|.DS_Store'"
+alias pwdc='pwd | pbcopy'
+
+# fzf
+## Show file preview using bat
+alias fp="fzf --multi --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+## Open selected file in nvim
+alias fvi='vi $(fp)'
+
+
+## Help zsh find fzf plugin
+export FZF_BASE="$HOME/.fzf"
+export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files -g "!.git/"'
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+
+# Oh My Zsh
+alias rom='omz reload'   # use this instead of source!
+alias omzu='omz update'
+alias fzs='nvim ~/.zshrc'
+alias pas='acs'   # pretty aliases
+
+# pyenv
+alias pei='pyenv install'
+alias pevs='pyenv versions'
+
+# pyenv-virtualenv
+## Create, activate, and deactivate environments
+alias pev='pyenv virtualenv'
+alias pea='pyenv activate'
+alias ped='pyenv deactivate'
+alias peves='pyenv virtualenvs'
+
+# blog
+alias dwo='dpr; cd wowchemy'
+alias dwop='dwo; cd content/post'
+alias dwoc='dwo; cd config/_default'
+alias awo='dwop; ca wow'
+alias jwo='awo; jula'
+function hnp() { hugo new --kind post content/post/$1; }
+alias hs='hugo server -D'
+alias nbc='jupyter nbconvert --to html'
+
+# running processes
+alias rp='ps aux | grep '               # ..pattern; list processes
+alias rpl='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10' # list largest
+alias rpk='kill'                        # ..process id to kill
+
+# search file in current folder (non-recursive, and recursive)
+alias f='find . -maxdepth 1 | grep '
+alias ff='find . | grep '
+
+# look up word from dictionary
+function lu() { open dict://"$1"; }
+
+# disk space and directory structure
+alias dum='du -h | sort -n -r | more'
+alias dud='du -h -d 2'
+
+# misc. commands
+alias jula='jupyter lab'
+alias clh='open -a safari https://localhost:9999'
+alias vi='nvim'
+alias vgp='vimgolf put '
+
+# terraform
+alias tf='terraform'
+alias tfi='tf init'
+alias tfa='tf apply'
+alias tfo='tf output'
+alias tfoi='tf output instance_id'
+alias tfs='tf show'
+alias tfd='tf destroy'
+
+# tmux
+alias tmls='tmux ls'
+function tmns() { tmux new-session -s $1; }
+function tmas() { tmux attach-session -t $1; }
+function tmks() { tmux kill-session -t $1; }
+
+# main directories
+alias dco='cd ~/.config'
+alias daw='cd ~/.aws'
+alias dde='cd ~/dev'
+alias dpr='dde; cd projects'
+alias drm='dde; cd remote'
+
+# project directories
+alias ddf='dpr; cd dotfiles'
+alias dli='dpr; cd limo'
+alias dap='dpr; cd applications'
+alias dapc='cd ~/dev/projects/applications/interview-prep/code'
+alias dfa='cd ~/dev/projects/fabiangunzinger.github.io'
+alias den='dpr; cd entropy'
+alias dev='dpr; cd mdb_eval'
+alias dml='dpr; cd mlbt'
+alias dmd='dpr; cd mdb'
+alias dth='cd ~/dev/projects/warwickthesis'
+alias dvs='cd /Users/fabian.gunzinger/.local/state/nvim/swap'
+
+# open files
+alias fzg='ddf; cd zsh; nvim zshrc.general'
+alias fz='vi ~/.zshrc'
+alias fzm='vi ~/.tmux.conf'
+# open vim in project
+alias vzs='ddf; cd zsh; vi'
+
+# activate project
+alias abl='dbl; ca blog'
+alias afo='dfo; ca foods'
+alias amd='dmd; ca mdb'
+alias ate='dte; ca te'
+alias aen='den; ca entropy; gl'
+alias ven='aen; vi'
+alias dev='cd ~/dev/projects/mdb_eval'
+alias aev='dev; ca mdb_eval'
+alias vev='aev; vi'
+alias jev='aev; jula'
+
+# start jupyter lab for project
+alias jbl='abl; jula'
+alias jen='aen; jula'
+alias jfo='afo; jula'
+alias jmd='amd; jula'
+alias jte='ate; jula'
+
+# blog shortcuts
+alias nb='open https://fabiangunzinger.github.io/blog/'
+pn() { vi $(date +'%Y-%m-%d-')"$1"; }
+pe() { vi $(find . -name *$1*); }
+
+# jupyter kernels
+## Install ipykernel into base environment (see data-workflow.md post for details)
+env_path=$HOME/.pyenv/versions
+function iki { $env_path/"$1"/bin/python -m ipykernel install --prefix=$env_path/base --name "$1"; }
+## Install ipykernel into its own project environment
+function ikio { python -m ipykernel install --name $1 --user; }
+## Manage kernels
+alias jkl='jupyter kernelspec list'
+function jkr { jupyter kernelspec remove $1; } 
+
+# pandoc
+function pdmp() { pandoc "$1" -o "${1/md/pdf}"; } 
+
+# git and github
+alias ghrc='gh repo create'         # interactively create a new repo
+alias ghp='git help'                # ..git verb for which help is needed
+alias gs='git status --short'       # cols are staging area and working-tree
+alias gss='git status'              # verbose status
+alias gl='git log --oneline -3'     # oneline log
+alias glv='git log -3'              # verbose log
+alias gd='git diff'                 # .. ref a and b, defaults to wd and idx
+alias gds='git diff --staged'       # diff between index and last commit
+alias gsw='git show'                # show some object
+alias gt='git tag'                  # ..tagname for last commit, dft lists tags
+
+alias ga='git add'                  # .. file to stage (move to index)
+alias gaa='git add --all'           # add all modified files to index
+alias gap='git add --patch'         # stage individual hunks
+alias gc='git commit --verbose'     # show diff in editor
+alias gcm='git commit --message'    # commit with inline message
+alias gca='gc --all'                # commit all tracked files
+alias gcam='gca --message'          # above with inline message
+alias gcadd='gc --amend'            # add changes to last commit or edit msg
+alias gcaddn='gcadd --no-edit'      # add changes to last commit (keep msg)
+
+alias grm='git rm'                  # ..fn to remove, then stage for commit
+alias grmc='git rm --cached'        # ..fn to remove from index but not wd
+alias gre='git restore'             # ..fn to revert back to state of last commit
+alias gres='git restore --staged'   # ..fn to remove from index
+# alias grts='git reset --soft'
+
+alias gsh='git stash'               # save current state of working tree
+alias gshl='gsh list'               # list stored stashes
+alias gsha='gsh apply'              # ..stash ref (sr) to apply, default is last
+alias gshd='gsh drop'               # ..sr to drop, default is last
+alias gshp='gs pop'                 # apply and delete (last)
+alias gshb='gs branch'              # ..sr to create branch from, dft is last
+alias gcn='git clean'               # ..fn to be removed from wd
+alias gcnn='gc --dry-run'           # dry run of above
+
+alias gph='git push'                # move remote pointer to match local one 
+alias gphu='gph --set-upstream origin' # ..branch name of remote
+alias gphd='gph origin --delete'   # ..refs to delete (e.g. branchname)
+alias gf='git fetch'                # download new files from remote (no merge)
+alias gpl='git pull'                # download and merge new files from remote
+
+alias gb='git --no-pager branch -vv' # list branches
+alias gf='git fetch'                # download new files from remote (no merge)
+alias gpl='git pull'                # download and merge new files from remote
+
+alias gb='git --no-pager branch -vv' # list branches
+alias gbm='gb --merged'             # list bs already merged into current b
+alias gbnm='gb --no-merged'         # list bs not yet merged into current b
+alias gbme='git branch --move'      # rename by appending <oldname> <newname>
+alias gsb='git switch'               # switch to branch (or get from remote)
+alias gsc='git switch --create'     # create new branch and switch to it
+alias gsp='git switch -'            # switch to previously checked out branch
+alias gsm='git switch main'         # switch to main branch
+alias gm='git merge'                # merge branch
+alias gbd='git branch -d'           # delete branch
+alias gbdf='git branch -D'          # force delete branch with uncommited edits
+
+function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
+
+#################################################
+# general config
+#################################################
+
+# pyenv virtualenv
+## setup
+export pyenv_root="$home/.pyenv"
+command -v pyenv >/dev/null || export path="$pyenv_root/bin:$path"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+## disable prompt to hide annoying warning message
+export PYENV_VIRTUALENV_DISABLE_PROMPT=0
+# activate base virtualenv
+pyenv activate base
+
+
+# ## editor for remote and local sessions
+if [[ -n $ssh_connection ]]; then
+ export editor='vim'
+else
+ export editor='nvim'
+fi
+
+# agnoster omz theme - remove user@hostname (uncomment commented line to show
+# user name).
+# from here: https://github.com/agnoster/agnoster-zsh-theme/issues/39#issuecomment-307338817
+# prompt_context() {
+#   if [[ "$user" != "$default_user" || -n "$ssh_client" ]]; then
+#     # prompt_segment black default "%(!.%{%f{yellow}%}.)$user"
+#   fi
+# }
+
+# Adding poetry to path
+export PATH="$HOME/.local/bin:$PATH"
+
+# Adding $HOME/bin to front of path so I can override system executables
+# with my personal ones if needed. Generally, save all my personal scripts
+# in $HOME/bin
+export PATH="$HOME/bin:$PATH"
+
+# Using starship prompt
+eval "$(starship init zsh)"
+
+
+# Start tmux session on startup
+# Given that new shell session starts in home directory, this will
+# start a session in that directory
+
+# This is disabled for now. Actually not that helpful. If I restart terminal, I can just connect to tmux by opening a running session or by using tat in current directory.
+
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tat
+  fi
+}
+
+# ensure_tmux_is_running
+
+
+# Add homebrew to path
+if [ "$(whoami)" = "fabian.gunzinger" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
