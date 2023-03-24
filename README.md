@@ -5,7 +5,7 @@ workflow and fully automate the process to set up a develoment machine.
 
 ## dotfile management
 
-- I manage my dotfiles with [stow](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/), inspired by the setup of [Jannis Buhr](https://github.com/jmbuhr/.dotfiles/tree/main/nvim/.config/nvim).
+- I manage my dotfiles with [stow](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/), inspired by the setup of [Jannis Buhr](https://github.com/jmbuhr/.dotfiles).
 
 - I store my dotfiles in `~/.dotfiles`.
 
