@@ -1,4 +1,4 @@
-# dotfiles
+# .dotfiles
 
 The files in this directory constantly evolve as I work towards improving my
 workflow and fully automate the process to set up a develoment machine.
@@ -7,7 +7,11 @@ workflow and fully automate the process to set up a develoment machine.
 
 - I manage my dotfiles with [stow](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/), inspired by the setup of [Jannis Buhr](https://github.com/jmbuhr/.dotfiles/tree/main/nvim/.config/nvim).
 
-- I store my dotfiles in `~/.dotfiles`. 
+- I store my dotfiles in `~/.dotfiles`.
+
+- To create a symlink for each dotfile to the required location, I simply run `~/.dotfiles/install`.
+
+- Not all folders in `.dotfiles` contain dotfiles I want to symlink to my home directory. Those who do are added to `$STOW_FOLDERS` in the install script. Hence, if I add a new folder with dotfiles I want to link, I have to change the install script accordingly.
 
 
 ## zsh plugins
