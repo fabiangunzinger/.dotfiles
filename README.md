@@ -9,7 +9,7 @@ workflow and fully automate the process to set up a develoment machine.
 
 - I store my dotfiles in `~/.dotfiles`.
 
-- To create a symlink for each dotfile to the required location, I simply run `~/.dotfiles/install`.
+- To create a symlink for each dotfile to my home directory, I simply run `~/.dotfiles/install`.
 
 - Not all folders in `.dotfiles` contain dotfiles I want to symlink to my home directory. Those who do are added to `$STOW_FOLDERS` in the install script. Hence, if I add a new folder with dotfiles I want to link, I have to change the install script accordingly.
 
