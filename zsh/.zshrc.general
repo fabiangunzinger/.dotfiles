@@ -167,66 +167,66 @@ function jkr { jupyter kernelspec remove $1; }
 # pandoc
 function pdmp() { pandoc "$1" -o "${1/md/pdf}"; } 
 
-# git and github
-alias ghrc='gh repo create'         # interactively create a new repo
-alias ghp='git help'                # ..git verb for which help is needed
-alias gs='git status --short'       # cols are staging area and working-tree
-alias gss='git status'              # verbose status
-alias gl='git log --oneline -3'     # oneline log
-alias glv='git log -3'              # verbose log
-alias gd='git diff'                 # .. ref a and b, defaults to wd and idx
-alias gds='git diff --staged'       # diff between index and last commit
-alias gsw='git show'                # show some object
-alias gt='git tag'                  # ..tagname for last commit, dft lists tags
+# # git and github
+# alias ghrc='gh repo create'         # interactively create a new repo
+# alias ghp='git help'                # ..git verb for which help is needed
+# alias gs='git status --short'       # cols are staging area and working-tree
+# alias gss='git status'              # verbose status
+# alias gl='git log --oneline -3'     # oneline log
+# alias glv='git log -3'              # verbose log
+# alias gd='git diff'                 # .. ref a and b, defaults to wd and idx
+# alias gds='git diff --staged'       # diff between index and last commit
+# alias gsw='git show'                # show some object
+# alias gt='git tag'                  # ..tagname for last commit, dft lists tags
 
-alias ga='git add'                  # .. file to stage (move to index)
-alias gaa='git add --all'           # add all modified files to index
-alias gap='git add --patch'         # stage individual hunks
-alias gc='git commit --verbose'     # show diff in editor
-alias gcm='git commit --message'    # commit with inline message
-alias gca='gc --all'                # commit all tracked files
-alias gcam='gca --message'          # above with inline message
-alias gcadd='gc --amend'            # add changes to last commit or edit msg
-alias gcaddn='gcadd --no-edit'      # add changes to last commit (keep msg)
+# alias ga='git add'                  # .. file to stage (move to index)
+# alias gaa='git add --all'           # add all modified files to index
+# alias gap='git add --patch'         # stage individual hunks
+# alias gc='git commit --verbose'     # show diff in editor
+# alias gcm='git commit --message'    # commit with inline message
+# alias gca='gc --all'                # commit all tracked files
+# alias gcam='gca --message'          # above with inline message
+# alias gcadd='gc --amend'            # add changes to last commit or edit msg
+# alias gcaddn='gcadd --no-edit'      # add changes to last commit (keep msg)
 
-alias grm='git rm'                  # ..fn to remove, then stage for commit
-alias grmc='git rm --cached'        # ..fn to remove from index but not wd
-alias gre='git restore'             # ..fn to revert back to state of last commit
-alias gres='git restore --staged'   # ..fn to remove from index
-# alias grts='git reset --soft'
+# alias grm='git rm'                  # ..fn to remove, then stage for commit
+# alias grmc='git rm --cached'        # ..fn to remove from index but not wd
+# alias gre='git restore'             # ..fn to revert back to state of last commit
+# alias gres='git restore --staged'   # ..fn to remove from index
+# # alias grts='git reset --soft'
 
-alias gsh='git stash'               # save current state of working tree
-alias gshl='gsh list'               # list stored stashes
-alias gsha='gsh apply'              # ..stash ref (sr) to apply, default is last
-alias gshd='gsh drop'               # ..sr to drop, default is last
-alias gshp='gs pop'                 # apply and delete (last)
-alias gshb='gs branch'              # ..sr to create branch from, dft is last
-alias gcn='git clean'               # ..fn to be removed from wd
-alias gcnn='gc --dry-run'           # dry run of above
+# alias gsh='git stash'               # save current state of working tree
+# alias gshl='gsh list'               # list stored stashes
+# alias gsha='gsh apply'              # ..stash ref (sr) to apply, default is last
+# alias gshd='gsh drop'               # ..sr to drop, default is last
+# alias gshp='gs pop'                 # apply and delete (last)
+# alias gshb='gs branch'              # ..sr to create branch from, dft is last
+# alias gcn='git clean'               # ..fn to be removed from wd
+# alias gcnn='gc --dry-run'           # dry run of above
 
-alias gph='git push'                # move remote pointer to match local one 
-alias gphu='gph --set-upstream origin' # ..branch name of remote
-alias gphd='gph origin --delete'   # ..refs to delete (e.g. branchname)
-alias gf='git fetch'                # download new files from remote (no merge)
-alias gpl='git pull'                # download and merge new files from remote
+# alias gph='git push'                # move remote pointer to match local one 
+# alias gphu='gph --set-upstream origin' # ..branch name of remote
+# alias gphd='gph origin --delete'   # ..refs to delete (e.g. branchname)
+# alias gf='git fetch'                # download new files from remote (no merge)
+# alias gpl='git pull'                # download and merge new files from remote
 
-alias gb='git --no-pager branch -vv' # list branches
-alias gf='git fetch'                # download new files from remote (no merge)
-alias gpl='git pull'                # download and merge new files from remote
+# alias gb='git --no-pager branch -vv' # list branches
+# alias gf='git fetch'                # download new files from remote (no merge)
+# alias gpl='git pull'                # download and merge new files from remote
 
-alias gb='git --no-pager branch -vv' # list branches
-alias gbm='gb --merged'             # list bs already merged into current b
-alias gbnm='gb --no-merged'         # list bs not yet merged into current b
-alias gbme='git branch --move'      # rename by appending <oldname> <newname>
-alias gsb='git switch'               # switch to branch (or get from remote)
-alias gsc='git switch --create'     # create new branch and switch to it
-alias gsp='git switch -'            # switch to previously checked out branch
-alias gsm='git switch main'         # switch to main branch
-alias gm='git merge'                # merge branch
-alias gbd='git branch -d'           # delete branch
-alias gbdf='git branch -D'          # force delete branch with uncommited edits
+# alias gb='git --no-pager branch -vv' # list branches
+# alias gbm='gb --merged'             # list bs already merged into current b
+# alias gbnm='gb --no-merged'         # list bs not yet merged into current b
+# alias gbme='git branch --move'      # rename by appending <oldname> <newname>
+# alias gsb='git switch'               # switch to branch (or get from remote)
+# alias gsc='git switch --create'     # create new branch and switch to it
+# alias gsp='git switch -'            # switch to previously checked out branch
+# alias gsm='git switch main'         # switch to main branch
+# alias gm='git merge'                # merge branch
+# alias gbd='git branch -d'           # delete branch
+# alias gbdf='git branch -D'          # force delete branch with uncommited edits
 
-function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
+# function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
 
 #################################################
 # general config
