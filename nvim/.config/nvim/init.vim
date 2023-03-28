@@ -46,7 +46,7 @@ Plug 'tpope/vim-surround'   " surround shortcuts
 Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
 Plug 'tpope/vim-vinegar'   " complement to netrw file system navigation
 Plug 'wincent/command-t', {'do': 'cd lua/wincent/commandt/lib && make'}  " fuzzy file finder
-    let g:CommandTPreferredImplementation = 'lua'
+  let g:CommandTPreferredImplementation = 'lua'
 Plug 'psliwka/vim-smoothie'   " smooth scrolling
 Plug 'jpalardy/vim-slime'   " repl interaction support
     let g:slime_target = "tmux"
