@@ -18,8 +18,9 @@
 - I use the [starship](https://starship.rs) prompt.
 
 
+## nvim setup
 
-
+- I use `lazy.nvim` as my package manager.
 
 
 

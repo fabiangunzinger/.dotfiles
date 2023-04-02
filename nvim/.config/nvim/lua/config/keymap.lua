@@ -14,6 +14,34 @@ R = function(name)
   return require(name)
 end
 
+-- temp location of init.nvim commands --
+
+-- edit alternate buffer --
+vim.keymap.set("n", "<leader>a", ":e#<cr>")
+
+-- leave insert mode
+-- abort operator-pending command
+vim.keymap.set({"i", "o"}, "jk", "<esc>")
+
+-- abort (search) command
+vim.keymap.set("c", "jk", "<C-c>")
+
+-- make Y behave like C and D (see `h: Y`)
+vim.keymap.set("", "Y", "y$")
+
+-- write buffer
+vim.keymap.set("n", "<leader>w", ":w<cr>")
+
+-- move visual-line-wise
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
+
+-- source vimrc
+vim.keymap.set("", "<leader>sv", ":source $MYVIMRC<cr>")
+
+-- end old init.nvim commands --
+
+
 -- save in insert mode
 vim.keymap.set("i", "<C-s>", "<cmd>:w<cr><esc>")
 vim.keymap.set("n", "<C-s>", "<cmd>:w<cr><esc>")
