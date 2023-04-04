@@ -216,12 +216,6 @@ return {
         end
       }
 
-      lspconfig.julials.setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-        flags = lsp_flags,
-      }
-
       lspconfig.bashls.setup {
         on_attach = on_attach,
         capabilities = capabilities,
