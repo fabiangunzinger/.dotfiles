@@ -15,25 +15,5 @@ vim.opt.runtimepath:prepend(lazypath)
 
 
 require("lazy").setup("plugins", {
-  defaults = {
-    version = "*",
-  },
-  dev = {
-    path = "~/projects",
-    -- patterns = { "jmbuhr", "quarto-dev" },
-  },
   install = { colorscheme = { "catppuccin", "habamax" } },
-  -- checker = { enabled = true },
-  rtp = {
-    disabled_plugins = {
-      "gzip",
-      "matchit",
-      "matchparen",
-      "netrwPlugin",
-      "tarPlugin",
-      "tohtml",
-      "tutor",
-      "zipPlugin",
-    },
-  },
 })
