@@ -1,3 +1,12 @@
+-- disable netrw as advised in nvim-tree docx
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+
+-- fgu settings
+vim.g.python3_host_prog = "/Users/fgu/.pyenv/versions/base/bin/python3.10"
+
+
 vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r' }
 vim.opt.termguicolors = true
 

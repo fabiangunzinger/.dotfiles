@@ -57,7 +57,7 @@ return {
       require 'quarto'.setup {
         lspFeatures = {
           enabled = true,
-          languages = { 'r', 'python', 'julia', 'bash' },
+          languages = { 'r', 'python', 'julia', 'bash', 'lua' },
           chunks = 'curly', -- 'curly' or 'all'
           diagnostics = {
             enabled = true,
@@ -89,7 +89,7 @@ return {
   },
   -- paste an image to markdown from the clipboard
   -- :PasteImg,
-  'ekickx/clipboard-image.nvim',
+  {'ekickx/clipboard-image.nvim'},
 
   -- display images in the terminal!
   { 'edluffy/hologram.nvim',

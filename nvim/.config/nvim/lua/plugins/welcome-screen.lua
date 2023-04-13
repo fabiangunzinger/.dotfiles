@@ -6,36 +6,40 @@ return {
       local alpha = require("alpha")
       local dashboard = require("alpha.themes.dashboard")
 
-      -- Set header
+      local function button(sc, txt, keybind, keybind_opts)
+        local b = dashboard.button(sc, txt, keybind, keybind_opts)
+        b.opts.hl_shortcut = "Macro"
+        return b
+      end
+
       dashboard.section.header.val = {
-        " ██████╗ ██╗   ██╗ █████╗ ██████╗ ████████╗ ██████╗ ",
-        "██╔═══██╗██║   ██║██╔══██╗██╔══██╗╚══██╔══╝██╔═══██╗",
-        "██║   ██║██║   ██║███████║██████╔╝   ██║   ██║   ██║",
-        "██║▄▄ ██║██║   ██║██╔══██║██╔══██╗   ██║   ██║   ██║",
-        "╚██████╔╝╚██████╔╝██║  ██║██║  ██║   ██║   ╚██████╔╝",
-        " ╚══▀▀═╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ",
-        "                                                    ",
+        [[                               __                ]],
+        [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+        [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+        [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+        [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+        [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
       }
-
-      -- Set menu
       dashboard.section.buttons.val = {
-        dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-        dashboard.button("f", "  > Find file", ":Telescope find_files<CR>"),
-        dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
-        dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k<CR>"),
-        dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
+        button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
+        button("f", "  > Find file", ":Telescope find_files <CR>"),
+        button("r", "  > Recent", ":Telescope oldfiles <CR>"),
+        button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k<CR>"),
+        button("t", ". > Find text", "Telescope live_grep <CR>" ),
+        button("t", ". > Find session", ":SearchSession <CR>" ),
+        button("q", "  > Quit NVIM", ":qa<CR>"),
       }
 
-      local fortune = require("alpha.fortune")
-      dashboard.section.footer.val = fortune({
-        fortune_list = {
-          { "You otter be proud of yourself!", "", "— 🦦" },
-          { "Hello from the otter slide!", "", "— Otterdele" },
-          { "To otter space!", "", "— 🦦" },
-          { "What if I say I'm not like the otters?", "", "— Foo Fighters" },
-        }
-      })
-
+      -- local fortune = require("alpha.fortune")
+      -- dashboard.section.footer.val = fortune({
+      --   fortune_list = {
+      --     { "You otter be proud of yourself!", "", "— 🦦" },
+      --     { "Hello from the otter slide!", "", "— Otterdele" },
+      --     { "To otter space!", "", "— 🦦" },
+      --     { "What if I say I'm not like the otters?", "", "— Foo Fighters" },
+      --   }
+      -- })
+      --
       -- Send config to alpha
       alpha.setup(dashboard.opts)
     end

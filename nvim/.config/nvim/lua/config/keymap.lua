@@ -1,3 +1,8 @@
+-- todo
+-- Add keybinding for new python and r code cell in nomral and insert mode
+--
+
+
 local wk = require("which-key")
 
 P = function(x)
