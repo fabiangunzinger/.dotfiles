@@ -1,0 +1,8 @@
+- [ ] Migrate old nvim settings and plugins
+- [x] Migrate basic plugins
+    - [x] Customise lazy config
+- [ ] Migrate settings
+    - [x] Move migration tracker to md file in directory
+    - [ ] Skim lua in nvim [docs](https://neovim.io/doc/user/lua.html)
+    - [ ] Skim lua guide
+- [ ] Migrate mappings

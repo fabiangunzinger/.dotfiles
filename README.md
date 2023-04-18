@@ -10,6 +10,12 @@
 
 - Not all folders in `.dotfiles` contain dotfiles I want to symlink to my home directory. Those who do are added to `$STOW_FOLDERS` in the installation script. Hence, if I add a new folder with dotfiles I want to link, I have to change said script accordingly.
 
+## Mac setup
+
+- I use [homebrew](https://brew.sh) for package management.
+
+- I use [Amethyst](https://github.com/ianyh/Amethyst) for window management.
+
 
 ## Terminal setup
 
@@ -18,9 +24,17 @@
 - I use the [starship](https://starship.rs) prompt.
 
 
+## nvim setup
 
+- I use `lazy.nvim` as my package manager.
 
+- For `quarto` autocompletion to work, I need to select the kernel I want to use in the quarto doc, and I need to have the corresponding venv activated when I start nvim.
 
+## Python setup 
+
+- I manage Python versions with `pyenv`, virtual envs with `pyenv-virtualenvs`, and install packages with `pip`. I don't use Conda or Poetry because I find them too clunky, even though they both have useful features.
+
+- I use `base` virtual environment as a Python host for nvim and Quarto, and also to run Jupyter from.
 
 
 <!-- ## zsh plugins -->
@@ -56,3 +70,5 @@
   has a useful post on his workflow.
 
 - [Jannik Buhr](https://github.com/jmbuhr) has a top-notch dotfiles setup and vim/tmux/Python worklow, for which he's written the awesome [`quarto-nvim`](https://github.com/quarto-dev/quarto-nvim) plugin. His work was a goldmine for what I was looking for.
+
+- [Christian Chiarulli](https://github.com/ChristianChiarulli/nvim) has an awesome nvim setup from which I have borrowed.

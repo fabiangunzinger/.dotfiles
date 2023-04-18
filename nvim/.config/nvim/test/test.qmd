@@ -1,0 +1,127 @@
+---
+title: "matplotlib demo"
+format:
+  html:
+    code-fold: false
+jupyter: base
+bibliography: /Users/fgu/.dotfiles/latex/fabib.bib
+---
+
+For a demonstration of a line plot on a polar axis, see @fig-polar.
+
+This makes me so happy!
+
+## Latex math
+
+- Works as expected
+
+Some inline math $\frac{\alpha}{\beta}$ right inside the text.
+
+Some math in a separate environment:
+
+$$
+\alpha = \theta + 4
+$$
+
+
+## References
+
+This is an autocompleted reference @baker2022household. To use autocomplete, simply type `@` and start writing the bib key.
+
+
+## Images and cross-references
+
+tbd -- end of video 2 -- not currently working
+
+
+## Spell-checking
+
+Forum opium dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.
+
+
+## Additional languages
+
+- While quarto doesn't know how to handle lua and can't compile the code, adding it to `languages` in the `quarto.lua` config file provides code completion features, which might be useful in blog posts on my vim configuration, for instance.
+
+- To run the code, I can just open a new terminal (`<leader>cn`), start lua, and then send using slime.
+
+```{lua}
+hello = function()
+  print('hello world')
+end
+```
+
+
+```{lua}
+hello()
+```
+
+## Interactive IDE
+
+```{python}
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = pd.DataFrame({'a': range(200), 'b': range(100, 300)})
+
+df['b'].plot()
+plt.show()
+```
+
+The only problem is that it's a little slow. Also, it doesn't scroll to where I'm writing presently.
+
+Actually, it seems to.
+
+Let's test this a little more thoroughly.
+
+## Code
+
+
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+# Now we add a comment here
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+And yet more thoroughly.
+
+
+```{python}
+import pandas as pd
+
+df = pd.DataFrame({'a': [1, 2, 3, 4, 5]})
+df.head()
+```
+
+```{python}
+x = np.arange(0, 5, 0.1)
+y = np.sin(x)
+plt.plot(x, y)
+```
+
+```{python}
+a = [1, 2, 3]
+b = [4]
+a + b + [5]
+```
+ 
+
+
+
+
+
+
+

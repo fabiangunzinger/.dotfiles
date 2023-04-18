@@ -14,8 +14,7 @@ function sshn() { ssh-keygen -t ed25519 -C $1; }
 alias pi='pip install'
 
 # nvim
-alias vi='nvim'
-alias vii='nvim +CommandT'
+alias v='nvim'
 
 # misc.
 # alias rm='rm -I'
@@ -293,3 +292,7 @@ ensure_tmux_is_running() {
 if [ "$(whoami)" = "fabian.gunzinger" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+
+# Set quarto python environments
+export QUARTO_PYTHON='/Users/fgu/.pyenv/versions/base/bin/python3.10'
