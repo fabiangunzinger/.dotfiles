@@ -4,59 +4,59 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " activate vim-plug
-" call plug#begin()
-" Plug 'airblade/vim-gitgutter'   " show git diff in sign column
-" Plug 'alfredodeza/pytest.vim'   " pytest support
-" Plug 'christoomey/vim-tmux-navigator'   " smooth tmux and vim navigation
-" Plug 'christoomey/vim-tmux-runner'   " send code from vim to tmux processes
-" Plug 'dense-analysis/ale'   " code linting. [dep]: pip install flake8
-" Plug 'fisadev/vim-isort'   " sort python imports
-" Plug 'ggVGc/vim-fuzzysearch'   " fuzzy search
-"     let g:fuzzysearch_prompt = '/'
-"     let g:fuzzysearch_match_spaces = 1
-" Plug 'godlygeek/tabular'   " tabular formatting
-" Plug 'plasticboy/vim-markdown'   " markdown support
-" Plug 'hashivim/vim-terraform'   " terraform commands and syntax highlighting
-" Plug 'jremmen/vim-ripgrep'   " search
-    " let g:rg_command = 'rg --vimgrep -S'   " user smartcase by default
-" Plug 'itchyny/lightline.vim'   " statusbar
-" Plug 'junegunn/goyo.vim'   " distraction free writing
-" Plug 'junegunn/fzf.vim'   " fuzzy search
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " fuzzy search
-" Plug 'machakann/vim-highlightedyank'   " highlight yanked region
-" Plug 'mileszs/ack.vim'   " faster grep alternative
+call plug#begin()
+Plug 'airblade/vim-gitgutter'   " show git diff in sign column
+Plug 'alfredodeza/pytest.vim'   " pytest support
+Plug 'christoomey/vim-tmux-navigator'   " smooth tmux and vim navigation
+Plug 'christoomey/vim-tmux-runner'   " send code from vim to tmux processes
+plug 'dense-analysis/ale'   " code linting. [dep]: pip install flake8
+plug 'fisadev/vim-isort'   " sort python imports
+plug 'ggvgc/vim-fuzzysearch'   " fuzzy search
+    let g:fuzzysearch_prompt = '/'
+    let g:fuzzysearch_match_spaces = 1
+plug 'godlygeek/tabular'   " tabular formatting
+plug 'plasticboy/vim-markdown'   " markdown support
+plug 'hashivim/vim-terraform'   " terraform commands and syntax highlighting
+plug 'jremmen/vim-ripgrep'   " search
+  let g:rg_command = 'rg --vimgrep -s'   " user smartcase by default
+plug 'itchyny/lightline.vim'   " statusbar
+plug 'junegunn/goyo.vim'   " distraction free writing
+plug 'junegunn/fzf.vim'   " fuzzy search
+plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " fuzzy search
+plug 'machakann/vim-highlightedyank'   " highlight yanked region
+plug 'mileszs/ack.vim'   " faster grep alternative
 
-" Plug 'ncm2/ncm2'   " code completion
-" Plug 'roxma/nvim-yarp'   " remote plugin framework required for ncm2
-" Plug 'ncm2/ncm2-bufword'   " complete words in buffer
-" Plug 'ncm2/ncm2-path'   " path completion
-" Plug 'ncm2/ncm2-jedi'   " python completion
+plug 'ncm2/ncm2'   " code completion
+plug 'roxma/nvim-yarp'   " remote plugin framework required for ncm2
+plug 'ncm2/ncm2-bufword'   " complete words in buffer
+plug 'ncm2/ncm2-path'   " path completion
+plug 'ncm2/ncm2-jedi'   " python completion
 
-" Plug 'nelstrom/vim-visual-star-search'   " make * search for visual selection
-" Plug 'stefandtw/quickfix-reflector.vim'   " use quickfix for bulk change/replace
-" Plug 'SirVer/ultisnips'   " snippets engine
-" Plug 'honza/vim-snippets'   " snippets
-" Plug 'tpope/vim-commentary'   " commenting
-" Plug 'tpope/vim-eunuch'   " unix shell commands
-" Plug 'tpope/vim-fugitive'   " git integration
-" Plug 'tpope/vim-obsession'   " session management
-" Plug 'tpope/vim-repeat'   " use . after plugin map
-" Plug 'tpope/vim-surround'   " surround shortcuts
-" Plug 'tpope/vim-abolish'   " powerful substitution and case conversions
-" Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
-" Plug 'tpope/vim-vinegar'   " complement to netrw file system navigation
-" Plug 'wincent/command-t', {'do': 'cd lua/wincent/commandt/lib && make'}  " fuzzy file finder
-  " let g:CommandTPreferredImplementation = 'lua'
-" Plug 'psliwka/vim-smoothie'   " smooth scrolling
-" Plug 'jpalardy/vim-slime'   " repl interaction support
-    " let g:slime_target = "tmux"
-" Plug 'altercation/vim-colors-solarized'   " colorscheme
-" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " syntax highlighting
-" Plug 'psf/black', { 'branch': 'stable' }   " black python formatting
-" Plug 'jeetsukumaran/vim-pythonsense'   " python text objects
-" Plug 'Vimjas/vim-python-pep8-indent'   " pep8 style indentation
-" Plug 'lervag/vimtex'   " latex support
-" call plug#end()
+Plug 'nelstrom/vim-visual-star-search'   " make * search for visual selection
+Plug 'stefandtw/quickfix-reflector.vim'   " use quickfix for bulk change/replace
+Plug 'SirVer/ultisnips'   " snippets engine
+Plug 'honza/vim-snippets'   " snippets
+Plug 'tpope/vim-commentary'   " commenting
+Plug 'tpope/vim-eunuch'   " unix shell commands
+Plug 'tpope/vim-fugitive'   " git integration
+Plug 'tpope/vim-obsession'   " session management
+Plug 'tpope/vim-repeat'   " use . after plugin map
+Plug 'tpope/vim-surround'   " surround shortcuts
+Plug 'tpope/vim-abolish'   " powerful substitution and case conversions
+Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
+Plug 'tpope/vim-vinegar'   " complement to netrw file system navigation
+Plug 'wincent/command-t', {'do': 'cd lua/wincent/commandt/lib && make'}  " fuzzy file finderlet
+    let g:CommandTPreferredImplementation = 'lua'
+Plug 'psliwka/vim-smoothie'   " smooth scrolling
+Plug 'jpalardy/vim-slime'   " repl interaction support
+  let g:slime_target = "tmux"
+Plug 'altercation/vim-colors-solarized'   " colorscheme
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " syntax highlighting
+Plug 'psf/black', { 'branch': 'stable' }   " black python formatting
+Plug 'jeetsukumaran/vim-pythonsense'   " python text objects
+Plug 'Vimjas/vim-python-pep8-indent'   " pep8 style indentation
+Plug 'lervag/vimtex'   " latex support
+call plug#end()
 
 " Use `:PlugInstall` and `:PlugClean` as needed.
 
