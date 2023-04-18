@@ -4,7 +4,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " activate vim-plug
-call plug#begin()
+" call plug#begin()
 " Plug 'airblade/vim-gitgutter'   " show git diff in sign column
 " Plug 'alfredodeza/pytest.vim'   " pytest support
 " Plug 'christoomey/vim-tmux-navigator'   " smooth tmux and vim navigation
@@ -23,8 +23,8 @@ call plug#begin()
 " Plug 'junegunn/goyo.vim'   " distraction free writing
 " Plug 'junegunn/fzf.vim'   " fuzzy search
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " fuzzy search
-Plug 'machakann/vim-highlightedyank'   " highlight yanked region
-Plug 'mileszs/ack.vim'   " faster grep alternative
+" Plug 'machakann/vim-highlightedyank'   " highlight yanked region
+" Plug 'mileszs/ack.vim'   " faster grep alternative
 
 " Plug 'ncm2/ncm2'   " code completion
 " Plug 'roxma/nvim-yarp'   " remote plugin framework required for ncm2
@@ -32,31 +32,31 @@ Plug 'mileszs/ack.vim'   " faster grep alternative
 " Plug 'ncm2/ncm2-path'   " path completion
 " Plug 'ncm2/ncm2-jedi'   " python completion
 
-Plug 'nelstrom/vim-visual-star-search'   " make * search for visual selection
-Plug 'stefandtw/quickfix-reflector.vim'   " use quickfix for bulk change/replace
-Plug 'SirVer/ultisnips'   " snippets engine
-Plug 'honza/vim-snippets'   " snippets
-Plug 'tpope/vim-abolish'   " powerful substitution and case conversions
-Plug 'tpope/vim-commentary'   " commenting
-Plug 'tpope/vim-eunuch'   " unix shell commands
-Plug 'tpope/vim-fugitive'   " git integration
-Plug 'tpope/vim-obsession'   " session management
-Plug 'tpope/vim-repeat'   " use . after plugin map
-Plug 'tpope/vim-surround'   " surround shortcuts
-Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
+" Plug 'nelstrom/vim-visual-star-search'   " make * search for visual selection
+" Plug 'stefandtw/quickfix-reflector.vim'   " use quickfix for bulk change/replace
+" Plug 'SirVer/ultisnips'   " snippets engine
+" Plug 'honza/vim-snippets'   " snippets
+" Plug 'tpope/vim-commentary'   " commenting
+" Plug 'tpope/vim-eunuch'   " unix shell commands
+" Plug 'tpope/vim-fugitive'   " git integration
+" Plug 'tpope/vim-obsession'   " session management
+" Plug 'tpope/vim-repeat'   " use . after plugin map
+" Plug 'tpope/vim-surround'   " surround shortcuts
+" Plug 'tpope/vim-abolish'   " powerful substitution and case conversions
+" Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
 " Plug 'tpope/vim-vinegar'   " complement to netrw file system navigation
 " Plug 'wincent/command-t', {'do': 'cd lua/wincent/commandt/lib && make'}  " fuzzy file finder
   " let g:CommandTPreferredImplementation = 'lua'
 " Plug 'psliwka/vim-smoothie'   " smooth scrolling
-Plug 'jpalardy/vim-slime'   " repl interaction support
-    let g:slime_target = "tmux"
-Plug 'altercation/vim-colors-solarized'   " colorscheme
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " syntax highlighting
-Plug 'psf/black', { 'branch': 'stable' }   " black python formatting
-Plug 'jeetsukumaran/vim-pythonsense'   " python text objects
-Plug 'Vimjas/vim-python-pep8-indent'   " pep8 style indentation
-Plug 'lervag/vimtex'   " latex support
-call plug#end()
+" Plug 'jpalardy/vim-slime'   " repl interaction support
+    " let g:slime_target = "tmux"
+" Plug 'altercation/vim-colors-solarized'   " colorscheme
+" Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " syntax highlighting
+" Plug 'psf/black', { 'branch': 'stable' }   " black python formatting
+" Plug 'jeetsukumaran/vim-pythonsense'   " python text objects
+" Plug 'Vimjas/vim-python-pep8-indent'   " pep8 style indentation
+" Plug 'lervag/vimtex'   " latex support
+" call plug#end()
 
 " Use `:PlugInstall` and `:PlugClean` as needed.
 
@@ -96,6 +96,8 @@ set expandtab                           " tabs are spaces
 set shiftwidth=4                        " spaces for autoindent
 set tabstop=4                           " spaces per <tab> in file
 set softtabstop=4                       " spaces per <tab> while editing
+
+" up to here <---
 
 " colors and fonts
 syntax enable                           " syntax highlighting

@@ -1,8 +1,3 @@
--- todo
--- Add keybinding for new python and r code cell in nomral and insert mode
---
-
-
 local wk = require("which-key")
 
 P = function(x)
@@ -20,6 +15,9 @@ R = function(name)
 end
 
 -- temp location of init.nvim commands --
+
+-- open url under cursor without netrw_gx
+vim.keymap.set("n", "gx", ":!open <c-r><c-a>")
 
 -- edit alternate buffer --
 vim.keymap.set("n", "<leader>a", ":e#<cr>")
