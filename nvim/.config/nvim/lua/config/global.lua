@@ -17,7 +17,7 @@ vim.opt.laststatus=2   -- always show statusline
 vim.opt.lazyredraw=true -- avoid undue redrawing
 vim.opt.number=true -- show line numers
 vim.opt.relativenumber=true   -- show relative line numbers
-vim.opt.mouse=a   -- mouse support in all modes
+vim.opt.mouse='a'   -- mouse support in all modes
 vim.opt.showcmd=true   -- show partial command
 
 -- text wrapping
@@ -29,7 +29,7 @@ vim.opt.splitright=true   -- new vertical split on the right
 vim.opt.splitbelow=true   -- new horizontal split below
 
 -- tab stops
-local tabsize=4
+local tabsize=2
 vim.opt.expandtab=true   -- tabs are spaces
 vim.opt.shiftwidth=tabsize   -- spaces for autoindent
 vim.opt.tabstop=tabsize   -- spaces per <tab> in file
@@ -69,10 +69,6 @@ vim.opt.foldlevel = 99
 
 -- global statusline
 vim.opt.laststatus = 3
-
--- split right and below by default
-vim.opt.splitright = true
-vim.opt.splitbelow = true
 
 --tabline
 vim.opt.showtabline = 1

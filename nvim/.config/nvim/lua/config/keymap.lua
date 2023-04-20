@@ -14,71 +14,9 @@ R = function(name)
   return require(name)
 end
 
--- temp location of init.nvim commands --
-
--- open url under cursor without netrw_gx
-vim.keymap.set("n", "gx", ":!open <c-r><c-a>")
-
--- edit alternate buffer --
-vim.keymap.set("n", "<leader>a", ":e#<cr>")
-
--- leave insert mode
--- abort operator-pending command
-vim.keymap.set({"i", "o"}, "jk", "<esc>")
-
--- abort (search) command
-vim.keymap.set("c", "jk", "<C-c>")
-
--- make Y behave like C and D (see `h: Y`)
-vim.keymap.set("", "Y", "y$")
-
--- write buffer
-vim.keymap.set("n", "<leader>w", ":w<cr>")
-
--- move visual-line-wise
-vim.keymap.set("n", "j", "gj")
-vim.keymap.set("n", "k", "gk")
-
--- source vimrc
-vim.keymap.set("", "<leader>sv", ":source $MYVIMRC<cr>")
-
--- end old init.nvim commands --
-
-
--- save in insert mode
-vim.keymap.set("i", "<C-s>", "<cmd>:w<cr><esc>")
-vim.keymap.set("n", "<C-s>", "<cmd>:w<cr><esc>")
-
--- Resize window using <shift> arrow keys
-vim.keymap.set("n", "<S-Up>", "<cmd>resize +2<CR>")
-vim.keymap.set("n", "<S-Down>", "<cmd>resize -2<CR>")
-vim.keymap.set("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
-vim.keymap.set("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
-
--- Move between windows using <ctrl> direction
-vim.keymap.set("n", '<C-j>', '<C-W>j')
-vim.keymap.set("n", '<C-k>', '<C-W>k')
-vim.keymap.set("n", '<C-h>', '<C-W>h')
-vim.keymap.set("n", '<C-l>', '<C-W>l')
-
--- Add undo break-points
-vim.keymap.set("i", ",", ",<c-g>u")
-vim.keymap.set("i", ".", ".<c-g>u")
-vim.keymap.set("i", ";", ";<c-g>u")
-
-
-function _G.set_terminal_keymaps()
-  local opts = { buffer = 0 }
-  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+local map = function(key, effect)
+  vim.keymap.set({'n', 'v', 'o'}, key, effect, { silent = true, noremap = true })
 end
-
--- if you only want these mappings for toggle term use term://*toggleterm#* instead
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 local nmap = function(key, effect)
   vim.keymap.set('n', key, effect, { silent = true, noremap = true })
@@ -92,31 +30,62 @@ local imap = function(key, effect)
   vim.keymap.set('i', key, effect, { silent = true, noremap = true })
 end
 
-local function switchTheme()
-  if vim.o.background == 'light' then
-    vim.o.background = 'dark'
-    vim.cmd [[Catppuccin mocha]]
-  else
-    vim.o.background = 'light'
-    vim.cmd [[Catppuccin latte]]
-  end
+local omap = function(key, effect)
+  vim.keymap.set('o', key, effect, { silent = true, noremap = true })
 end
 
-nmap('Q', '<Nop>')
+local cmap = function(key, effect)
+  vim.keymap.set('c', key, effect, { silent = true, noremap = true })
+end
 
--- send code with ctrl+Enter
--- just like in e.g. RStudio
--- needs kitty (or other terminal) config:
--- map shift+enter send_text all \x1b[13;2u
--- map ctrl+enter send_text all \x1b[13;5u
-nmap('<c-cr>', '<Plug>SlimeSendCell')
-nmap('<s-cr>', '<Plug>SlimeSendCell')
-imap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
-imap('<s-cr>', '<esc><Plug>SlimeSendCell<cr>i')
 
--- send code with Enter and leader Enter
-vmap('<cr>', '<Plug>SlimeRegionSend')
-nmap('<leader><cr>', '<Plug>SlimeSendCell')
+-- close buffer without loosing window split
+nmap("bd",":bp|bd#<cr>")
+
+-- open filetree
+nmap('<c-b>', '<cmd>NvimTreeToggle<cr>')
+
+-- open url under cursor without netrw_gx
+nmap("gx", ":!open <c-r><c-a><cr>")
+
+-- edit alternate buffer --
+nmap("<leader>a", ":e#<cr>")
+
+-- use jk to abort insert, operator-pending, command-line mode
+imap("jk", "<esc>")
+omap("jk", "<esc>")
+cmap("jk", "<c-c>")
+vmap("jk", "v")
+
+-- make Y behave like C and D (see `h: Y`)
+map("Y", "y$")
+
+-- write buffer in normal mode
+nmap("<leader>w", ":w<cr>")
+
+-- move visual-line-wise
+nmap("uj", "gj")
+nmap("k", "gk")
+
+-- source vimrc
+nmap("<leader>sv", ":source $MYVIMRC<cr>")
+
+-- save in insert mode
+imap("<C-s>", "<cmd>:w<cr><esc>")
+
+-- Resize window using <shift> arrow keys
+nmap("<S-Up>", "<cmd>resize +2<CR>")
+nmap("<S-Down>", "<cmd>resize -2<CR>")
+nmap("<S-Left>", "<cmd>vertical resize -2<CR>")
+nmap("<S-Right>", "<cmd>vertical resize +2<CR>")
+
+-- Add undo break-points
+imap(",", ",<c-g>u")
+vim.keymap.set("i", ".", ".<c-g>u")
+vim.keymap.set("i", ";", ";<c-g>u")
+
+
+-- nmap('Q', '<Nop>')
 
 -- list hidden buffers
 nmap('<leader>ls', ':ls!<cr>')
@@ -146,25 +115,49 @@ nmap('n', "nzz")
 nmap('<c-d>', '<c-d>zz')
 nmap('<c-u>', '<c-u>zz')
 
+-- send code with ctrl+Enter
+-- just like in e.g. RStudio
+-- needs kitty (or other terminal) config:
+-- map shift+enter send_text all \x1b[13;2u
+-- map ctrl+enter send_text all \x1b[13;5u
+nmap('<c-cr>', '<Plug>SlimeSendCell')
+nmap('<s-cr>', '<Plug>SlimeSendCell')
+imap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
+imap('<s-cr>', '<esc><Plug>SlimeSendCell<cr>i')
 
--- terminal mode
--- get out ouf terminal insert mode with esc
-vim.keymap.set('t', '<esc>', [[<c-\><c-n>]], { silent = true, noremap = true })
---move to other window
-vim.keymap.set('t', '<c-j>', [[<c-\><c-n><c-w>w]], { silent = true, noremap = true })
-vim.keymap.set('n', '<leader>j', [[<c-w>wi]], { silent = true, noremap = true })
-
--- open filetree
-nmap('<c-b>', '<cmd>NvimTreeToggle<cr>')
+-- send code with Enter and leader Enter
+vmap('<cr>', '<Plug>SlimeRegionSend')
+nmap('<leader><cr>', '<Plug>SlimeSendCell')
 
 -- move between splits and tabs
-nmap('<c-h>', '<c-w>h')
-nmap('<c-l>', '<c-w>l')
-nmap('<c-j>', '<c-w>j')
-nmap('<c-k>', '<c-w>k')
+-- nmap('<c-h>', '<c-w>h')
+-- nmap('<c-l>', '<c-w>l')
+-- nmap('<c-j>', '<c-w>j')
+-- nmap('<c-k>', '<c-w>k')
 nmap('H', '<cmd>tabprevious<cr>')
 nmap('L', '<cmd>tabnext<cr>')
 
+
+-- -- terminal mode
+-- -- get out ouf terminal insert mode with esc
+-- vim.keymap.set('t', '<esc>', [[<c-\><c-n>]], { silent = true, noremap = true })
+-- --move to other window
+-- vim.keymap.set('t', '<c-j>', [[<c-\><c-n><c-w>w]], { silent = true, noremap = true })
+-- vim.keymap.set('n', '<leader>j', [[<c-w>wi]], { silent = true, noremap = true })
+--
+-- Set key mappings for terminal mode
+function _G.set_terminal_keymaps()
+  local opts = { buffer = 0 }
+  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+end
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
+-- show kepbindings with whichkey
 local function open_plugin()
   local word = vim.fn.expand('<cWORD>')
   -- url = string.match(url, '".+"')
@@ -182,9 +175,16 @@ local function open_plugin()
   vim.cmd(cmd)
 end
 
---show kepbindings with whichkey
---add your own here if you want them to
---show up in the popup as well
+local function switchTheme()
+  if vim.o.background == 'light' then
+    vim.o.background = 'dark'
+    vim.cmd [[Catppuccin mocha]]
+  else
+    vim.o.background = 'light'
+    vim.cmd [[Catppuccin latte]]
+  end
+end
+
 wk.register(
   {
     c = {
@@ -328,3 +328,13 @@ wk.register({
   ['<cm-i>'] = { '<esc>o```{python}<cr>```<esc>O', "r code chunk" },
   ['<m-I>'] = { '<esc>o```{python}<cr>```<esc>O', "r code chunk" },
 }, { mode = 'i' })
+
+
+
+-- Move between windows using <ctrl> direction
+-- Note used becue
+-- vim.keymap.set("n", '<C-j>', '<C-W>j')
+-- vim.keymap.set("n", '<C-k>', '<C-W>k')
+-- vim.keymap.set("n", '<C-h>', '<C-W>h')
+-- vim.keymap.set("n", '<C-l>', '<C-W>l')
+
