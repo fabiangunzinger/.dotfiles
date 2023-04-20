@@ -63,47 +63,13 @@ return {
   { 'nvim-telescope/telescope-file-browser.nvim' },
   { 'nvim-telescope/telescope-project.nvim' },
 
-
+  -- statusbar
   { 'nvim-lualine/lualine.nvim',
-    dependencies = {
-      { 'f-person/git-blame.nvim' },
-    },
     config = function()
-      local git_blame = require('gitblame')
-      vim.o.shortmess = vim.o.shortmess .. "S" -- this is for the search_count function so lua can know this is `lua expression`
-      --function for optimizing the search count 
-      local function search_count()
-        if vim.api.nvim_get_vvar("hlsearch") == 1 then
-          local res = vim.fn.searchcount({ maxcount = 999, timeout = 500 })
-
-          if res.total > 0 then
-            return string.format("%d/%d", res.current, res.total)
-          end
-        end
-
-        return ""
-      end
-      local function macro_reg()
-        return vim.fn.reg_recording()
-      end
-      require('lualine').setup {
-        options = {
-          section_separators = '',
-          component_separators = '',
-          globalstatus = true,
-          theme = "catppuccin",
-        },
-        sections = {
-          lualine_a = {'mode', {macro_reg, type = 'lua_expr', color = 'WarningMsg'} },
-          lualine_b = {'branch', { search_count, type = 'lua_expr' } },
-          lualine_c = {
-            { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
-          },
-        },
-        extensions = { 'nvim-tree' },
-      }
+      require("plugins.config.lualine")
     end
   },
+
   { 'nanozuki/tabby.nvim', config = function()
     require 'tabby.tabline'.use_preset('tab_only')
   end
