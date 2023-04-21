@@ -65,4 +65,8 @@ return {
 
   -- Python objects 
   {'jeetsukumaran/vim-pythonsense'},
+
+  -- jump to search matches
+  {'easymotion/vim-easymotion'},
 }
+

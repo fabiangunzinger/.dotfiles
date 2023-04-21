@@ -5,6 +5,10 @@ vim.g.maplocalleader = " "
 -- TODO: check whether I need this in addition to using treesitter
 vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r' }
 
+-- easy motion
+vim.g.easyMotion_do_mapping=0 -- disable default mapping
+vim.g.easyMotion_smartcase=1 -- case insensitive search
+
 -- disable netrw as advised in nvim-tree docx
 vim.g.loaded_netrw=1
 vim.g.loaded_netrwPlugin=1

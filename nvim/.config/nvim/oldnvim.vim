@@ -97,8 +97,6 @@ set shiftwidth=4                        " spaces for autoindent
 set tabstop=4                           " spaces per <tab> in file
 set softtabstop=4                       " spaces per <tab> while editing
 
-" up to here <---
-
 " colors and fonts
 syntax enable                           " syntax highlighting
 set background=dark                     " dark background

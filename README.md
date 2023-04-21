@@ -74,3 +74,5 @@
 - [Christian Chiarulli](https://github.com/ChristianChiarulli/nvim) has an awesome nvim setup from which I have borrowed.
 
 - [Price Hiller](https://gitlab.orion-technologies.io/philler) has inspired me to separate plugin loading and configuration, and provided a great template for my lualine configuration.
+
+- The people at [Rocky Linux](https://docs.rockylinux.org/books/nvchad/), who provide the [NvChad](https://github.com/NvChad/NvChad) setup framework provide useful explanations on a number of plugins and setup steps (including the best documentation of useful Nvim-tree commands I could find).

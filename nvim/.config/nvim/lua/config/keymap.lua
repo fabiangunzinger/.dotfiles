@@ -38,6 +38,33 @@ local cmap = function(key, effect)
   vim.keymap.set('c', key, effect, { silent = true, noremap = true })
 end
 
+-- experimental 
+
+-- -- it messes too much with my workflow
+-- -- move deleted text into separate registers
+-- -- this overrides default behaviour, which 
+-- -- moves deleted text into default register.
+-- nmap("d", "\"_d")
+-- vmap("d", "\"_d")
+-- nmap("D", "\"_D")
+-- vmap("D", "\"_D")
+-- nmap("c", "\"_c")
+-- vmap("c", "\"_c")
+-- nmap("C", "\"_C")
+-- vmap("C", "\"_C")
+-- these might be good alternatives
+-- could have similar ones for normal mode
+-- paste without overwriting register
+vmap("<leader>p", "\"_dP")
+-- delete without overwriting register
+vmap("<leader>d", "\"_d")
+
+-- use jk to abort insert, operator-pending, command-line,
+-- and visual modes
+imap("jk", "<esc>")
+omap("jk", "<esc>")
+cmap("jk", "<c-c>")
+vmap("jk", "v")
 
 -- close buffer without loosing window split
 nmap("bd",":bp|bd#<cr>")
@@ -51,12 +78,6 @@ nmap("gx", ":!open <c-r><c-a><cr>")
 -- edit alternate buffer --
 nmap("<leader>a", ":e#<cr>")
 
--- use jk to abort insert, operator-pending, command-line mode
-imap("jk", "<esc>")
-omap("jk", "<esc>")
-cmap("jk", "<c-c>")
-vmap("jk", "v")
-
 -- make Y behave like C and D (see `h: Y`)
 map("Y", "y$")
 
@@ -64,28 +85,17 @@ map("Y", "y$")
 nmap("<leader>w", ":w<cr>")
 
 -- move visual-line-wise
-nmap("uj", "gj")
+nmap("j", "gj")
 nmap("k", "gk")
 
 -- source vimrc
 nmap("<leader>sv", ":source $MYVIMRC<cr>")
-
--- save in insert mode
-imap("<C-s>", "<cmd>:w<cr><esc>")
 
 -- Resize window using <shift> arrow keys
 nmap("<S-Up>", "<cmd>resize +2<CR>")
 nmap("<S-Down>", "<cmd>resize -2<CR>")
 nmap("<S-Left>", "<cmd>vertical resize -2<CR>")
 nmap("<S-Right>", "<cmd>vertical resize +2<CR>")
-
--- Add undo break-points
-imap(",", ",<c-g>u")
-vim.keymap.set("i", ".", ".<c-g>u")
-vim.keymap.set("i", ";", ";<c-g>u")
-
-
--- nmap('Q', '<Nop>')
 
 -- list hidden buffers
 nmap('<leader>ls', ':ls!<cr>')
@@ -94,29 +104,64 @@ nmap('<leader>vh', ':execute "h " . expand("<cword>")<cr>')
 -- source entire file
 nmap('<leader>xx', ':w<cr>:source %<cr>')
 
--- keep selection after indent/dedent
-vmap('>', '>gv')
-vmap('<', '<gv')
-
 -- remove search highlight on esc
 nmap('<esc>', '<cmd>noh<cr>')
 
 -- find files with telescope
 nmap('<c-p>', "<cmd>Telescope find_files<cr>")
 
--- paste and without overwriting register
-vmap("<leader>p", "\"_dP")
-
--- delete and without overwriting register
-vmap("<leader>d", "\"_d")
-
 -- center after search and jumps
 nmap('n', "nzz")
 nmap('<c-d>', '<c-d>zz')
 nmap('<c-u>', '<c-u>zz')
 
--- send code with ctrl+Enter
--- just like in e.g. RStudio
+-- enter distraction-free writing mode
+nmap("<leader>go", "<cmd>Goyo<cr>")
+
+
+-- move between splits
+nmap('<c-h>', '<c-w>h')
+nmap('<c-l>', '<c-w>l')
+nmap('<c-j>', '<c-w>j')
+nmap('<c-k>', '<c-w>k')
+
+-- tabs
+nmap('H', '<cmd>tabprevious<cr>')
+nmap('L', '<cmd>tabnext<cr>')
+nmap("<leader>ta", ":$tabnew<cr>")
+nmap("<leader>tc", ":tabclose<cr>")
+nmap("<leader>to", ":tabonly<cr>")
+nmap("<leader>tn", ":tabnext<cr>")
+nmap("<leader>tp", ":tabprevious<cr>")
+nmap("<leader>tf", ":tabfirst<cr>")
+nmap("<leader>tl", ":tablast<cr>")
+-- move current tab to previous position
+nmap("<leader>tmp", ":-tabmove<cr>")
+-- move current tab to next position
+nmap("<leader>tmn", ":+tabmove<cr>")
+
+-- save in insert mode
+imap("<C-s>", "<cmd>:w<cr><esc>")
+
+-- Add undo break-points
+imap(",", ",<c-g>u")
+vim.keymap.set("i", ".", ".<c-g>u")
+vim.keymap.set("i", ";", ";<c-g>u")
+
+-- keep selection after indent/dedent
+vmap('>', '>gv')
+vmap('<', '<gv')
+
+cmap("%%", "<C-R>=fnameescape(expand('%:h')).'/'<cr>")
+
+-- easy-motion
+-- move to two characters, and line below and above
+vim.keymap.set('n', "s", "<Plug>(easymotion-overwin-f2)", { noremap = false })
+vim.keymap.set('', "<leader>j", "<Plug>(easymotion-j)", { noremap = false })
+vim.keymap.set('', "<leader>k", "<Plug>(easymotion-k)", { noremap = false })
+
+-- send code 
+-- with ctrl+Enter, just like in e.g. RStudio
 -- needs kitty (or other terminal) config:
 -- map shift+enter send_text all \x1b[13;2u
 -- map ctrl+enter send_text all \x1b[13;5u
@@ -124,19 +169,9 @@ nmap('<c-cr>', '<Plug>SlimeSendCell')
 nmap('<s-cr>', '<Plug>SlimeSendCell')
 imap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
 imap('<s-cr>', '<esc><Plug>SlimeSendCell<cr>i')
-
--- send code with Enter and leader Enter
+-- with Enter and leader Enter
 vmap('<cr>', '<Plug>SlimeRegionSend')
 nmap('<leader><cr>', '<Plug>SlimeSendCell')
-
--- move between splits and tabs
--- nmap('<c-h>', '<c-w>h')
--- nmap('<c-l>', '<c-w>l')
--- nmap('<c-j>', '<c-w>j')
--- nmap('<c-k>', '<c-w>k')
-nmap('H', '<cmd>tabprevious<cr>')
-nmap('L', '<cmd>tabnext<cr>')
-
 
 -- -- terminal mode
 -- -- get out ouf terminal insert mode with esc
@@ -328,13 +363,3 @@ wk.register({
   ['<cm-i>'] = { '<esc>o```{python}<cr>```<esc>O', "r code chunk" },
   ['<m-I>'] = { '<esc>o```{python}<cr>```<esc>O', "r code chunk" },
 }, { mode = 'i' })
-
-
-
--- Move between windows using <ctrl> direction
--- Note used becue
--- vim.keymap.set("n", '<C-j>', '<C-W>j')
--- vim.keymap.set("n", '<C-k>', '<C-W>k')
--- vim.keymap.set("n", '<C-h>', '<C-W>h')
--- vim.keymap.set("n", '<C-l>', '<C-W>l')
-
