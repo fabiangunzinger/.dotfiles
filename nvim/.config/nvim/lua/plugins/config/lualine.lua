@@ -174,7 +174,6 @@ lualine.setup({
   },
 })
 
-
 vim.api.nvim_create_autocmd("RecordingEnter", {
   callback = function()
     lualine.refresh({

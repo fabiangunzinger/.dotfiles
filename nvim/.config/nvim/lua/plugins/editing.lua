@@ -43,19 +43,26 @@ return {
   {'godlygeek/tabular'},   -- tabular formatting
   {'plasticboy/vim-markdown'},   -- markdown support 
 
-  -- ripgrep search 
-  {'jremmen/vim-ripgrep',   
-    init = function()
-      -- use smartcase by default
-      vim.g.rg_command = 'rg --vimgrep -S'
-    end
-  },
+  -- -- ripgrep search 
+  -- {'jremmen/vim-ripgrep',   
+  --   init = function()
+  --     -- use smartcase by default
+  --     vim.g.rg_command = 'rg --vimgrep -S'
+  --   end
+  -- },
+   {'BurntSushi/ripgrep'},
 
+  --
   -- highlight yanked region
   {'machakann/vim-highlightedyank'},
 
   -- distraction free writing
-  {'junegunn/goyo.vim'}, 
+  -- {'junegunn/goyo.vim'}, 
+  {"folke/zen-mode.nvim",
+    config = function()
+      require("plugins.config.zenmode")
+    end
+  },
 
   -- use quickfix for bulk change/replace
   {'stefandtw/quickfix-reflector.vim'},

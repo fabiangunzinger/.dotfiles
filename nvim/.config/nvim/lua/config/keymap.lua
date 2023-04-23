@@ -92,7 +92,7 @@ nmap("j", "gj")
 nmap("k", "gk")
 
 -- source vimrc
-nmap("<leader>sv", ":source $MYVIMRC<cr>")
+nmap("<leader>sv", "<cmd>luafile $MYVIMRC<cr>")
 
 -- Resize window using <shift> arrow keys
 nmap("<S-Up>", "<cmd>resize +2<CR>")
@@ -118,8 +118,8 @@ nmap('n', "nzz")
 nmap('<c-d>', '<c-d>zz')
 nmap('<c-u>', '<c-u>zz')
 
--- enter distraction-free writing mode
-nmap("<leader>go", "<cmd>Goyo<cr>")
+-- enter zen-mode 
+nmap("<leader>zm", "<cmd>ZenMode<cr>")
 
 
 -- move between splits

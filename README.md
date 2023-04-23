@@ -26,7 +26,7 @@
 
 ## nvim setup
 
-- I use [EditorConfig](https://editorconfig.org) for coding style configuration across projects. For my personal use, I store the default configuration in `~/.editorconfig`. Whenever I need different configs for a project, I add an editorconfig file with `root = true` in the project directory.
+- I use [EditorConfig](https://editorconfig.org) for coding style configuration across projects. For my personal use, I store the default configuration in `~/.editorconfig`. Whenever I need different configs for a project, I add an editorconfig file with `root = true` in the project directory. (Nvim 0.9 has EditorConfig built in, so no plugin is needed for this.)
 
 - I use `lazy.nvim` as my package manager.
 
