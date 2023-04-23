@@ -66,6 +66,9 @@ omap("jk", "<esc>")
 cmap("jk", "<c-c>")
 vmap("jk", "v")
 
+-- insert directory of current file into command line
+cmap("%%","<C-R>=fnameescape(expand('%:h')).'/'<cr>")
+
 -- close buffer without loosing window split
 nmap("bd",":bp|bd#<cr>")
 
@@ -225,11 +228,12 @@ wk.register(
     c = {
       name = 'code',
       c = { ':SlimeConfig<cr>', 'slime config' },
-      n = {  ':split term://$SHELL<cr>', 'new terminal' },
-      r = {  ':split term://R<cr>', 'new R terminal' },
-      p = {  ':split term://python<cr>', 'new python terminal' },
-      i = {  ':split term://ipython<cr>', 'new ipython terminal' },
-      j = {  ':split term://julia<cr>', 'new julia terminal' },
+      n = {  ':vsplit term://$SHELL<cr>', 'new terminal' },
+      r = {  ':vsplit term://R<cr>', 'new R terminal' },
+      p = {  ':vsplit term://python<cr>', 'new python terminal' },
+      h = {  ':split term://ipython<cr>', 'new ipython terminal' },
+      i = {  ':vsplit term://ipython<cr>', 'new ipython terminal' },
+      j = {  ':vsplit term://julia<cr>', 'new julia terminal' },
       s = {  ':echo b:terminal_job_id<cr>', 'show terminal id' },
     },
     v = {
