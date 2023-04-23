@@ -26,6 +26,8 @@
 
 ## nvim setup
 
+- I use [EditorConfig](https://editorconfig.org) for coding style configuration across projects. For my personal use, I store the default configuration in `~/.editorconfig`. Whenever I need different configs for a project, I add an editorconfig file with `root = true` in the project directory.
+
 - I use `lazy.nvim` as my package manager.
 
 - For `quarto` autocompletion to work, I need to select the kernel I want to use in the quarto doc, and I need to have the corresponding venv activated when I start nvim.
