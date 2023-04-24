@@ -38,11 +38,11 @@ local cmap = function(key, effect)
   vim.keymap.set('c', key, effect, { silent = true, noremap = true })
 end
 
--- experimental 
+-- experimental
 
 -- -- it messes too much with my workflow
 -- -- move deleted text into separate registers
--- -- this overrides default behaviour, which 
+-- -- this overrides default behaviour, which
 -- -- moves deleted text into default register.
 -- nmap("d", "\"_d")
 -- vmap("d", "\"_d")
@@ -118,7 +118,7 @@ nmap('n', "nzz")
 nmap('<c-d>', '<c-d>zz')
 nmap('<c-u>', '<c-u>zz')
 
--- enter zen-mode 
+-- enter zen-mode
 nmap("<leader>zm", "<cmd>ZenMode<cr>")
 
 
@@ -163,7 +163,7 @@ vim.keymap.set('n', "s", "<Plug>(easymotion-overwin-f2)", { noremap = false })
 vim.keymap.set('', "<leader>j", "<Plug>(easymotion-j)", { noremap = false })
 vim.keymap.set('', "<leader>k", "<Plug>(easymotion-k)", { noremap = false })
 
--- send code 
+-- send code
 -- with ctrl+Enter, just like in e.g. RStudio
 -- needs kitty (or other terminal) config:
 -- map shift+enter send_text all \x1b[13;2u

@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-STOW_FOLDERS="git nvim scripts ssh starship tmux zsh misc"
+STOW_FOLDERS="git nvim scripts ssh starship tmux zsh misc marksman"
 
 for folder in $(echo $STOW_FOLDERS)
 do

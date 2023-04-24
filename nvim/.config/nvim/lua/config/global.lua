@@ -96,5 +96,5 @@ vim.g.gitblame_display_virtual_text = 0
 
 -- Custom Python host
 -- See: https://neovim.io/doc/user/provider.html#provider-python
-vim.g.python3_host_prog = "/Users/fgu/.pyenv/versions/base/bin/python3.10"
+vim.g.python3_host_prog = "~/.pyenv/versions/base/bin/python3.10"
 
