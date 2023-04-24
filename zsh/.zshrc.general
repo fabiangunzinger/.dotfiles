@@ -102,26 +102,6 @@ function tmns() { tmux new-session -s $1; }
 function tmas() { tmux attach-session -t $1; }
 function tmks() { tmux kill-session -t $1; }
 
-# main directories
-alias dco='cd ~/.config'
-alias daw='cd ~/.aws'
-alias dde='cd ~/dev'
-alias dpr='dde; cd projects'
-alias drm='dde; cd remote'
-
-# project directories
-alias ddf='dpr; cd dotfiles'
-alias dli='dpr; cd limo'
-alias dap='dpr; cd applications'
-alias dapc='cd ~/dev/projects/applications/interview-prep/code'
-alias dfa='cd ~/dev/projects/fabiangunzinger.github.io'
-alias den='dpr; cd entropy'
-alias dev='dpr; cd mdb_eval'
-alias dml='dpr; cd mlbt'
-alias dmd='dpr; cd mdb'
-alias dth='cd ~/dev/projects/warwickthesis'
-alias dvs='cd /Users/fabian.gunzinger/.local/state/nvim/swap'
-
 # open files
 alias fzg='ddf; cd zsh; nvim zshrc.general'
 alias fz='vi ~/.zshrc'
