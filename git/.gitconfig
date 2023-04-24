@@ -4,6 +4,9 @@
 [includeIf "gitdir:~/.dotfiles/"]
     path = ~/.gitconfig.personal
 
+[includeIf "gitdir:~/.notes/"]
+    path = ~/.gitconfig.personal
+
 [includeIf "gitdir:~/dev/jet/"]
     path = ~/.gitconfig.work
 
