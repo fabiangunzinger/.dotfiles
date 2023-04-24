@@ -122,12 +122,12 @@ nmap('<c-u>', '<c-u>zz')
 nmap("<leader>zm", "<cmd>ZenMode<cr>")
 
 
--- move between splits
-nmap('<c-h>', '<c-w>h')
-nmap('<c-l>', '<c-w>l')
-nmap('<c-j>', '<c-w>j')
-nmap('<c-k>', '<c-w>k')
-
+-- -- move between splits
+-- nmap('<c-h>', '<c-w>h')
+-- nmap('<c-l>', '<c-w>l')
+-- nmap('<c-j>', '<c-w>j')
+-- nmap('<c-k>', '<c-w>k')
+--
 -- tabs
 nmap('H', '<cmd>tabprevious<cr>')
 nmap('L', '<cmd>tabnext<cr>')
@@ -228,11 +228,11 @@ wk.register(
     c = {
       name = 'code',
       c = { ':SlimeConfig<cr>', 'slime config' },
-      n = {  ':vsplit term://$SHELL<cr>', 'new terminal' },
-      r = {  ':vsplit term://R<cr>', 'new R terminal' },
+      n = {  ':vsplit term://$SHELL<cr>', 'new terminal (vertical)' },
+      h = {  ':split term://$SHELL<cr>', 'new terminal (horizontal)' },
       p = {  ':vsplit term://python<cr>', 'new python terminal' },
-      h = {  ':split term://ipython<cr>', 'new ipython terminal' },
       i = {  ':vsplit term://ipython<cr>', 'new ipython terminal' },
+      r = {  ':vsplit term://R<cr>', 'new R terminal' },
       j = {  ':vsplit term://julia<cr>', 'new julia terminal' },
       s = {  ':echo b:terminal_job_id<cr>', 'show terminal id' },
     },

@@ -166,7 +166,7 @@ alias gphsu='gph --set-upstream origin $(git_current_branch'
 # alias gphd='gph origin --delete'   # ..refs to delete (e.g. branchname)
 alias gf='git fetch'                # download new files from remote (no merge)
 alias gpl='git pull'                # download and merge new files from remote
-function glp() { gaa; gcm "$1"; gph; } # lazy push: add, ommit, and push all files
+function glph() { gaa; gcm "$1"; gph; } # lazy push: add, ommit, and push all files
 
 alias gb='git --no-pager branch -vv' # list branches
 alias gbm='gb --merged'             # list bs already merged into current b

@@ -11,3 +11,5 @@
     editor = nvim
 [init]
 	defaultBranch = main
+[user]
+	name = fabiangunzinger
