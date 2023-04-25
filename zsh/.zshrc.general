@@ -152,12 +152,13 @@ alias grmc='git rm --cached'        # ..fn to remove from index but not wd
 alias gre='git restore'             # ..fn to revert back to state of last commit
 alias gres='git restore --staged'   # ..fn to remove from index
 
-alias gsh='git stash'               # save current state of working tree
-alias gshl='gsh list'               # list stored stashes
-# alias gsha='gsh apply'              # ..stash ref (sr) to apply, default is last
-# alias gshd='gsh drop'               # ..sr to drop, default is last
-# alias gshp='gs pop'                 # apply and delete (last)
-# alias gshb='gs branch'              # ..sr to create branch from, dft is last
+alias gst='git stash'               # save current state of working tree
+alias gstp='gst pop'                 # apply and delete (last)
+alias gsta='gst apply'              # ..stash ref (sr) to apply, default sr is last
+alias gstd='gst drop'               # ..sr to drop, default sr is last
+alias gstb='gst branch'              # ..sr to create branch from, default sr is last
+alias gstl='gst list'               # list stored stashes
+
 # alias gcn='git clean'               # ..fn to be removed from wd
 # alias gcnn='gc --dry-run'           # dry run of above
 
