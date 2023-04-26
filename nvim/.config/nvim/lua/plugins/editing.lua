@@ -56,14 +56,6 @@ return {
   -- highlight yanked region
   {'machakann/vim-highlightedyank'},
 
-  -- distraction free writing
-  -- {'junegunn/goyo.vim'}, 
-  {"folke/zen-mode.nvim",
-    config = function()
-      require("plugins.config.zenmode")
-    end
-  },
-
   -- use quickfix for bulk change/replace
   {'stefandtw/quickfix-reflector.vim'},
 
