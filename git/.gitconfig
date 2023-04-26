@@ -16,3 +16,5 @@
 	defaultBranch = main
 [user]
 	name = fabiangunzinger
+[push]
+	autoSetupRemote = true
