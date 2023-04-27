@@ -45,5 +45,4 @@ return {
       { "<leader>du", ": lua require'dapui'.toggle()<cr>", desc = "debug into" },
     },
   },
-
 }

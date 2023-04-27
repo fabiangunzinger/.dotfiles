@@ -1,5 +1,6 @@
 return {
-  { 'quarto-dev/quarto-nvim',
+  {
+    'quarto-dev/quarto-nvim',
     dependencies = {
       { 'hrsh7th/nvim-cmp' },
       { 'neovim/nvim-lspconfig' },
@@ -23,7 +24,6 @@ return {
       },
     },
     config = function()
-
       -- conceal can be tricky because both
       -- the treesitter highlighting and the
       -- regex vim syntax files can define conceals
@@ -54,10 +54,16 @@ return {
       -- g=Greek  s=superscripts/subscripts
       vim.g['tex_conceal'] = 'gm'
 
-      require 'quarto'.setup {
+      require('quarto').setup {
         lspFeatures = {
           enabled = true,
-          languages = { 'r', 'python', 'julia', 'bash', 'lua' },
+          languages = {
+            'r',
+            'python',
+            'julia',
+            'bash', 
+            'lua'
+          },
           chunks = 'curly', -- 'curly' or 'all'
           diagnostics = {
             enabled = true,
@@ -70,6 +76,7 @@ return {
       }
     end
   },
+
   -- send code from python/r/qmd docuemts to the terminal
   -- thanks to tmux can be used for any repl
   -- like ipython, R, bash
@@ -87,16 +94,8 @@ return {
       --
     end
   },
+
   -- paste an image to markdown from the clipboard
   -- :PasteImg,
   {'ekickx/clipboard-image.nvim'},
-
-  -- display images in the terminal!
-  { 'edluffy/hologram.nvim',
-    config = function()
-      -- require'hologram'.setup{
-      --   auto_display = true
-      -- }
-    end
-  },
 }
