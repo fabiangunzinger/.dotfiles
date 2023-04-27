@@ -1,4 +1,4 @@
-require 'config.global'
+require 'config.options'
 require 'config.lazy'
-require 'config.autocommands'
-require 'config.keymap'
+require 'config.colors'
+require 'config.keymaps'
