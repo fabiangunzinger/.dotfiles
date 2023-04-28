@@ -1,9 +1,9 @@
-local present, zenmode = pcall(require, "zen-mode")
+local present, zen_mode = pcall(require, "zen-mode")
 if not present then
   return
 end
 
-zenmode.setup{
+zen_mode.setup{
   window = {
     backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
     -- height and width can be:

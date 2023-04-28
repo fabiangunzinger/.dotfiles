@@ -1,3 +1,7 @@
+-- disable netrw as advised in nvim-tree docs
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- space as leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -6,38 +10,34 @@ vim.g.maplocalleader = " "
 vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r' }
 
 -- easy motion
-vim.g.easyMotion_do_mapping=0 -- disable default mapping
-vim.g.easyMotion_smartcase=1 -- case insensitive search
-
--- disable netrw as advised in nvim-tree docx
-vim.g.loaded_netrw=1
-vim.g.loaded_netrwPlugin=1
+vim.g.easyMotion_do_mapping = 0 -- disable default mapping
+vim.g.easyMotion_smartcase = 1 -- case insensitive search
 
 -- Misc.
 vim.opt.termguicolors = true
-vim.opt.history=5000   -- lines to remember
+vim.opt.history = 5000   -- lines to remember
 vim.opt.spelllang='en_gb'   -- spell checker uses british english
-vim.opt.laststatus=2   -- always show statusline
-vim.opt.lazyredraw=true -- avoid undue redrawing
-vim.opt.number=true -- show line numers
-vim.opt.relativenumber=true   -- show relative line numbers
+vim.opt.laststatus = 2   -- always show statusline
+vim.opt.lazyredraw = true -- avoid undue redrawing
+vim.opt.number = true -- show line numers
+vim.opt.relativenumber = true   -- show relative line numbers
 vim.opt.mouse='a'   -- mouse support in all modes
-vim.opt.showcmd=true   -- show partial command
+vim.opt.showcmd = true   -- show partial command
 
 -- text wrapping
-vim.opt.wrap=true   -- wrap long lines
-vim.opt.linebreak=true   -- don't break word
+vim.opt.wrap = true   -- wrap long lines
+vim.opt.linebreak = true   -- don't break word
 
 -- splits
-vim.opt.splitright=true   -- new vertical split on the right
-vim.opt.splitbelow=true   -- new horizontal split below
+vim.opt.splitright = true   -- new vertical split on the right
+vim.opt.splitbelow = true   -- new horizontal split below
 
 -- tab stops
-local tabsize=2
-vim.opt.expandtab=true   -- tabs are spaces
-vim.opt.shiftwidth=tabsize   -- spaces for autoindent
-vim.opt.tabstop=tabsize   -- spaces per <tab> in file
-vim.opt.softtabstop=tabsize   -- spaces per <tab> while editing
+local tabsize = 2
+vim.opt.expandtab = true   -- tabs are spaces
+vim.opt.shiftwidth = tabsize   -- spaces for autoindent
+vim.opt.tabstop = tabsize   -- spaces per <tab> in file
+vim.opt.softtabstop = tabsize   -- spaces per <tab> while editing
 
 vim.opt.timeoutlen = 400 -- delay until which-key pops up
 vim.opt.updatetime = 250 -- for autocommands and hovers

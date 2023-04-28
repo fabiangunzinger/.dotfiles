@@ -1,17 +1,29 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
+local present, telescope = pcall(require, "telescope")
+if not present then
   return
 end
 
-local actions = require "telescope.actions"
+local actions = require('telescope.actions')
 
-telescope.setup{
-  tag = '0.1.1',
-  dependencies = { 'nvim-lua/plenary.nvim'},
+local previewers = require("telescope.previewers")
+
+local new_maker = function(filepath, bufnr, opts)
+  opts = opts or {}
+  filepath = vim.fn.expand(filepath)
+  vim.loop.fs_stat(filepath, function(_, stat)
+    if not stat then return end
+    if stat.size > 100000 then
+      return
+    else
+      previewers.buffer_previewer_maker(filepath, bufnr, opts)
+    end
+  end)
+end
+
+telescope.setup {
   defaults = {
-    file_ignore_patterns = {
-      ".git/",
-    },
+    buffer_previewer_maker = new_maker,
+    file_ignore_patterns = { "node_modules", "%_files/*.html", "%_cache", ".git/", "site_libs", ".venv" },
     layout_strategy = "flex",
     sorting_strategy = "ascending",
     layout_config = {
@@ -42,3 +54,9 @@ telescope.setup{
     },
   }
 }
+telescope.load_extension('fzf')
+telescope.load_extension('ui-select')
+telescope.load_extension('file_browser')
+telescope.load_extension('dap')
+telescope.load_extension('project')
+

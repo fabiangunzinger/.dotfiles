@@ -25,5 +25,34 @@ return {
 
   -- jump to search matches
   {'easymotion/vim-easymotion'},
+
+  -- distraction free writing
+  {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("plugins.plugins_config.zen-mode")
+    end
+  },
+
+  -- fast search
+  { 'BurntSushi/ripgrep' },
+
+  -- paste an image to markdown from the clipboard
+  -- with :PasteImg,
+  {'ekickx/clipboard-image.nvim'},
+
+  -- highlight yanked region
+  {'machakann/vim-highlightedyank'},
+
+  -- smart commenting
+  {
+    'numToStr/Comment.nvim',
+    version = nil,
+    branch = 'master',
+    config = function()
+      require('Comment').setup {}
+    end
+  },
+
 }
 

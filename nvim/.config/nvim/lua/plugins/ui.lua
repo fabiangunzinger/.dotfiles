@@ -1,13 +1,37 @@
 return {
 
-  -- statusbar
-  { 'nvim-lualine/lualine.nvim',
+  -- welcome screen
+  { 
+    'goolord/alpha-nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require("plugins.config.lualine")
+      require("plugins.plugins_config.alpha-nvim")
     end
   },
 
-  -- tabbar
+  -- object finder
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.1',
+    dependencies = { 'nvim-lua/plenary.nvim'},
+    config = function()
+      require("plugins.plugins_config.telescope")
+    end
+  },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+  { 'nvim-telescope/telescope-dap.nvim' },
+  { 'nvim-telescope/telescope-ui-select.nvim' },
+  { 'nvim-telescope/telescope-file-browser.nvim' },
+  { 'nvim-telescope/telescope-project.nvim' },
+
+  -- statusbar
+  { 'nvim-lualine/lualine.nvim',
+    config = function()
+      require("plugins.plugins_config.lualine")
+    end
+  },
+
+  -- tab bar
   { 
     'nanozuki/tabby.nvim',
     config = function()
@@ -16,22 +40,25 @@ return {
   },
 
   -- vertical scrollbars
-  { 'dstein64/nvim-scrollview', config = function()
-    require('scrollview').setup({
-      current_only = true,
-    })
-  end
+  { 
+    'dstein64/nvim-scrollview',
+    config = function()
+      require('scrollview').setup({
+        current_only = true,
+      })
+    end
   },
 
   -- filetree
-  { "nvim-tree/nvim-tree.lua",
+  { 
+    "nvim-tree/nvim-tree.lua",
     version = "*",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("nvim-tree").setup {}
-    end,
+      require('plugins.plugins_config.nvim-tree')
+    end
   },
 
   -- show keybinding help window
