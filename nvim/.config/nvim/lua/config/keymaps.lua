@@ -92,7 +92,7 @@ nmap("j", "gj")
 nmap("k", "gk")
 
 -- source vimrc
-nmap("<leader>sv", "<cmd>luafile $MYVIMRC<cr>")
+nmap("<leader>sv", "<cmd>luafile: $MYVIMRC<cr>")
 
 -- Resize window using <shift> arrow keys
 nmap("<S-Up>", "<cmd>resize +2<CR>")

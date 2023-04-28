@@ -11,4 +11,8 @@ return {
     priority = 1000,
   },
 
+	{ 'rose-pine/neovim', name = 'rose-pine' },
+
+  { 'folke/tokyonight.nvim' }
+
 }

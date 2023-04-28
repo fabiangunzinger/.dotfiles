@@ -1,10 +1,14 @@
+-- custom leader
+-- vim.g.mapleader = " "
+
+-- disable unneded providers
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
+
 -- disable netrw as advised in nvim-tree docs
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-
--- space as leader
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 
 -- TODO: check whether I need this in addition to using treesitter
 vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r' }
@@ -43,8 +47,6 @@ vim.opt.timeoutlen = 400 -- delay until which-key pops up
 vim.opt.updatetime = 250 -- for autocommands and hovers
 vim.opt.clipboard:append 'unnamedplus' -- use system clipboard
 
--- up to here <---
-
 -- smarter search
 vim.opt.ignorecase = true -- ignore case...
 vim.opt.smartcase = true -- ... except when capitals used
@@ -52,46 +54,43 @@ vim.opt.smartcase = true -- ... except when capitals used
 -- markdown
 vim.g.vim_markdown_auto_insert_bullets = false
 
--- colortheme tweaks
-vim.g.nord_borders = true
-
 -- indent
 vim.opt.smartindent = true
 vim.opt.breakindent = true
 
 -- consisten number column
-vim.opt.signcolumn = "yes:1"
+-- vim.opt.signcolumn = "yes:1"
 
 -- how to show a autocomplete menu
-vim.opt.completeopt = 'menuone,noinsert'
+-- vim.opt.completeopt = 'menuone,noinsert'
 
 -- add folds with treesitter grammar
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- but open all by default
-vim.opt.foldlevel = 99
+-- vim.opt.foldlevel = 99
 
 -- global statusline
-vim.opt.laststatus = 3
+-- vim.opt.laststatus = 3
 
 --tabline
-vim.opt.showtabline = 1
+-- vim.opt.showtabline = 1
 
 --windowline
-vim.opt.winbar = '%t'
+-- vim.opt.winbar = '%t'
 
 --don't continue comments automagically
-vim.opt.formatoptions:remove({ 'c', 'r', 'o' })
+-- vim.opt.formatoptions:remove({ 'c', 'r', 'o' })
 
 -- hide cmdline when not used
-vim.opt.cmdheight = 0
+-- vim.opt.cmdheight = 0
 
 -- plugins
 -- slime, general
-vim.b.slime_cell_delimiter = "#%%"
+-- vim.b.slime_cell_delimiter = "#%%"
 
 -- git blame, lualine
-vim.g.gitblame_display_virtual_text = 0
+-- vim.g.gitblame_display_virtual_text = 0
 
 
 -- Custom Python host
