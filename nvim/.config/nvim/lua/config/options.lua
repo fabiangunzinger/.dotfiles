@@ -1,5 +1,5 @@
 -- custom leader
--- vim.g.mapleader = " "
+vim.g.mapleader = " "
 
 -- disable unneded providers
 vim.g.loaded_ruby_provider = 0
@@ -7,8 +7,8 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_node_provider = 0
 
 -- disable netrw as advised in nvim-tree docs
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 
 -- TODO: check whether I need this in addition to using treesitter
 vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r' }
