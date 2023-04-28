@@ -1,5 +1,5 @@
 -- custom leader
--- vim.g.mapleader = " "
+vim.g.mapleader = " "
 
 -- disable unneded providers
 vim.g.loaded_ruby_provider = 0
