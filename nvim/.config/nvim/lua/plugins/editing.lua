@@ -1,4 +1,5 @@
 return {
+
   -- use . after plugin map
   { 'tpope/vim-repeat' },
 
@@ -19,9 +20,6 @@ return {
 
   -- indendion level objects 
   {'michaeljsmith/vim-indent-object'},
-
-  -- Python objects 
-  {'jeetsukumaran/vim-pythonsense'},
 
   -- jump to search matches
   {'easymotion/vim-easymotion'},

@@ -39,3 +39,6 @@ return {
     end
   },
 }
+  -- Python objects 
+  -- {'jeetsukumaran/vim-pythonsense'},
+
