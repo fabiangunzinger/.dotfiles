@@ -5,9 +5,9 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- packer can manage itself
-
   use 'wbthomason/packer.nvim'
 
+  -- smart commenting
   use {
     'numToStr/Comment.nvim',
     config = function()
@@ -15,21 +15,56 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- object finder
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     -- or                            , branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  -- colorschemes
   use { "ellisonleao/gruvbox.nvim", config = function() vim.cmd.colorscheme 'gruvbox' end }
 
-  use('nvim-treesitter/nvim-treesitter', {run =  ':TSUpdate'})
 
-   --
  end)
+
+
+ -- -- smooth vim and tmux navigation
+ -- use {'christoomey/vim-tmux-navigator'}
+ -- 
+ -- use { 'TimUntersberger/neogit',
+ --   lazy = true,
+ --   cmd = 'Neogit',
+ --   config = function()
+ --     require('neogit').setup {
+ --       disable_commit_confirmation = true,
+ --       integrations = {
+ --         diffview = true
+ --       }
+ --     }
+ --   end
+ -- }
  --
- -- { 'nvim-treesitter/nvim-treesitter' },
- -- -- welcome screen
+ --  -- syntax highlighting
+ --  use('nvim-treesitter/nvim-treesitter', {run =  ':TSUpdate'})
+ --
+ --  use {
+ --    'goolord/alpha-nvim',
+ --    requires = { 'nvim-tree/nvim-web-devicons' },
+ --    config = function ()
+ --      require'alpha'.setup(require'alpha.themes.startify'.config)
+ --    end
+ --  }
+ --
+ --  use {
+ --    'nvim-tree/nvim-tree.lua',
+ --    requires = {
+ --      'nvim-tree/nvim-web-devicons', -- optional
+ --    },
+ --  }
+ --
+
+
  -- { 
  --   'goolord/alpha-nvim',
  --   dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -69,15 +104,6 @@ return require('packer').startup(function(use)
  --   end
  -- },
  --
- -- -- filetree
- -- { 
- --   "nvim-tree/nvim-tree.lua",
- --   version = "*",
- --   dependencies = {
- --     "nvim-tree/nvim-web-devicons",
- --   },
- -- },
- --
  -- -- show keybinding help window
  -- { 'folke/which-key.nvim' },
  -- { 'simrat39/symbols-outline.nvim', config = function()
@@ -110,8 +136,6 @@ return require('packer').startup(function(use)
  --   end
  -- },
  --
- -- -- smooth vim and tmux navigation
- -- {'christoomey/vim-tmux-navigator'},
  -- -- quarto support
  --
  -- -- {'quarto-dev/quarto-nvim',
@@ -199,20 +223,6 @@ return require('packer').startup(function(use)
  -- {'machakann/vim-highlightedyank'},
  --
  -- -- smart commenting
- --
- -- {
- --   'TimUntersberger/neogit',
- --   lazy = true,
- --   cmd = 'Neogit',
- --   config = function()
- --     require('neogit').setup {
- --       disable_commit_confirmation = true,
- --       integrations = {
- --         diffview = true
- --       }
- --     }
- --   end
- -- },
  --
  -- {
  -- 'lewis6991/gitsigns.nvim',
