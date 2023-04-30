@@ -1,4 +1,3 @@
-
 local wk = require("which-key")
 
 local map = function(key, effect)
@@ -210,6 +209,7 @@ local function switchTheme()
   end
 end
 
+-- leader mappings
 wk.register(
   {
     c = {
@@ -292,24 +292,20 @@ wk.register(
       b = { 'zw', 'bad' },
       ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
     },
-    -- g = {
-    --   name = "git",
-    --   c = { ":GitConflictRefresh<cr>", 'conflict' },
-    --   g = { ":Neogit<cr>", "neogit" },
-    --   s = { ":Gitsigns<cr>", "gitsigns" },
-    --   pl = { ":Octo pr list<cr>", "gh pr list" },
-    --   pr = { ":Octo review start<cr>", "gh pr review" },
-    --   wc = { ":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "worktree create" },
-    --   ws = { ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "worktree switch" },
-    --   -- d = {
-    --   --   name = 'diff',
-    --   --   o = { ':DiffviewOpen<cr>', 'open' },
-    --   --   c = { ':DiffviewClose<cr>', 'close' },
-    --   -- }
-    -- },
-    w = {
-      name = 'write',
-      w = { ":w<cr>", "write" },
+    g = {
+      name = "git",
+      c = { ":GitConflictRefresh<cr>", 'conflict' },
+      g = { ":Neogit<cr>", "neogit" },
+      s = { ":Gitsigns<cr>", "gitsigns" },
+      pl = { ":Octo pr list<cr>", "gh pr list" },
+      pr = { ":Octo review start<cr>", "gh pr review" },
+      wc = { ":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "worktree create" },
+      ws = { ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "worktree switch" },
+      d = {
+        name = 'diff',
+        o = { ':DiffviewOpen<cr>', 'open' },
+        c = { ':DiffviewClose<cr>', 'close' },
+      }
     },
   }, { mode = 'n', prefix = '<leader>' }
 )
