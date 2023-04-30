@@ -1,26 +1,26 @@
 local wk = require("which-key")
 
-local map = function(key, effect)
+local noremap = function(key, effect)
   vim.keymap.set({'n', 'v', 'o'}, key, effect, { silent = true, noremap = true })
 end
 
-local nmap = function(key, effect)
+local nnoremap = function(key, effect)
   vim.keymap.set('n', key, effect, { silent = true, noremap = true })
 end
 
-local vmap = function(key, effect)
+local vnoremap = function(key, effect)
   vim.keymap.set('v', key, effect, { silent = true, noremap = true })
 end
 
-local imap = function(key, effect)
+local inoremap = function(key, effect)
   vim.keymap.set('i', key, effect, { silent = true, noremap = true })
 end
 
-local omap = function(key, effect)
+local onoremap = function(key, effect)
   vim.keymap.set('o', key, effect, { silent = true, noremap = true })
 end
 
-local cmap = function(key, effect)
+local cnoremap = function(key, effect)
   vim.keymap.set('c', key, effect, { silent = true, noremap = true })
 end
 
@@ -30,118 +30,135 @@ end
 -- -- move deleted text into separate registers
 -- -- this overrides default behaviour, which
 -- -- moves deleted text into default register.
--- nmap("d", "\"_d")
--- vmap("d", "\"_d")
--- nmap("D", "\"_D")
--- vmap("D", "\"_D")
--- nmap("c", "\"_c")
--- vmap("c", "\"_c")
--- nmap("C", "\"_C")
--- vmap("C", "\"_C")
+-- nnoremap("d", "\"_d")
+-- vnoremap("d", "\"_d")
+-- nnoremap("D", "\"_D")
+-- vnoremap("D", "\"_D")
+-- nnoremap("c", "\"_c")
+-- vnoremap("c", "\"_c")
+-- nnoremap("C", "\"_C")
+-- vnoremap("C", "\"_C")
 -- these might be good alternatives
 -- could have similar ones for normal mode
 -- paste without overwriting register
-vmap("<leader>p", "\"_dP")
+vnoremap("<leader>p", "\"_dP")
 -- delete without overwriting register
-vmap("<leader>d", "\"_d")
+vnoremap("<leader>d", "\"_d")
 
 -- use jk to abort insert, operator-pending, command-line,
 -- and visual modes
-imap("jk", "<esc>")
-omap("jk", "<esc>")
-cmap("jk", "<c-c>")
-vmap("jk", "v")
+inoremap("jk", "<esc>")
+onoremap("jk", "<esc>")
+cnoremap("jk", "<c-c>")
+vnoremap("jk", "v")
 
 -- insert directory of current file into command line
-cmap("%%","<C-R>=fnameescape(expand('%:h')).'/'<cr>")
+cnoremap("%%","<C-R>=fnameescape(expand('%:h')).'/'<cr>")
 
 -- close buffer without loosing window split
-nmap("bd",":bp|bd#<cr>")
+nnoremap("bd",":bp|bd#<cr>")
 
 -- open filetree
-nmap('<c-b>', '<cmd>NvimTreeToggle<cr>')
+nnoremap('<c-b>', '<cmd>NvimTreeToggle<cr>')
 
 -- open url under cursor without netrw_gx
-nmap("gx", ":!open <c-r><c-a><cr>")
+nnoremap("gx", ":!open <c-r><c-a><cr>")
 
 -- edit alternate buffer --
-nmap("<leader>a", ":e#<cr>")
+nnoremap("<leader>a", ":e#<cr>")
 
 -- make Y behave like C and D (see `h: Y`)
-map("Y", "y$")
+noremap("Y", "y$")
 
 -- write buffer in normal mode
-nmap("<leader>w", ":w<cr>")
+nnoremap("<leader>w", ":w<cr>")
 
 -- move visual-line-wise
-nmap("j", "gj")
-nmap("k", "gk")
+nnoremap("j", "gj")
+nnoremap("k", "gk")
 
 -- source vimrc
-nmap("<leader>sv", "<cmd>luafile: $MYVIMRC<cr>")
+nnoremap("<leader>sv", "<cmd>luafile: $MYVIMRC<cr>")
 
 -- Resize window using <shift> arrow keys
-nmap("<S-Up>", "<cmd>resize +2<CR>")
-nmap("<S-Down>", "<cmd>resize -2<CR>")
-nmap("<S-Left>", "<cmd>vertical resize -2<CR>")
-nmap("<S-Right>", "<cmd>vertical resize +2<CR>")
+nnoremap("<S-Up>", "<cmd>resize +2<CR>")
+nnoremap("<S-Down>", "<cmd>resize -2<CR>")
+nnoremap("<S-Left>", "<cmd>vertical resize -2<CR>")
+nnoremap("<S-Right>", "<cmd>vertical resize +2<CR>")
 
 -- list hidden buffers
-nmap('<leader>ls', ':ls!<cr>')
-nmap('<leader>vh', ':execute "h " . expand("<cword>")<cr>')
+nnoremap('<leader>ls', ':ls!<cr>')
+nnoremap('<leader>vh', ':execute "h " . expand("<cword>")<cr>')
 
 -- source entire file
-nmap('<leader>xx', ':w<cr>:source %<cr>')
+nnoremap('<leader>xx', ':w<cr>:source %<cr>')
 
 -- remove search highlight on esc
-nmap('<esc>', '<cmd>noh<cr>')
+nnoremap('<esc>', '<cmd>noh<cr>')
 
 -- find files with telescope
-nmap('<c-p>', "<cmd>Telescope find_files<cr>")
+nnoremap('<c-p>', "<cmd>Telescope find_files<cr>")
 
 -- center after search and jumps
-nmap('n', "nzz")
-nmap('<c-d>', '<c-d>zz')
-nmap('<c-u>', '<c-u>zz')
+nnoremap('n', "nzz")
+nnoremap('<c-d>', '<c-d>zz')
+nnoremap('<c-u>', '<c-u>zz')
+
+-- keep selection after indent/dedent
+vnoremap('>', '>gv')
+vnoremap('<', '<gv')
+
+-- move highlighted text up and down
+vnoremap("J", ":m '>+1<cr>gv=gv")
+vnoremap("K", ":m '<-2<cr>gv=gv")
+
+-- join rows with cursor staying in place
+nnoremap("J", "mzJ`z")
+
+-- keep search results in middle of screen
+nnoremap("n", "nzzzv")
+nnoremap("N", "Nzzzv")
+
+-- copy into system clipboard
+nnoremap("<leader>y", "\"+y")
+vnoremap("<leader>y", "\"+y")
+nnoremap("<leader>Y", "\"+Y")
+
 
 -- enter zen-mode
-nmap("<leader>zm", "<cmd>ZenMode<cr>")
-
+nnoremap("<leader>zm", "<cmd>ZenMode<cr>")
 
 -- -- move between splits
--- nmap('<c-h>', '<c-w>h')
--- nmap('<c-l>', '<c-w>l')
--- nmap('<c-j>', '<c-w>j')
--- nmap('<c-k>', '<c-w>k')
+-- nnoremap('<c-h>', '<c-w>h')
+-- nnoremap('<c-l>', '<c-w>l')
+-- nnoremap('<c-j>', '<c-w>j')
+-- nnoremap('<c-k>', '<c-w>k')
 --
 -- tabs
-nmap('H', '<cmd>tabprevious<cr>')
-nmap('L', '<cmd>tabnext<cr>')
-nmap("<leader>ta", ":$tabnew<cr>")
-nmap("<leader>tc", ":tabclose<cr>")
-nmap("<leader>to", ":tabonly<cr>")
-nmap("<leader>tn", ":tabnext<cr>")
-nmap("<leader>tp", ":tabprevious<cr>")
-nmap("<leader>tf", ":tabfirst<cr>")
-nmap("<leader>tl", ":tablast<cr>")
+nnoremap('H', '<cmd>tabprevious<cr>')
+nnoremap('L', '<cmd>tabnext<cr>')
+nnoremap("<leader>ta", ":$tabnew<cr>")
+nnoremap("<leader>tc", ":tabclose<cr>")
+nnoremap("<leader>to", ":tabonly<cr>")
+nnoremap("<leader>tn", ":tabnext<cr>")
+nnoremap("<leader>tp", ":tabprevious<cr>")
+nnoremap("<leader>tf", ":tabfirst<cr>")
+nnoremap("<leader>tl", ":tablast<cr>")
 -- move current tab to previous position
-nmap("<leader>tmp", ":-tabmove<cr>")
+nnoremap("<leader>tmp", ":-tabmove<cr>")
 -- move current tab to next position
-nmap("<leader>tmn", ":+tabmove<cr>")
+nnoremap("<leader>tmn", ":+tabmove<cr>")
 
 -- save in insert mode
-imap("<C-s>", "<cmd>:w<cr><esc>")
+inoremap("<C-s>", "<cmd>:w<cr><esc>")
 
 -- Add undo break-points
-imap(",", ",<c-g>u")
+inoremap(",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 
--- keep selection after indent/dedent
-vmap('>', '>gv')
-vmap('<', '<gv')
 
-cmap("%%", "<C-R>=fnameescape(expand('%:h')).'/'<cr>")
+cnoremap("%%", "<C-R>=fnameescape(expand('%:h')).'/'<cr>")
 
 -- easy-motion
 -- move to two characters, and line below and above
@@ -154,13 +171,13 @@ vim.keymap.set('', "<leader>k", "<Plug>(easymotion-k)", { noremap = false })
 -- needs kitty (or other terminal) config:
 -- map shift+enter send_text all \x1b[13;2u
 -- map ctrl+enter send_text all \x1b[13;5u
-nmap('<c-cr>', '<Plug>SlimeSendCell')
-nmap('<s-cr>', '<Plug>SlimeSendCell')
-imap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
-imap('<s-cr>', '<esc><Plug>SlimeSendCell<cr>i')
+nnoremap('<c-cr>', '<Plug>SlimeSendCell')
+nnoremap('<s-cr>', '<Plug>SlimeSendCell')
+inoremap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
+inoremap('<s-cr>', '<esc><Plug>SlimeSendCell<cr>i')
 -- with Enter and leader Enter
-vmap('<cr>', '<Plug>SlimeRegionSend')
-nmap('<leader><cr>', '<Plug>SlimeSendCell')
+vnoremap('<cr>', '<Plug>SlimeRegionSend')
+nnoremap('<leader><cr>', '<Plug>SlimeSendCell')
 
 -- -- terminal mode
 -- -- get out ouf terminal insert mode with esc
@@ -169,6 +186,7 @@ nmap('<leader><cr>', '<Plug>SlimeSendCell')
 -- vim.keymap.set('t', '<c-j>', [[<c-\><c-n><c-w>w]], { silent = true, noremap = true })
 -- vim.keymap.set('n', '<leader>j', [[<c-w>wi]], { silent = true, noremap = true })
 --
+
 -- Set key mappings for terminal mode
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }

@@ -1,7 +1,8 @@
 import 
 
-a = 1
 
-a + 3
+if True:
+    test = 'hello'
 
-a - 3
+else:
+    print('hello')

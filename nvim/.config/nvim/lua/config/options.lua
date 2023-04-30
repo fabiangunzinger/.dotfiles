@@ -27,6 +27,7 @@ vim.opt.number = true -- show line numers
 vim.opt.relativenumber = true   -- show relative line numbers
 vim.opt.mouse='a'   -- mouse support in all modes
 vim.opt.showcmd = true   -- show partial command
+vim.opt.scrolloff = 8 -- at least 8 lines away from border
 
 -- text wrapping
 vim.opt.wrap = true   -- wrap long lines
@@ -45,9 +46,10 @@ vim.opt.softtabstop = tabsize   -- spaces per <tab> while editing
 
 vim.opt.timeoutlen = 400 -- delay until which-key pops up
 vim.opt.updatetime = 250 -- for autocommands and hovers
-vim.opt.clipboard:append 'unnamedplus' -- use system clipboard
 
 -- smarter search
+vim.opt.incsearch = true -- higlight results as I type
+vim.opt.hlsearch = false -- only highlight first result
 vim.opt.ignorecase = true -- ignore case...
 vim.opt.smartcase = true -- ... except when capitals used
 
