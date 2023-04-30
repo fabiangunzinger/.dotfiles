@@ -1,14 +1,11 @@
 return {
   {
-    "catppuccin/nvim",
-    config = function()
-      require("plugins.plugins_config.catppuccin")
-    end
-  },
-  {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
+    config = function()
+      vim.cmd.colorscheme "gruvbox"
+    end
   },
-  { 'folke/tokyonight.nvim' }
-
+  { "catppuccin/nvim", lazy = true},
+  { 'rose-pine/neovim', lazy = true},
 }

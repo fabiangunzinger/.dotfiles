@@ -4,9 +4,8 @@ if not present then
 end
 
 local actions = require('telescope.actions')
-
 local previewers = require("telescope.previewers")
-
+local builtin = require("telescope.builtin")
 local new_maker = function(filepath, bufnr, opts)
   opts = opts or {}
   filepath = vim.fn.expand(filepath)
@@ -59,4 +58,8 @@ telescope.load_extension('ui-select')
 telescope.load_extension('file_browser')
 telescope.load_extension('dap')
 telescope.load_extension('project')
+
+vim.keymap.set("n", "<leader>fg", function()
+  builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end)
 

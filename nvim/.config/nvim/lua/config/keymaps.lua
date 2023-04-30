@@ -1,18 +1,5 @@
+
 local wk = require("which-key")
-
-P = function(x)
-  print(vim.inspect(x))
-  return (x)
-end
-
-RELOAD = function(...)
-  return require 'plenary.reload'.reload_module(...)
-end
-
-R = function(name)
-  RELOAD(name)
-  return require(name)
-end
 
 local map = function(key, effect)
   vim.keymap.set({'n', 'v', 'o'}, key, effect, { silent = true, noremap = true })
@@ -216,10 +203,10 @@ end
 local function switchTheme()
   if vim.o.background == 'light' then
     vim.o.background = 'dark'
-    vim.cmd [[Catppuccin mocha]]
+    -- vim.cmd [[Catppuccin mocha]]
   else
     vim.o.background = 'light'
-    vim.cmd [[Catppuccin latte]]
+    -- vim.cmd [[Catppuccin latte]]
   end
 end
 
@@ -276,7 +263,7 @@ wk.register(
       h = { '<cmd>Telescope help_tags<cr>', 'help' },
       k = { '<cmd>Telescope keymaps<cr>', 'keymaps' },
       r = { '<cmd>Telescope lsp_references<cr>', 'references' },
-      g = { "<cmd>Telescope live_grep<cr>", "grep" },
+      -- g = { "<cmd>Telescope live_grep<cr>", "grep" },
       b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "fuzzy" },
       m = { "<cmd>Telescope marks<cr>", "marks" },
       M = { "<cmd>Telescope man_pages<cr>", "man pages" },
@@ -305,21 +292,21 @@ wk.register(
       b = { 'zw', 'bad' },
       ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
     },
-    g = {
-      name = "git",
-      c = { ":GitConflictRefresh<cr>", 'conflict' },
-      g = { ":Neogit<cr>", "neogit" },
-      s = { ":Gitsigns<cr>", "gitsigns" },
-      pl = { ":Octo pr list<cr>", "gh pr list" },
-      pr = { ":Octo review start<cr>", "gh pr review" },
-      wc = { ":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "worktree create" },
-      ws = { ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "worktree switch" },
-      d = {
-        name = 'diff',
-        o = { ':DiffviewOpen<cr>', 'open' },
-        c = { ':DiffviewClose<cr>', 'close' },
-      }
-    },
+    -- g = {
+    --   name = "git",
+    --   c = { ":GitConflictRefresh<cr>", 'conflict' },
+    --   g = { ":Neogit<cr>", "neogit" },
+    --   s = { ":Gitsigns<cr>", "gitsigns" },
+    --   pl = { ":Octo pr list<cr>", "gh pr list" },
+    --   pr = { ":Octo review start<cr>", "gh pr review" },
+    --   wc = { ":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "worktree create" },
+    --   ws = { ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "worktree switch" },
+    --   -- d = {
+    --   --   name = 'diff',
+    --   --   o = { ':DiffviewOpen<cr>', 'open' },
+    --   --   c = { ':DiffviewClose<cr>', 'close' },
+    --   -- }
+    -- },
     w = {
       name = 'write',
       w = { ":w<cr>", "write" },
