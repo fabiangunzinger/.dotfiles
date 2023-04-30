@@ -1,4 +1,3 @@
-
 local wk = require("which-key")
 
 local map = function(key, effect)
@@ -210,6 +209,7 @@ local function switchTheme()
   end
 end
 
+-- leader mappings
 wk.register(
   {
     c = {
@@ -307,10 +307,6 @@ wk.register(
     --   --   c = { ':DiffviewClose<cr>', 'close' },
     --   -- }
     -- },
-    w = {
-      name = 'write',
-      w = { ":w<cr>", "write" },
-    },
   }, { mode = 'n', prefix = '<leader>' }
 )
 
