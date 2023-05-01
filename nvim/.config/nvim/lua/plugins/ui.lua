@@ -23,7 +23,7 @@ return {
   },
 
   -- tab bar
-  { 
+  {
     'nanozuki/tabby.nvim',
     config = function()
       require('tabby.tabline').use_preset('tab_only')
@@ -31,7 +31,7 @@ return {
   },
 
   -- vertical scrollbars
-  { 
+  {
     'dstein64/nvim-scrollview',
     config = function()
       require('scrollview').setup({
@@ -41,7 +41,7 @@ return {
   },
 
   -- filetree
-  { 
+  {
     "nvim-tree/nvim-tree.lua",
     version = "*",
     dependencies = {
@@ -88,13 +88,10 @@ return {
   {'christoomey/vim-tmux-navigator'},
 
   -- terminal
-  { "akinsho/toggleterm.nvim", version = '*', config = function()
-    require("toggleterm").setup {
-      open_mapping = [[<c-\>]],
-      direction = 'float',
-    }
-  end
-},
-
-
+  {
+    "akinsho/toggleterm.nvim", version = '*',
+    config = function()
+      require("plugins.plugins_config.toggleterm")
+    end
+  },
 }

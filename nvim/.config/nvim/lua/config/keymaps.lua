@@ -166,6 +166,18 @@ vim.keymap.set('n', "s", "<Plug>(easymotion-overwin-f2)", { noremap = false })
 vim.keymap.set('', "<leader>j", "<Plug>(easymotion-j)", { noremap = false })
 vim.keymap.set('', "<leader>k", "<Plug>(easymotion-k)", { noremap = false })
 
+-- Set key mappings for terminal mode
+function _G.set_terminal_keymaps()
+  local opts = { buffer = 0 }
+  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
+  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
+  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
+  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
+end
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
 -- send code
 -- with ctrl+Enter, just like in e.g. RStudio
 -- needs kitty (or other terminal) config:
@@ -186,18 +198,6 @@ nnoremap('<leader><cr>', '<Plug>SlimeSendCell')
 -- vim.keymap.set('t', '<c-j>', [[<c-\><c-n><c-w>w]], { silent = true, noremap = true })
 -- vim.keymap.set('n', '<leader>j', [[<c-w>wi]], { silent = true, noremap = true })
 --
-
--- Set key mappings for terminal mode
-function _G.set_terminal_keymaps()
-  local opts = { buffer = 0 }
-  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', 'jk', [[<C-\><C-n>]], opts)
-  vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
-  vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
-  vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]], opts)
-  vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
-end
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
 -- show kepbindings with whichkey
 local function open_plugin()
@@ -230,16 +230,20 @@ end
 -- leader mappings
 wk.register(
   {
-    c = {
-      name = 'code',
-      c = { ':SlimeConfig<cr>', 'slime config' },
-      n = {  ':vsplit term://$SHELL<cr>', 'new terminal (vertical)' },
-      h = {  ':split term://$SHELL<cr>', 'new terminal (horizontal)' },
-      p = {  ':vsplit term://python<cr>', 'new python terminal' },
-      i = {  ':vsplit term://ipython<cr>', 'new ipython terminal' },
-      r = {  ':vsplit term://R<cr>', 'new R terminal' },
-      j = {  ':vsplit term://julia<cr>', 'new julia terminal' },
-      s = {  ':echo b:terminal_job_id<cr>', 'show terminal id' },
+    g = {
+      name = "git",
+      c = { ":GitConflictRefresh<cr>", 'conflict' },
+      g = { ":Neogit<cr>", "neogit" },
+      s = { ":Gitsigns<cr>", "gitsigns" },
+      pl = { ":Octo pr list<cr>", "gh pr list" },
+      pr = { ":Octo review start<cr>", "gh pr review" },
+      wc = { ":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "worktree create" },
+      ws = { ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "worktree switch" },
+      d = {
+        name = 'diff',
+        o = { ':DiffviewOpen<cr>', 'open' },
+        c = { ':DiffviewClose<cr>', 'close' },
+      }
     },
     v = {
       name = 'vim',
@@ -292,20 +296,16 @@ wk.register(
       b = { 'zw', 'bad' },
       ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
     },
-    g = {
-      name = "git",
-      c = { ":GitConflictRefresh<cr>", 'conflict' },
-      g = { ":Neogit<cr>", "neogit" },
-      s = { ":Gitsigns<cr>", "gitsigns" },
-      pl = { ":Octo pr list<cr>", "gh pr list" },
-      pr = { ":Octo review start<cr>", "gh pr review" },
-      wc = { ":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "worktree create" },
-      ws = { ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "worktree switch" },
-      d = {
-        name = 'diff',
-        o = { ':DiffviewOpen<cr>', 'open' },
-        c = { ':DiffviewClose<cr>', 'close' },
-      }
+    t = {
+      name = 'code',
+      c = { ':SlimeConfig<cr>', 'slime config' },
+      n = {  ':vsplit term://$SHELL<cr>', 'new terminal (vertical)' },
+      h = {  ':split term://$SHELL<cr>', 'new terminal (horizontal)' },
+
+      p = {  ':vsplit term://python<cr>', 'new python terminal' },
+      i = {  ':vsplit term://ipython<cr>', 'new ipython terminal' },
+      r = {  ':vsplit term://R<cr>', 'new R terminal' },
+      s = {  ':echo b:terminal_job_id<cr>', 'show terminal id' },
     },
   }, { mode = 'n', prefix = '<leader>' }
 )
@@ -313,7 +313,7 @@ wk.register(
 -- normal mode
 wk.register({
   ['<c-LeftMouse>'] = { '<cmd>lua vim.lsp.buf.definition()<CR>', 'go to definition' },
-  ['gx']            = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
+  -- ['gx']            = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
   ["<c-q>"]         = { '<cmd>q<cr>', 'close buffer' },
   ['<esc>']         = { '<cmd>noh<cr>', 'remove search highlight' },
   ['n']             = { 'nzzzv', 'center search' },
@@ -330,7 +330,7 @@ wk.register({
 -- visual mode
 wk.register({
   ['<cr>'] = { '<Plug>SlimeRegionSend', 'run code region' },
-  ['gx'] = { '"ty:!xdg-open t<cr>', 'open file' },
+  -- ['gx'] = { '"ty:!xdg-open t<cr>', 'open file' },
   ['<M-j>'] = { ":m'>+<cr>`<my`>mzgv`yo`z", 'move line down' },
   ['<M-k>'] = { ":m'<-2<cr>`>my`<mzgv`yo`z", 'move line up' },
   ['.'] = { ':norm .<cr>', 'repat last normal mode command' },
