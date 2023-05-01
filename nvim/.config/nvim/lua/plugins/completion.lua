@@ -15,7 +15,7 @@ return {
       { 'kdheepak/cmp-latex-symbols' },
       { 'jmbuhr/cmp-pandoc-references' },
       { 'L3MON4D3/LuaSnip' },
-      { 'rafamadriz/friendly-snippets' },
+      { 'honza/vim-snippets' },
       { 'onsails/lspkind-nvim' },
     },
     config = function()

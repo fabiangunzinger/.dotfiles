@@ -1,19 +1,5 @@
 return {
 
-  -- snippets
-  {
-    "L3MON4D3/LuaSnip",
-    version = "<CurrentMajor>.*",
-    -- build = "make install_jsregexp",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-      config = function()
-        require("luasnip.loaders.from_vscode").lazy_load()
-      end,
-    },
-  },
-
-
   -- quarto support
   {
     'quarto-dev/quarto-nvim',

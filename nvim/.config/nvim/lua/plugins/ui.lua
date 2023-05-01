@@ -1,14 +1,5 @@
 return {
 
-  -- welcome screen
-  { 
-    'goolord/alpha-nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require("plugins.plugins_config.alpha-nvim")
-    end
-  },
-
   -- object finder
   {
     'nvim-telescope/telescope.nvim',
@@ -95,4 +86,15 @@ return {
 
   -- smooth vim and tmux navigation
   {'christoomey/vim-tmux-navigator'},
+
+  -- terminal
+  { "akinsho/toggleterm.nvim", version = '*', config = function()
+    require("toggleterm").setup {
+      open_mapping = [[<c-\>]],
+      direction = 'float',
+    }
+  end
+},
+
+
 }

@@ -18,6 +18,7 @@ local new_maker = function(filepath, bufnr, opts)
     end
   end)
 end
+local wk = require("which-key")
 
 telescope.setup {
   defaults = {
@@ -59,7 +60,27 @@ telescope.load_extension('file_browser')
 telescope.load_extension('dap')
 telescope.load_extension('project')
 
-vim.keymap.set("n", "<leader>fg", function()
-  builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end)
+
+wk.register(
+{
+  f = {
+    name = 'find (telescope)',
+    f = { '<cmd>Telescope find_files<cr>', 'files' },
+    g = { function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, "grep" },
+    h = { '<cmd>Telescope help_tags<cr>', 'help' },
+    k = { '<cmd>Telescope keymaps<cr>', 'keymaps' },
+    r = { '<cmd>Telescope lsp_references<cr>', 'references' },
+    b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "fuzzy" },
+    m = { "<cmd>Telescope marks<cr>", "marks" },
+    M = { "<cmd>Telescope man_pages<cr>", "man pages" },
+    c = { "<cmd>Telescope git_commits<cr>", "git commits" },
+    s = { "<cmd>Telescope lsp_document_symbols<cr>", "symbols" },
+    d = { "<cmd>Telescope buffers<cr>", "buffers" },
+    q = { "<cmd>Telescope quickfix<cr>", "quickfix" },
+    l = { "<cmd>Telescope loclist<cr>", "loclist" },
+    j = { "<cmd>Telescope jumplist<cr>", "marks" },
+    p = { "project" },
+  },
+}, { mode = 'n', prefix = '<leader>' }
+)
 
