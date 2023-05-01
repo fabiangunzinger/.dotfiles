@@ -13,3 +13,4 @@ if [ -f '/Users/fabian.gunzinger/google-cloud-sdk/completion.zsh.inc' ]; then . 
 
 # FZF confg
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

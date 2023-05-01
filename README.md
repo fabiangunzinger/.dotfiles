@@ -24,19 +24,13 @@
 - I use the [starship](https://starship.rs) prompt.
 
 
-## nvim setup
-
-- I use [EditorConfig](https://editorconfig.org) for coding style configuration across projects. For my personal use, I store the default configuration in `~/.editorconfig`. Whenever I need different configs for a project, I add an editorconfig file with `root = true` in the project directory. (Nvim 0.9 has EditorConfig built in, so no plugin is needed for this.)
-
-- I use `lazy.nvim` as my package manager.
-
-- For `quarto` autocompletion to work, I need to select the kernel I want to use in the quarto doc, and I need to have the corresponding venv activated when I start nvim.
-
 ## Python setup 
 
 - I manage Python versions with `pyenv`, virtual envs with `pyenv-virtualenvs`, and install packages with `pip`. I don't use Conda or Poetry because I find them too clunky, even though they both have useful features.
 
 - I use `base` virtual environment as a Python host for nvim and Quarto, and also to run Jupyter from.
+
+- On my work machine, I currently also have miniconda installed, because it looked like I needed it for a project. As it's at the front of my PATH, it's the default Python. Also, I have to be very careful with what environment I have activated (pyenv vs conda). If I'm careful, everything seems to be working just fine, though.
 
 
 <!-- ## zsh plugins -->
@@ -47,6 +41,15 @@
 <!--   gets me to `~/dev/projects/dotfiles` from anywhere). Combined with the -->
 <!--   in-built fuzzy directory completion of zsh, and the fzt plugin, this makes -->
 <!--   navigation extremely quick. -->
+
+
+## nvim setup
+
+- I use [EditorConfig](https://editorconfig.org) for coding style configuration across projects. For my personal use, I store the default configuration in `~/.editorconfig`. Whenever I need different configs for a project, I add an editorconfig file with `root = true` in the project directory. (Nvim 0.9 has EditorConfig built in, so no plugin is needed for this.)
+
+- I use `lazy.nvim` as my package manager.
+
+- For `quarto` autocompletion to work, I need to select the kernel I want to use in the quarto doc, and I need to have the corresponding venv activated when I start nvim.
 
 
 ## Useful tools

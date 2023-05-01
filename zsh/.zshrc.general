@@ -122,10 +122,10 @@ function iki { $env_path/"$1"/bin/python -m ipykernel install --prefix=$env_path
 function ikio { python -m ipykernel install --name $1 --user; }
 ## Manage kernels
 alias jkl='jupyter kernelspec list'
-function jkr { jupyter kernelspec remove $1; } 
+function jkr { jupyter kernelspec remove $1; }
 
 # pandoc
-function pdmp() { pandoc "$1" -o "${1/md/pdf}"; } 
+function pdmp() { pandoc "$1" -o "${1/md/pdf}"; }
 
 # github
 alias ghp='git help'                # ..git verb for which help is needed
@@ -162,7 +162,7 @@ alias gstl='gst list'               # list stored stashes
 # alias gcn='git clean'               # ..fn to be removed from wd
 # alias gcnn='gc --dry-run'           # dry run of above
 
-alias gph='git push'                # move remote pointer to match local one 
+alias gph='git push'                # move remote pointer to match local one
 alias gphsu='gph --set-upstream origin $(git_current_branch'
 # alias gphd='gph origin --delete'   # ..refs to delete (e.g. branchname)
 alias gf='git fetch'                # download new files from remote (no merge)
@@ -195,7 +195,7 @@ eval "$(pyenv virtualenv-init -)"
 ## disable prompt to hide annoying warning message
 export PYENV_VIRTUALENV_DISABLE_PROMPT=0
 # activate base virtualenv
-pyenv activate base
+# pyenv activate base
 
 
 # ## editor for remote and local sessions
@@ -239,3 +239,5 @@ fi
 
 # Set quarto python environments
 export QUARTO_PYTHON='/Users/fgu/.pyenv/versions/base/bin/python3.10'
+
+
