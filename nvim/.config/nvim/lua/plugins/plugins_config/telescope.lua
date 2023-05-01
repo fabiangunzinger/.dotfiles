@@ -35,6 +35,8 @@ telescope.setup {
         ["<esc>"] = actions.close,
         ["<c-j>"] = actions.move_selection_next,
         ["<c-k>"] = actions.move_selection_previous,
+        ["<c-u>"] = false, -- use <c-u> for default "clear input" behaviour
+
       }
     }
   },
@@ -66,11 +68,13 @@ wk.register(
   f = {
     name = 'find (telescope)',
     f = { '<cmd>Telescope find_files<cr>', 'files' },
-    g = { function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, "grep" },
+    g = { '<cmd>Telescop live_grep<cr>', 'grep' },
+    b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "buffer" },
+
+    -- g = { function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, "grep" },
     h = { '<cmd>Telescope help_tags<cr>', 'help' },
     k = { '<cmd>Telescope keymaps<cr>', 'keymaps' },
     r = { '<cmd>Telescope lsp_references<cr>', 'references' },
-    b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "fuzzy" },
     m = { "<cmd>Telescope marks<cr>", "marks" },
     M = { "<cmd>Telescope man_pages<cr>", "man pages" },
     c = { "<cmd>Telescope git_commits<cr>", "git commits" },

@@ -3,6 +3,9 @@ return {
   -- use . after plugin map
   { 'tpope/vim-repeat' },
 
+  -- unix shell commands
+  { 'tpope/vim-eunuch' },
+
   -- use quickfix for bulk change/replace
   {'stefandtw/quickfix-reflector.vim'},
 
