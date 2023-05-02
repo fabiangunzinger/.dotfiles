@@ -178,19 +178,6 @@ function _G.set_terminal_keymaps()
 end
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
--- send code
--- with ctrl+Enter, just like in e.g. RStudio
--- needs kitty (or other terminal) config:
--- map shift+enter send_text all \x1b[13;2u
--- map ctrl+enter send_text all \x1b[13;5u
-nnoremap('<c-cr>', '<Plug>SlimeSendCell')
-nnoremap('<s-cr>', '<Plug>SlimeSendCell')
-inoremap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
-inoremap('<s-cr>', '<esc><Plug>SlimeSendCell<cr>i')
--- with Enter and leader Enter
-vnoremap('<cr>', '<Plug>SlimeRegionSend')
-nnoremap('<leader><cr>', '<Plug>SlimeSendCell')
-
 -- -- terminal mode
 -- -- get out ouf terminal insert mode with esc
 -- vim.keymap.set('t', '<esc>', [[<c-\><c-n>]], { silent = true, noremap = true })
@@ -227,7 +214,19 @@ local function switchTheme()
   end
 end
 
--- leader mappings
+-- send code
+nnoremap('<leader><cr>', '<Plug>SlimeSendCell')
+-- with ctrl+Enter, just like in e.g. RStudio
+-- needs kitty (or other terminal) config:
+-- map shift+enter send_text all \x1b[13;2u
+-- map ctrl+enter send_text all \x1b[13;5u
+-- nnoremap('<c-cr>', '<Plug>SlimeSendCell')
+-- nnoremap('<c-cr>', '<Plug>SlimeSendCell')
+-- nnoremap('<s-cr>', '<Plug>SlimeSendCell')
+-- inoremap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
+-- -- with Enter and leader Enter
+-- vnoremap('<cr>', '<Plug>SlimeRegionSend')
+
 wk.register(
   {
     g = {
@@ -296,17 +295,16 @@ wk.register(
       b = { 'zw', 'bad' },
       ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
     },
-    t = {
-      name = 'code',
-      c = { ':SlimeConfig<cr>', 'slime config' },
-      n = {  ':vsplit term://$SHELL<cr>', 'new terminal (vertical)' },
-      h = {  ':split term://$SHELL<cr>', 'new terminal (horizontal)' },
-
-      p = {  ':vsplit term://python<cr>', 'new python terminal' },
-      i = {  ':vsplit term://ipython<cr>', 'new ipython terminal' },
-      r = {  ':vsplit term://R<cr>', 'new R terminal' },
-      s = {  ':echo b:terminal_job_id<cr>', 'show terminal id' },
-    },
+    -- c = {
+    --   name = 'code',
+    --   c = { ':SlimeConfig<cr>', 'slime config' },
+    --   n = {  ':vsplit term://$SHELL<cr>', 'new terminal (vertical)' },
+    --   h = {  ':split term://$SHELL<cr>', 'new terminal (horizontal)' },
+    --   p = {  ':vsplit term://python<cr>', 'new python terminal' },
+    --   i = {  ':vsplit term://ipython<cr>', 'new ipython terminal' },
+    --   r = {  ':vsplit term://R<cr>', 'new R terminal' },
+    --   s = {  ':echo b:terminal_job_id<cr>', 'show terminal id' },
+    -- },
   }, { mode = 'n', prefix = '<leader>' }
 )
 
