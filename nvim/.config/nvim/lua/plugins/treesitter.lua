@@ -1,12 +1,12 @@
 return {
-  { 
+  {
     'nvim-treesitter/nvim-treesitter',
     opts = {
       ensure_installed = {
         'r',
-        'python', 
+        'python',
         'markdown',
-        'markdown_inline', 
+        'markdown_inline',
         'julia',
         'yaml',
         'lua',

@@ -29,13 +29,24 @@ telescope.setup {
     layout_config = {
       prompt_position = "top",
     },
-    mappings = {
-      i = {
-        ["<c-h>"] = "which_key",
-        ["<esc>"] = actions.close,
-        ["<c-j>"] = actions.move_selection_next,
-        ["<c-k>"] = actions.move_selection_previous,
-        ["<c-u>"] = false, -- use <c-u> for default "clear input" behaviour
+    vimgrep_arguments = {
+      "rg",
+      "--color=never", -- ignore colors (can't handle yet)
+      "--with-filename", -- show filepath
+      "--no-heading", -- show filename as prefix
+      "--line-number", -- show line number
+      "--column", -- show column number
+      "--hidden", -- show hidden files and folders
+      "--no-ignore", -- don't respect ignore files
+      "--smart-case"
+    },
+mappings = {
+  i = {
+    ["<c-h>"] = "which_key",
+    ["<esc>"] = actions.close,
+    ["<c-j>"] = actions.move_selection_next,
+    ["<c-k>"] = actions.move_selection_previous,
+    ["<c-u>"] = false, -- use <c-u> for default "clear input" behaviour
 
       }
     }
@@ -43,8 +54,14 @@ telescope.setup {
   pickers = {
     find_files = {
       hidden = true,
-      find_command = { "rg", "--no-ignore", "--files", "--hidden", "--glob", "!.git/*",
-        '--glob', '!**/.Rproj.user/*', '-L' },
+      find_command = {
+        "rg",
+        "--files",
+        "--no-ignore", -- don't respect ignore files
+        "--hidden", -- search hidden files and directories
+        "--glob", "!.git/*", -- ignore .git directories
+        '-L' -- follow symlinks
+      },
     }
   },
   extensions = {

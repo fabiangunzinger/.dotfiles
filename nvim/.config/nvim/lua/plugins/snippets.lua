@@ -6,7 +6,7 @@ return {
     dependencies = {
       'honza/vim-snippets',
       config = function()
-        require("luasnip.loaders.from_snipmate").load({ include = { "python" }})
+        require("luasnip.loaders.from_snipmate").load()
       end,
     },
     keys = {

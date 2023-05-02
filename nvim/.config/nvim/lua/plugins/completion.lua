@@ -33,6 +33,7 @@ return {
           ['<cr>'] = cmp.mapping.confirm({ select = true }),
           ['<c-f>'] = cmp.mapping.scroll_docs(-4),
           ['<c-d>'] = cmp.mapping.scroll_docs(4),
+          ['<c-space>'] = cmp.mapping.complete(),
         },
         autocomplete = false,
         formatting = {
