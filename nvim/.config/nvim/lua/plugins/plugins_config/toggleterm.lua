@@ -91,4 +91,9 @@ function _HORIZONTAL_TERM()
   horizontal_term:toggle(10)
 end
 
-local wk = require("which-key")
+vim.keymap.set("n", "<leader>cv", "<cmd>lua _VERTICAL_TERM()<cr>")
+vim.keymap.set("n", "<leader>ch", "<cmd>lua _HORIZONTAL_TERM()<cr>")
+vim.keymap.set("n", "<leader>cf", "<cmd>lua _FLOAT_TERM()<cr>")
+vim.keymap.set("n", "<leader>cp", "<cmd>lua _PYTHON_TOGGLE()<cr>")
+vim.keymap.set("n", "<leader>ct", "<cmd>lua _HTOP_TOGGLE()<cr>")
+
