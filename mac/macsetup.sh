@@ -17,13 +17,13 @@ echo "Installing homebrew..."
 # Python interpreter is set in init.vim.
 echo "Installing Neovim..."
 brew install nvim
-pip3 install pynvim   
+pip3 install pynvim
 
 # GitHub
 echo "Authenticate GitHub accounts..."
 ## Install GitHub CLI
 brew install gh
-## Create ssh keys and authenticate with GitHub accounts 
+## Create ssh keys and authenticate with GitHub accounts
 ## Specify appropriate comment and file path and provide empty
 ## (new) passphrase to disable passphrase option
 cd
@@ -57,32 +57,11 @@ ln -s $DOTFILES/iterm2/starship.toml ./.config
 ln -s $DOTFILES/tmux/.tmux.conf .
 
 # Python
-## Install pyenv and dependencies
-## See https://github.com/pyenv/pyenv/wiki#suggested-build-environment
-brew install openssl readline sqlite3 xz zlib tcl-tk
-brew install pyenv
-## Install Python versions
-pyenv install 3.9
-pyenv install 3.10
-## Set default Python
-pyenv global 3.10
 
 # Virtual environments
-## I manage virutal envs with pyenv-virtualenv
-brew install pyenv-virtualenv
-## Create a base environment that gets automatically activated on shell startup
-## and is used to run Jupyter (see .zshrc.general and workflow post)
-pyenv virtualenv base   
-pyenv activate base
-pip install jupyterlab
+# Go to ~/.venvs, and get requirements.tex for each one so I can reproduce on new machine
 ## todo: configure Jupyter environment
 ## todo: save all virtualenv configs somewhere so I can share across machines
-## In case I decide to manage base dir with Poetry after all
-# mkdir ~/dev/projects/base
-# cd ~/dev/projects/base
-# pyenv virtualenv 3.10.8 base
-# potry init
-# poetry add jupyterlab
 
 # Latex and xelatex so I can download as pdf from Jupyter
 # from here: https://gist.github.com/peterhurford/75957ba9335e755013b87254ec85fab1
@@ -92,9 +71,9 @@ pip install jupyterlab
 ## Currently trying both pip and poetry
 
 ## Poetry installation
-curl -sSL https://install.python-poetry.org | python3 -
+# curl -sSL https://install.python-poetry.org | python3 -
 # Don't use poetry for virtualenv mgt
-# poetry config virtualenvs.create false  
+# poetry config virtualenvs.create false
 # poetry completions bash > $(brew --prefix)/etc/bash_completion.d/poetry.bash-completion
 
 # Terminal
@@ -154,7 +133,7 @@ brew install exa
 
 
 # Docker
-# Useful guide: https://www.cprime.com/resources/blog/docker-for-mac-with-homebrew-a-step-by-step-tutorial/ 
+# Useful guide: https://www.cprime.com/resources/blog/docker-for-mac-with-homebrew-a-step-by-step-tutorial/
 brew install --cask docker
 
 

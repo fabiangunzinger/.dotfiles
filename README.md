@@ -23,24 +23,51 @@
 
 - I use the [starship](https://starship.rs) prompt.
 
+- I use `zsh-z` to quickly navigate to frequently used directories (e.g. `z do`
+  gets me to `~/.dotfiles` from anywhere). Combined with the
+  in-built fuzzy directory completion of zsh, and the fzf plugin, this makes
+  navigation extremely quick.
+
+- I use [`bat`](https://github.com/sharkdp/bat) (an improved version of cat) to
+  quickly view files.
+
 
 ## Python setup 
 
-- I manage Python versions with `pyenv`, virtual envs with `pyenv-virtualenvs`, and install packages with `pip`. I don't use Conda or Poetry because I find them too clunky, even though they both have useful features.
+- I follow the advice from [Nobody has time for Python](https://bitecode.substack.com/p/relieving-your-python-packaging-pain).
 
-- I use `base` virtual environment as a Python host for nvim and Quarto, and also to run Jupyter from.
+Installation:
 
-- On my work machine, I currently also have miniconda installed, because it looked like I needed it for a project. As it's at the front of my PATH, it's the default Python. Also, I have to be very careful with what environment I have activated (pyenv vs conda). If I'm careful, everything seems to be working just fine, though.
+- I install [stable](https://devguide.python.org/versions/) Python versions (i.e. not the latest ones) using the official installers from [python.org](https://www.python.org/downloads/macos/) (the universal2 installers, to ensure compatibility with Apple silicon.
 
+- After downloading and installing, I click `Install Certificates.command` in the finder window that opens to complete the installation.
 
-<!-- ## zsh plugins -->
+Virtual environments:
 
-<!-- - I use FZF as a file fuzzy finder. I usually use `**<tab>` or `<ctrl-T>` to search files in current directory (e.g. `vi **<tab>`). -->
+- I use `venv` to manage virtual environments.
 
-<!-- - I use `zsh-z` to quickly navigate to frequently used directories (e.g. `z do` -->
-<!--   gets me to `~/dev/projects/dotfiles` from anywhere). Combined with the -->
-<!--   in-built fuzzy directory completion of zsh, and the fzt plugin, this makes -->
-<!--   navigation extremely quick. -->
+- I create a virtual environment for each project, call it `.venv`, and save it
+  in the project's root directory.
+
+- I select the desired Python version explicitly (e.g. `python3.10 venv .venv`).
+
+- I install stuff with `pip` and only pip, and only ever into a virtual environment.
+
+- To recreate a virtual environment, I create a requirements.txt file (`python -m pip freeze > requirements.txt`) and then recreate the environment with `python -m pip install -r requirements.txt`). 
+
+- I keep small scripts in a project called `sandbox` with its own virtual environment so that I don't need to create a separate virtual environment for each small script I write.
+
+- Virtual environments that are requried for specific applications (e.g. nvim, or quarto) are stored in my home directory with an informative name (e.g. `nvim3.10`).
+
+Running code:
+
+- I run all Python commands with the `-m` flag (i.e. `python -m pip install`, `python -m black`, `python -m jupyter notebook` to be as sure as possible that I use the correct Python version).
+
+Remember:
+
+- Don't move a virtual environment -- recreate it instead.
+
+- Don't rename a directory containing a virtual environment -- recreate the environment in a new directory with the desired name and delete the old one.
 
 
 ## nvim setup
@@ -50,13 +77,6 @@
 - I use `lazy.nvim` as my package manager.
 
 - For `quarto` autocompletion to work, I need to select the kernel I want to use in the quarto doc, and I need to have the corresponding venv activated when I start nvim.
-
-
-## Useful tools
-
-- I use [`bat`](https://github.com/sharkdp/bat) (an improved version of cat) to
-  quickly view files.
-
 
 
 ## Acknowledgements

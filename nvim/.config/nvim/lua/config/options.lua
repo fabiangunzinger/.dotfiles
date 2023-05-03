@@ -97,5 +97,5 @@ vim.opt.breakindent = true
 
 -- Custom Python host
 -- See: https://neovim.io/doc/user/provider.html#provider-python
-vim.g.python3_host_prog = "~/.pyenv/versions/base/bin/python3.10"
+vim.g.python3_host_prog = "~/.venvs/nvim3.10/bin/python3.10"
 
