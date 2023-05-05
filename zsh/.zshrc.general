@@ -11,7 +11,12 @@
 function sshn() { ssh-keygen -t ed25519 -C $1; }
 
 # pip
-alias pi='pip install'
+alias pi='python -m pip install'
+
+# blog
+alias qpr=`quarto preview`
+alias qre=`quarto render && hugo`
+
 
 # nvim
 alias v="nvim"
@@ -50,6 +55,10 @@ alias pas='acs'   # pretty aliases
 function mve() { $1 -m venv .venv; }
 alias ave='source ./.venv/bin/activate'
 alias dve='deactivate'
+
+# activate commonly used venvs
+alias aqu='source ~/.venvs/quarto3.10/bin/activate'
+
 
 # blog
 alias dwo='dpr; cd wowchemy'
