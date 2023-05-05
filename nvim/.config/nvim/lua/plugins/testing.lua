@@ -1,7 +1,6 @@
 return {
-  -- {"alfredodeza/pytest.vim"},
-  -- { "nvim-neotest/neotest" },
-  -- { "nvim-neotest/neotest-python" },
+
+  { "nvim-neotest/neotest-python" },
   { "nvim-neotest/neotest",
     dependencies = { "nvim-neotest/neotest-python" },
     config = function()
@@ -19,6 +18,13 @@ return {
       { "<leader>dts", ":lua require'neotest'.summary.toggle()<cr>", desc = "test summary" },
     }
   },
+
+
+
+  { "ChristianChiarulli/swenv.nvim" },
+  { "stevearc/dressing.nvim" },
+  { "mfussenegger/nvim-dap-python" },
+
 
   -- debug adapter protocol
   {
@@ -39,11 +45,11 @@ return {
     },
   },
 
-      -- { 'mfussenegger/nvim-dap-python',
-      --   config = function()
-      --     require('dap-python').setup()
-      --     require('dap.ext.vscode').load_launchjs('launch.json')
-      --   end
-      -- },
+      { 'mfussenegger/nvim-dap-python',
+        config = function()
+          require('dap-python').setup()
+          require('dap.ext.vscode').load_launchjs('launch.json')
+        end
+      },
 
 }

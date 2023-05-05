@@ -47,8 +47,9 @@ alias fzs='nvim ~/.zshrc'
 alias pas='acs'   # pretty aliases
 
 # virtual environments
-alias act='source ./.venv/bin/activate'
-alias dac='deactivate'
+function mve() { $1 -m venv .venv; }
+alias ave='source ./.venv/bin/activate'
+alias dve='deactivate'
 
 # blog
 alias dwo='dpr; cd wowchemy'

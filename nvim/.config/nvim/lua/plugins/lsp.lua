@@ -22,6 +22,11 @@ return {
 
       local lsp = require('lsp-zero').preset({})
 
+      -- -- setup formatting
+      -- local formatters = require "lsp.null-ls.formatters"
+      -- formatters.setup { { name = "black" }, }
+      -- autocmd BufWritePre *.py lua vim.lsp.buf.format({ async = false })
+
       lsp.on_attach(function(client, bufnr)
         lsp.default_keymaps({
           buffer = bufnr,
