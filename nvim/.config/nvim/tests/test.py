@@ -1,8 +1,8 @@
-import pandas as pd
+import pytest
 
-df = pd.DataFrame({'a': range(300)})
-print('hello')
-df
+def adder(a, b):
+    return a + b
+
 
 
 

@@ -58,15 +58,6 @@ return {
     require("symbols-outline").setup()
   end },
 
-  -- enhanced terminal usage
-  { "akinsho/toggleterm.nvim", version = '*', config = function()
-    require("toggleterm").setup {
-      open_mapping = [[<c-\>]],
-      direction = 'float',
-    }
-  end
-  },
-
   -- pretty diagnostics list
   { "folke/trouble.nvim", config = function()
     require("trouble").setup {}
@@ -87,7 +78,7 @@ return {
   -- smooth vim and tmux navigation
   {'christoomey/vim-tmux-navigator'},
 
-  -- terminal
+  -- enhanced terminal usage
   {
     "akinsho/toggleterm.nvim", version = '*',
     config = function()
