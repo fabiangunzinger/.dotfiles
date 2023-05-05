@@ -14,7 +14,9 @@ function sshn() { ssh-keygen -t ed25519 -C $1; }
 alias pi='pip install'
 
 # nvim
-alias v='nvim'
+alias v="nvim"
+alias vv="nvim +'Telescope find_files'"
+alias vg="nvim +'Telescope live_grep'"
 
 # misc.
 # alias rm='rm -I'
