@@ -18,9 +18,9 @@ function sshn() { ssh-keygen -t ed25519 -C $1; }
 alias pi='python -m pip install'
 
 # blog
-alias qpr='quarto preview'
-alias qre='quarto render && hugo'
-
+alias bpr='quarto preview'
+alias bre='quarto render && hugo'
+function bnp() { "hugo new posts/$1"; }
 
 # nvim
 alias v="nvim"
