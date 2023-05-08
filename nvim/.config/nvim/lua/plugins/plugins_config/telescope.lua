@@ -20,6 +20,13 @@ local new_maker = function(filepath, bufnr, opts)
 end
 local wk = require("which-key")
 
+local often_used_dirs = {
+  "~/.dotfiles",
+  "~/dev/projects/notes/",
+  "~/dev/projects/blog/",
+}
+
+
 telescope.setup {
   defaults = {
     buffer_previewer_maker = new_maker,
@@ -40,13 +47,13 @@ telescope.setup {
       "--no-ignore", -- don't respect ignore files
       "--smart-case"
     },
-mappings = {
-  i = {
-    ["<c-h>"] = "which_key",
-    ["<esc>"] = actions.close,
-    ["<c-j>"] = actions.move_selection_next,
-    ["<c-k>"] = actions.move_selection_previous,
-    ["<c-u>"] = false, -- use <c-u> for default "clear input" behaviour
+    mappings = {
+      i = {
+        ["<c-h>"] = "which_key",
+        ["<esc>"] = actions.close,
+        ["<c-j>"] = actions.move_selection_next,
+        ["<c-k>"] = actions.move_selection_previous,
+        ["<c-u>"] = false, -- use <c-u> for default "clear input" behaviour
 
       }
     }
@@ -86,20 +93,19 @@ wk.register(
     f = { '<cmd>Telescope find_files<cr>', 'files' },
     g = { '<cmd>Telescop live_grep<cr>', 'grep' },
     b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "buffer" },
-
-    -- g = { function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, "grep" },
-    h = { '<cmd>Telescope help_tags<cr>', 'help' },
+    -- g = { function() builtin.grep_string({ search = vim.fn.input("Grep > ") }) end, "grep" }, h = { '<cmd>Telescope help_tags<cr>', 'help' },
+    h = { '<cmd>Telescope help_tags<cr>', 'help tags' },
     k = { '<cmd>Telescope keymaps<cr>', 'keymaps' },
     r = { '<cmd>Telescope lsp_references<cr>', 'references' },
     m = { "<cmd>Telescope marks<cr>", "marks" },
     M = { "<cmd>Telescope man_pages<cr>", "man pages" },
     c = { "<cmd>Telescope git_commits<cr>", "git commits" },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "symbols" },
-    d = { "<cmd>Telescope buffers<cr>", "buffers" },
+    s = { "<cmd>Telescope lsp_document_symbols<cr>", "symbols" }, -- d = { "<cmd>Telescope buffers<cr>", "buffers" },
     q = { "<cmd>Telescope quickfix<cr>", "quickfix" },
     l = { "<cmd>Telescope loclist<cr>", "loclist" },
     j = { "<cmd>Telescope jumplist<cr>", "marks" },
     p = { "project" },
+    o = { function() builtin.find_files({ search_dirs = often_used_dirs }) end, "often used files" }
   },
 }, { mode = 'n', prefix = '<leader>' }
 )
