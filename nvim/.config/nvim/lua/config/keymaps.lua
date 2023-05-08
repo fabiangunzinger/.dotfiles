@@ -24,26 +24,17 @@ local cnoremap = function(key, effect)
   vim.keymap.set('c', key, effect, { silent = true, noremap = true })
 end
 
+
+
 -- experimental
 
--- -- it messes too much with my workflow
--- -- move deleted text into separate registers
--- -- this overrides default behaviour, which
--- -- moves deleted text into default register.
--- nnoremap("d", "\"_d")
--- vnoremap("d", "\"_d")
--- nnoremap("D", "\"_D")
--- vnoremap("D", "\"_D")
--- nnoremap("c", "\"_c")
--- vnoremap("c", "\"_c")
--- nnoremap("C", "\"_C")
--- vnoremap("C", "\"_C")
--- these might be good alternatives
--- could have similar ones for normal mode
--- paste without overwriting register
-vnoremap("<leader>p", "\"_dP")
--- delete without overwriting register
-vnoremap("<leader>d", "\"_d")
+-- copy into system clipboard
+nnoremap("<leader>y", "\"+y")
+vnoremap("<leader>y", "\"+y")
+nnoremap("<leader>Y", "\"+Y")
+
+-- paste without replacing default register content
+vim.keymap.set("v", "<leader>p", "\"_dP")
 
 -- use jk to abort insert, operator-pending, command-line,
 -- and visual modes
@@ -118,12 +109,6 @@ nnoremap("J", "mzJ`z")
 -- keep search results in middle of screen
 nnoremap("n", "nzzzv")
 nnoremap("N", "Nzzzv")
-
--- copy into system clipboard
-nnoremap("<leader>y", "\"+y")
-vnoremap("<leader>y", "\"+y")
-nnoremap("<leader>Y", "\"+Y")
-
 
 -- enter zen-mode
 nnoremap("<leader>zm", "<cmd>ZenMode<cr>")
