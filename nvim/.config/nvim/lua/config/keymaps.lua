@@ -327,7 +327,6 @@ wk.register(
 -- normal mode
 wk.register({
   ['<c-LeftMouse>'] = { '<cmd>lua vim.lsp.buf.definition()<CR>', 'go to definition' },
-  -- ['gx']            = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
   ["<c-q>"]         = { '<cmd>q<cr>', 'close buffer' },
   ['<esc>']         = { '<cmd>noh<cr>', 'remove search highlight' },
   ['n']             = { 'nzzzv', 'center search' },
@@ -343,24 +342,6 @@ wk.register({
 
 -- visual mode
 wk.register({
-  ['<cr>'] = { '<Plug>SlimeRegionSend', 'run code region' },
-  -- ['gx'] = { '"ty:!xdg-open t<cr>', 'open file' },
-  ['<M-j>'] = { ":m'>+<cr>`<my`>mzgv`yo`z", 'move line down' },
-  ['<M-k>'] = { ":m'<-2<cr>`>my`<mzgv`yo`z", 'move line up' },
-  ['.'] = { ':norm .<cr>', 'repat last normal mode command' },
   ['q'] = { ':norm @q<cr>', 'repat q macro' },
 }, { mode = 'v' })
 
-wk.register({
-  ['<leader>'] = { '<Plug>SlimeRegionSend', 'run code region' },
-  ['p'] = { '"_dP', 'replace without overwriting reg' },
-}, { mode = 'v', prefix = "<leader>" })
-
-wk.register({
-  -- ['<c-e>'] = { "<esc>:FeMaco<cr>i", "edit code" },
-  ['<m-->'] = { ' <- ', "assign" },
-  ['<m-m>'] = { ' |>', "pipe" },
-  ['<m-i>'] = { '```{r}<cr>```<esc>O', "r code chunk" },
-  ['<cm-i>'] = { '<esc>o```{python}<cr>```<esc>O', "r code chunk" },
-  ['<m-I>'] = { '<esc>o```{python}<cr>```<esc>O', "r code chunk" },
-}, { mode = 'i' })

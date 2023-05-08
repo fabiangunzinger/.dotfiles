@@ -7,6 +7,10 @@
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+
+# chatgpt
+source "$HOME/.openai_key.zsh"
+
 # ssh
 function sshn() { ssh-keygen -t ed25519 -C $1; }
 
@@ -14,8 +18,8 @@ function sshn() { ssh-keygen -t ed25519 -C $1; }
 alias pi='python -m pip install'
 
 # blog
-alias qpr=`quarto preview`
-alias qre=`quarto render && hugo`
+alias qpr='quarto preview'
+alias qre='quarto render && hugo'
 
 
 # nvim

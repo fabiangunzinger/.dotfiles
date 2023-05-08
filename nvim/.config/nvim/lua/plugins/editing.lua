@@ -1,5 +1,18 @@
 return {
 
+  {
+    "jackMort/ChatGPT.nvim",
+      event = "VeryLazy",
+      dependencies = {
+        "MunifTanjim/nui.nvim",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim"
+      },
+      config = function()
+        require("plugins.plugins_config.chatgpt")
+      end,
+  },
+
   -- use . after plugin map
   { 'tpope/vim-repeat' },
 
@@ -38,7 +51,9 @@ return {
   -- fast search
   { 'BurntSushi/ripgrep' },
 
-  -- paste an image to markdown from the clipboard
+  -- paste an 
+  --
+  -- image to markdown from the clipboard
   -- with :PasteImg,
   {'ekickx/clipboard-image.nvim'},
 
