@@ -1,6 +1,7 @@
 -- slime
 vim.b.slime_cell_delimiter = "#%%"
 
+
 -- lsp support
 local lspconfig = require("lspconfig")
 local pyright_opts = {
@@ -8,6 +9,7 @@ local pyright_opts = {
 }
 
 lspconfig.pyright.setup(pyright_opts)
+
 
 -- formatting and linting
 local null_ls = require("null-ls")
@@ -21,6 +23,7 @@ null_ls.builtins.diagnostics.flake8
 }
 
 null_ls.setup({ sources = sources })
+
 
 -- debugging
 local dap_python = require("dap-python")

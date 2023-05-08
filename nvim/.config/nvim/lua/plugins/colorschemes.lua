@@ -6,6 +6,6 @@ return {
       vim.cmd.colorscheme "gruvbox"
     end
   },
-  { "catppuccin/nvim", lazy = true},
-  { 'rose-pine/neovim', lazy = true},
+  { "catppuccin/nvim" },
+  { 'rose-pine/neovim' },
 }

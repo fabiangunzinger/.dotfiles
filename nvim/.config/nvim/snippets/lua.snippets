@@ -1,0 +1,8 @@
+snippet pcall "pcall check"
+
+	local present, $1 = pcall(require, "${2:$1}")
+	if not present then
+		return
+	end
+
+	$0

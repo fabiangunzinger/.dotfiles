@@ -1,4 +1,13 @@
 return {
+
+  -- lspconfig setup for neovim config files
+  { 
+    "folke/neodev.nvim",
+    config = function()
+      require("plugins.plugins_config.neodev")
+    end,
+  },
+
   -- quarto support
   {
     'quarto-dev/quarto-nvim',
@@ -7,7 +16,7 @@ return {
       { 'hrsh7th/nvim-cmp' },
       { 'jmbuhr/otter.nvim', dev = false },
       config = function()
-        require("plugins_config.quarto")
+        require("plugins.plugins_config.quarto")
       end
     },
   },
@@ -37,7 +46,7 @@ return {
       {'L3MON4D3/LuaSnip'},     -- Required
     },
     config = function()
-      require('plugins_config.lsp')
+      require('plugins.plugins_config.lsp')
     end
   },
   { "jose-elias-alvarez/null-ls.nvim" },
