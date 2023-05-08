@@ -55,7 +55,7 @@ return {
   --
   -- image to markdown from the clipboard
   -- with :PasteImg,
-  {'ekickx/clipboard-image.nvim'},
+  -- {'ekickx/clipboard-image.nvim'},
 
   -- highlight yanked region
   {'machakann/vim-highlightedyank'},
