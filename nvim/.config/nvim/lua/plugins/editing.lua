@@ -1,5 +1,6 @@
 return {
 
+  -- ChatGPT integration
   {
     "jackMort/ChatGPT.nvim",
       event = "VeryLazy",
@@ -50,12 +51,6 @@ return {
 
   -- fast search
   { 'BurntSushi/ripgrep' },
-
-  -- paste an 
-  --
-  -- image to markdown from the clipboard
-  -- with :PasteImg,
-  -- {'ekickx/clipboard-image.nvim'},
 
   -- highlight yanked region
   {'machakann/vim-highlightedyank'},
