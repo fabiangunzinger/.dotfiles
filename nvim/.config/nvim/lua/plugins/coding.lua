@@ -1,7 +1,15 @@
 return {
 
+  -- copilot
+  {
+    "github/copilot.vim",
+    config = function()
+      require("plugins.plugins_config.copilot")
+    end,
+  },
+
   -- lspconfig setup for neovim config files
-  { 
+  {
     "folke/neodev.nvim",
     config = function()
       require("plugins.plugins_config.neodev")

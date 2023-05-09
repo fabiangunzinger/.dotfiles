@@ -11,7 +11,7 @@ vim.g.slime_no_mappings = 1
 -- disable unneded providers
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
-vim.g.loaded_node_provider = 0
+-- vim.g.loaded_node_provider = 0
 
 -- TODO: check whether I need this in addition to using treesitter
 vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r' }

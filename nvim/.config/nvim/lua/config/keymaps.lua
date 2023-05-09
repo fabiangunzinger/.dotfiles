@@ -119,20 +119,10 @@ nnoremap("<leader>zm", "<cmd>ZenMode<cr>")
 -- nnoremap('<c-j>', '<c-w>j')
 -- nnoremap('<c-k>', '<c-w>k')
 --
--- tabs
+
+-- move between tabs
 nnoremap('H', '<cmd>tabprevious<cr>')
 nnoremap('L', '<cmd>tabnext<cr>')
-nnoremap("<leader>ta", ":$tabnew<cr>")
-nnoremap("<leader>tc", ":tabclose<cr>")
-nnoremap("<leader>to", ":tabonly<cr>")
-nnoremap("<leader>tn", ":tabnext<cr>")
-nnoremap("<leader>tp", ":tabprevious<cr>")
-nnoremap("<leader>tf", ":tabfirst<cr>")
-nnoremap("<leader>tl", ":tablast<cr>")
--- move current tab to previous position
-nnoremap("<leader>tmp", ":-tabmove<cr>")
--- move current tab to next position
-nnoremap("<leader>tmn", ":+tabmove<cr>")
 
 -- save in insert mode
 inoremap("<C-s>", "<cmd>:w<cr><esc>")
@@ -280,6 +270,20 @@ wk.register(
     b = { 'zw', 'bad' },
     ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
   },
+
+  t = {
+    name = "tab",
+    a = { ":$tabnew<cr>", "new tab" },
+    c = { ":tabclose<cr>", "close tab" },
+    o = { ":tabonly<cr>", "only this tab" },
+    n = { ":tabnext<cr>", "next tab" },
+    p = { ":tabprevious<cr>", "previous tab" },
+    f = { ":tabfirst<cr>", "first tab" },
+    l = { ":tablast<cr>", "last tab" },
+    mp = { ":-tabmove<cr>", "curren to previous" },
+    mn = { ":+tabmove<cr>", "current to next" },
+  },
+
   c = {
     name = "code",
     v = {"<cmd>lua _VERTICAL_TERM()<cr>", "vertical terminal" },
@@ -287,6 +291,14 @@ wk.register(
     f = { "<cmd>lua _FLOAT_TERM()<cr>", "flating terminal" },
     p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "python terminal" },
     t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "htop" },
+    c = {
+      name = "copilot",
+      d = { "<cmd>Copilot disable<cr>", "disable copilot" },
+      e = { "<cmd>Copilot enable<cr>", "enable copilot" },
+    -- n = { "<Plug>(copilot-next)", "next suggestion" },
+    -- p = { "<Plug>(copilot-prev)", "previous suggestion" },
+    -- s = { "<Plug>(copilot-suggest)", "suggest" },
+    }
   },
   d = {
     name = "debug",
