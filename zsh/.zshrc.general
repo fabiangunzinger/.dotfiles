@@ -24,7 +24,7 @@ function bnp() { "hugo new posts/$1"; }
 
 # nvim
 alias v="nvim"
-alias vv="nvim +'Telescope find_files'"
+alias vi="nvim +'Telescope find_files'"
 alias vg="nvim +'Telescope live_grep'"
 
 # misc.
@@ -93,7 +93,6 @@ alias dud='du -h -d 2'
 # misc. commands
 alias jula='jupyter lab'
 alias clh='open -a safari https://localhost:9999'
-alias vi='nvim'
 alias vgp='vimgolf put '
 
 # terraform

@@ -113,12 +113,11 @@ nnoremap("N", "Nzzzv")
 -- enter zen-mode
 nnoremap("<leader>zm", "<cmd>ZenMode<cr>")
 
--- -- move between splits
--- nnoremap('<c-h>', '<c-w>h')
--- nnoremap('<c-l>', '<c-w>l')
--- nnoremap('<c-j>', '<c-w>j')
--- nnoremap('<c-k>', '<c-w>k')
---
+-- move between splits
+nnoremap('<c-h>', '<c-w>h')
+nnoremap('<c-l>', '<c-w>l')
+nnoremap('<c-j>', '<c-w>j')
+nnoremap('<c-k>', '<c-w>k')
 
 -- move between tabs
 nnoremap('H', '<cmd>tabprevious<cr>')

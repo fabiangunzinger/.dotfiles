@@ -35,7 +35,7 @@ return {
 -- complementary pairs of mappings
   {'tpope/vim-unimpaired'},
 
-  -- indendion level objects 
+  -- indendion level objects
   {'michaeljsmith/vim-indent-object'},
 
   -- jump to search matches
