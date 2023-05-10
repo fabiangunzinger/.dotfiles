@@ -1,5 +1,6 @@
 local wk = require("which-key")
 
+
 local noremap = function(key, effect)
   vim.keymap.set({'n', 'v', 'o'}, key, effect, { silent = true, noremap = true })
 end
@@ -25,13 +26,18 @@ local cnoremap = function(key, effect)
 end
 
 
+local map = function(mod, lhs, rhs, opts)
+  vim.keymap.set(mod, lhs, rhs, opts)
+end
 
 -- experimental
 
 -- copy into system clipboard
-nnoremap("<leader>y", "\"+y")
-vnoremap("<leader>y", "\"+y")
-nnoremap("<leader>Y", "\"+Y")
+map("n", "<leader>y", "\"+y")
+map("n", "<leader>y", "\"+y")
+map("n", "<leader>Y", "\"+Y")
+
+-- to here --
 
 -- paste without replacing default register content
 vim.keymap.set("v", "<leader>p", "\"_dP")
