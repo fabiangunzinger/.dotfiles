@@ -78,6 +78,10 @@ Remember:
 
 - For `quarto` autocompletion to work, I need to select the kernel I want to use in the quarto doc, and I need to have the corresponding venv activated when I start nvim.
 
+## Useful stuff
+
+- [Figlet](http://www.figlet.org/) creates font banners. To use, after brew install, do something like `figlet -f colossal "Hello world"`. 
+
 
 ## Acknowledgements
 
