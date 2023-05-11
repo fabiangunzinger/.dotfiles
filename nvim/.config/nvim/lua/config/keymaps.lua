@@ -1,11 +1,12 @@
 
-local noremap = function(key, effect)
-  vim.keymap.set({'n', 'v', 'o'}, key, effect, { silent = true, noremap = true })
-end
 
-local nnoremap = function(key, effect)
-  vim.keymap.set('n', key, effect, { silent = true, noremap = true })
-end
+-- local noremap = function(key, effect)
+--   vim.keymap.set({'n', 'v', 'o'}, key, effect, { silent = true, noremap = true })
+-- end
+
+-- local nnoremap = function(key, effect)
+--   vim.keymap.set('n', key, effect, { silent = true, noremap = true })
+-- end
 
 local vnoremap = function(key, effect)
   vim.keymap.set('v', key, effect, { silent = true, noremap = true })
@@ -24,114 +25,139 @@ local cnoremap = function(key, effect)
 end
 
 
+local map = function(mode, lhs, rhs, opts)
+  vim.keymap.set(mode, lhs, rhs, opts)
+end
 
--- experimental
+-- experimental start --
+
+
+-- experimental end --
+
+
+
+-- use jk to abort modes and search highlighting
+map("i", "jk", "<esc>")
+map("o", "jk", "<esc>")
+map("c", "jk", "<c-c>")
+map("v", "jk", "v")
+map("n", 'jk', '<cmd>nohlsearch<cr>')
 
 -- copy into system clipboard
-nnoremap("<leader>y", "\"+y")
-vnoremap("<leader>y", "\"+y")
-nnoremap("<leader>Y", "\"+Y")
+map("n", "<leader>y", "\"+y")
+map("n", "<leader>y", "\"+y")
+map("n", "<leader>Y", "\"+Y")
+
+-- search word under cursor
+map("n", "gw", "*N")
 
 -- paste without replacing default register content
-vim.keymap.set("v", "<leader>p", "\"_dP")
-
--- use jk to abort insert, operator-pending, command-line,
--- and visual modes
-inoremap("jk", "<esc>")
-onoremap("jk", "<esc>")
-cnoremap("jk", "<c-c>")
-vnoremap("jk", "v")
+map("v", "<leader>p", "\"_dP")
 
 -- insert directory of current file into command line
-cnoremap("%%","<C-R>=fnameescape(expand('%:h')).'/'<cr>")
-
--- close buffer without loosing window split
-nnoremap("bd",":bp|bd#<cr>")
-
--- open filetree
-nnoremap('<c-b>', '<cmd>NvimTreeToggle<cr>')
+map("c", "%%","<C-R>=fnameescape(expand('%:h')).'/'<cr>")
 
 -- open url under cursor without netrw_gx
-nnoremap("gx", ":!open <c-r><c-a><cr>")
+map("n", "gx", ":!open <c-r><c-a><cr>")
 
--- edit alternate buffer --
-nnoremap("<leader>a", ":e#<cr>")
+
 
 -- make Y behave like C and D (see `h: Y`)
-noremap("Y", "y$")
-
--- write buffer in normal mode
-nnoremap("<leader>w", ":w<cr>")
+map("n", "Y", "y$")
 
 -- move visual-line-wise
-nnoremap("j", "gj")
-nnoremap("k", "gk")
+map("n", "j", "gj")
+map("n", "k", "gk")
 
 -- source vimrc
-nnoremap("<leader>sv", "<cmd>luafile: $MYVIMRC<cr>")
+map("n", "<leader>sv", "<cmd>luafile: $MYVIMRC<cr>")
 
 -- Resize window using <shift> arrow keys
-nnoremap("<S-Up>", "<cmd>resize +2<CR>")
-nnoremap("<S-Down>", "<cmd>resize -2<CR>")
-nnoremap("<S-Left>", "<cmd>vertical resize -2<CR>")
-nnoremap("<S-Right>", "<cmd>vertical resize +2<CR>")
+map("n", "<S-Up>", "<cmd>resize +2<CR>")
+map("n", "<S-Down>", "<cmd>resize -2<CR>")
+map("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
+map("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
 
 -- list hidden buffers
-nnoremap('<leader>ls', ':ls!<cr>')
-nnoremap('<leader>vh', ':execute "h " . expand("<cword>")<cr>')
+map("n", '<leader>ls', ':ls!<cr>')
+
+-- open help for word under cursor
+map("n", '<leader>vh', ':execute "h " . expand("<cword>")<cr>')
 
 -- source entire file
-nnoremap('<leader>xx', ':w<cr>:source %<cr>')
-
--- remove search highlight on esc
-nnoremap('<esc>', '<cmd>noh<cr>')
+map("n", '<leader>xx', ':w<cr>:source %<cr>')
 
 -- find files with telescope
-nnoremap('<c-p>', "<cmd>Telescope find_files<cr>")
+map("n", '<c-p>', "<cmd>Telescope find_files<cr>")
 
 -- center after search and jumps
-nnoremap('n', "nzz")
-nnoremap('<c-d>', '<c-d>zz')
-nnoremap('<c-u>', '<c-u>zz')
+map("n", 'n', "nzz")
+map("n", '<c-d>', '<c-d>zz')
+map("n", '<c-u>', '<c-u>zz')
 
 -- keep selection after indent/dedent
-vnoremap('>', '>gv')
-vnoremap('<', '<gv')
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+-- quit nvim
+map("n", "qq", "<cmd>qa<cr>")
 
 -- move highlighted text up and down
 vnoremap("J", ":m '>+1<cr>gv=gv")
 vnoremap("K", ":m '<-2<cr>gv=gv")
 
 -- join rows with cursor staying in place
-nnoremap("J", "mzJ`z")
+map("n", "J", "mzJ`z")
 
 -- keep search results in middle of screen
-nnoremap("n", "nzzzv")
-nnoremap("N", "Nzzzv")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
 
 -- enter zen-mode
-nnoremap("<leader>zm", "<cmd>ZenMode<cr>")
-
--- move between splits
-nnoremap('<c-h>', '<c-w>h')
-nnoremap('<c-l>', '<c-w>l')
-nnoremap('<c-j>', '<c-w>j')
-nnoremap('<c-k>', '<c-w>k')
-
--- move between tabs
-nnoremap('H', '<cmd>tabprevious<cr>')
-nnoremap('L', '<cmd>tabnext<cr>')
-
--- save in insert mode
-inoremap("<C-s>", "<cmd>:w<cr><esc>")
+map("n", "<leader>zm", "<cmd>ZenMode<cr>")
 
 -- Add undo break-points
 inoremap(",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 
+-- buffers --
 
-cnoremap("%%", "<C-R>=fnameescape(expand('%:h')).'/'<cr>")
+-- misc.
+map("n", "<leader>bb", "<cmd>enew<cr>", { desc = "new buffer" })
+map("n", "bd",":bp|bd#<cr>", { desc = "close buffer but not window" })
+map({ "i", "n", "v", "s", }, "<C-s>", "<cmd>w<cr><esc>", { desc = "write buffer" })
+map("n", "<leader>a", ":e#<cr>", { desc = "edit alternate buffer" })
+
+
+-- windows --
+
+-- open and close windows
+map("n", "<leader>w\\", "<cmd>vsplit<cr>", { desc = "split window right" })
+map("n", "<leader>w-", "<cmd>split<cr>", { desc = "split window below" })
+map("n", "<leader>\\", "<cmd>vnew<cr>", { desc = "new split window right" })
+map("n", "<leader>-", "<cmd>new<cr>", { desc = "new split window below" })
+map("n", "<leader>wd", "<cmd>quit<cr>", { desc = "new split window below" })
+
+-- move between windows
+map("n", '<c-h>', '<c-w>h')
+map("n", '<c-l>', '<c-w>l')
+map("n", '<c-j>', '<c-w>j')
+map("n", '<c-k>', '<c-w>k')
+
+
+-- tabs --
+
+-- open and close tabs
+map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>")
+map("n", "<leader><tab>d", "<cmd>tabclose<cr>")
+
+-- move between tabs
+map("n", 'H', '<cmd>tabprevious<cr>')
+map("n", 'L', '<cmd>tabnext<cr>')
+map("n", "<leader><tab>l", "<cmd>tablast<cr>")
+map("n", "<leader><tab>f", "<cmd>tabfirst<cr>")
+
 
 -- easy-motion
 -- move to two characters, and line below and above
@@ -160,7 +186,7 @@ vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 --
 
 -- send code
--- nnoremap('<leader><cr>', '<Plug>SlimeSendCell')
+map("n", '<leader><cr>', '<Plug>SlimeSendCell')
 -- with ctrl+Enter, just like in e.g. RStudio
 -- needs kitty (or other terminal) config:
 -- map shift+enter send_text all \x1b[13;2u

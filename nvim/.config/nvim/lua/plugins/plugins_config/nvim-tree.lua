@@ -29,3 +29,7 @@ nvim_tree.setup {
     },
   },
 }
+
+-- open filetree
+vim.keymap.set("n", '<c-b>', '<cmd>NvimTreeToggle<cr>')
+
