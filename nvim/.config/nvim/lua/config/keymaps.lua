@@ -1,40 +1,11 @@
 
-
--- local noremap = function(key, effect)
---   vim.keymap.set({'n', 'v', 'o'}, key, effect, { silent = true, noremap = true })
--- end
-
--- local nnoremap = function(key, effect)
---   vim.keymap.set('n', key, effect, { silent = true, noremap = true })
--- end
-
-local vnoremap = function(key, effect)
-  vim.keymap.set('v', key, effect, { silent = true, noremap = true })
-end
-
-local inoremap = function(key, effect)
-  vim.keymap.set('i', key, effect, { silent = true, noremap = true })
-end
-
-local onoremap = function(key, effect)
-  vim.keymap.set('o', key, effect, { silent = true, noremap = true })
-end
-
-local cnoremap = function(key, effect)
-  vim.keymap.set('c', key, effect, { silent = true, noremap = true })
-end
-
-
 local map = function(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
--- experimental start --
 
-
--- experimental end --
-
-
+-- quit nvim
+map("n", "qq", "<cmd>qa<cr>")
 
 -- use jk to abort modes and search highlighting
 map("i", "jk", "<esc>")
@@ -60,8 +31,6 @@ map("c", "%%","<C-R>=fnameescape(expand('%:h')).'/'<cr>")
 -- open url under cursor without netrw_gx
 map("n", "gx", ":!open <c-r><c-a><cr>")
 
-
-
 -- make Y behave like C and D (see `h: Y`)
 map("n", "Y", "y$")
 
@@ -72,23 +41,11 @@ map("n", "k", "gk")
 -- source vimrc
 map("n", "<leader>sv", "<cmd>luafile: $MYVIMRC<cr>")
 
--- Resize window using <shift> arrow keys
-map("n", "<S-Up>", "<cmd>resize +2<CR>")
-map("n", "<S-Down>", "<cmd>resize -2<CR>")
-map("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
-map("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
-
--- list hidden buffers
-map("n", '<leader>ls', ':ls!<cr>')
-
 -- open help for word under cursor
 map("n", '<leader>vh', ':execute "h " . expand("<cword>")<cr>')
 
 -- source entire file
 map("n", '<leader>xx', ':w<cr>:source %<cr>')
-
--- find files with telescope
-map("n", '<c-p>', "<cmd>Telescope find_files<cr>")
 
 -- center after search and jumps
 map("n", 'n', "nzz")
@@ -99,12 +56,9 @@ map("n", '<c-u>', '<c-u>zz')
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- quit nvim
-map("n", "qq", "<cmd>qa<cr>")
-
 -- move highlighted text up and down
-vnoremap("J", ":m '>+1<cr>gv=gv")
-vnoremap("K", ":m '<-2<cr>gv=gv")
+map("v", "J", ":m '>+1<cr>gv=gv")
+map("v", "K", ":m '<-2<cr>gv=gv")
 
 -- join rows with cursor staying in place
 map("n", "J", "mzJ`z")
@@ -113,24 +67,17 @@ map("n", "J", "mzJ`z")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
--- enter zen-mode
-map("n", "<leader>zm", "<cmd>ZenMode<cr>")
-
 -- Add undo break-points
-inoremap(",", ",<c-g>u")
-vim.keymap.set("i", ".", ".<c-g>u")
-vim.keymap.set("i", ";", ";<c-g>u")
+map("i", ",", ",<c-g>u")
+map("i", ".", ".<c-g>u")
+map("i", ";", ";<c-g>u")
 
--- buffers --
-
--- misc.
+-- buffers
 map("n", "<leader>bb", "<cmd>enew<cr>", { desc = "new buffer" })
 map("n", "bd",":bp|bd#<cr>", { desc = "close buffer but not window" })
 map({ "i", "n", "v", "s", }, "<C-s>", "<cmd>w<cr><esc>", { desc = "write buffer" })
 map("n", "<leader>a", ":e#<cr>", { desc = "edit alternate buffer" })
-
-
--- windows --
+map("n", '<leader>ls', ':ls!<cr>', { desc = "list hidden buffers" })
 
 -- open and close windows
 map("n", "<leader>w\\", "<cmd>vsplit<cr>", { desc = "split window right" })
@@ -145,8 +92,11 @@ map("n", '<c-l>', '<c-w>l')
 map("n", '<c-j>', '<c-w>j')
 map("n", '<c-k>', '<c-w>k')
 
-
--- tabs --
+-- resizing windows using <shift> arrow keys
+map("n", "<S-Up>", "<cmd>resize +2<CR>")
+map("n", "<S-Down>", "<cmd>resize -2<CR>")
+map("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
+map("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
 
 -- open and close tabs
 map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>")
@@ -157,13 +107,6 @@ map("n", 'H', '<cmd>tabprevious<cr>')
 map("n", 'L', '<cmd>tabnext<cr>')
 map("n", "<leader><tab>l", "<cmd>tablast<cr>")
 map("n", "<leader><tab>f", "<cmd>tabfirst<cr>")
-
-
--- easy-motion
--- move to two characters, and line below and above
-vim.keymap.set('n', "s", "<Plug>(easymotion-overwin-f2)", { noremap = false })
-vim.keymap.set('', "<leader>j", "<Plug>(easymotion-j)", { noremap = false })
-vim.keymap.set('', "<leader>k", "<Plug>(easymotion-k)", { noremap = false })
 
 -- Set key mappings for terminal mode
 function _G.set_terminal_keymaps()
@@ -194,6 +137,3 @@ map("n", '<leader><cr>', '<Plug>SlimeSendCell')
 nnoremap('<c-cr>', '<Plug>SlimeSendCell')
 -- nnoremap('<s-cr>', '<Plug>SlimeSendRegion')
 -- inoremap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
--- -- with Enter and leader Enter
-vnoremap('<cr>', '<Plug>SlimeRegionSend')
-
