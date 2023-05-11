@@ -52,7 +52,7 @@ vim.opt.updatetime = 250 -- for autocommands and hovers
 
 -- smarter search
 vim.opt.incsearch = true -- higlight results as I type
-vim.opt.hlsearch = false -- only highlight first result
+-- vim.opt.hlsearch = false -- only highlight first result
 vim.opt.ignorecase = true -- ignore case...
 vim.opt.smartcase = true -- ... except when capitals used
 

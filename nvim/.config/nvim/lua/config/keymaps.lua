@@ -37,37 +37,34 @@ end
 
 
 
+-- use jk to abort modes and search highlighting
+map("i", "jk", "<esc>")
+map("o", "jk", "<esc>")
+map("c", "jk", "<c-c>")
+map("v", "jk", "v")
+map("n", 'jk', '<cmd>nohlsearch<cr>')
+
 -- copy into system clipboard
 map("n", "<leader>y", "\"+y")
 map("n", "<leader>y", "\"+y")
 map("n", "<leader>Y", "\"+Y")
 
+-- search word under cursor
+map("n", "gw", "*N")
+
 -- paste without replacing default register content
 map("v", "<leader>p", "\"_dP")
-
--- use jk to abort modes
-map("i", "jk", "<esc>")
-map("o", "jk", "<esc>")
-map("c", "jk", "<c-c>")
-map("v", "jk", "v")
 
 -- insert directory of current file into command line
 map("c", "%%","<C-R>=fnameescape(expand('%:h')).'/'<cr>")
 
--- close buffer without loosing window split
-map("n", "bd",":bp|bd#<cr>")
-
 -- open url under cursor without netrw_gx
 map("n", "gx", ":!open <c-r><c-a><cr>")
 
--- edit alternate buffer --
-map("n", "<leader>a", ":e#<cr>")
+
 
 -- make Y behave like C and D (see `h: Y`)
-map({"n", "v", "c"}, "Y", "y$")
-
--- write buffer in normal mode
-map("n", "<c-s>", ":w<cr>")
+map("n", "Y", "y$")
 
 -- move visual-line-wise
 map("n", "j", "gj")
@@ -84,13 +81,12 @@ map("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
 
 -- list hidden buffers
 map("n", '<leader>ls', ':ls!<cr>')
+
+-- open help for word under cursor
 map("n", '<leader>vh', ':execute "h " . expand("<cword>")<cr>')
 
 -- source entire file
 map("n", '<leader>xx', ':w<cr>:source %<cr>')
-
--- remove search highlight on esc
-map("n", '<esc>', '<cmd>noh<cr>')
 
 -- find files with telescope
 map("n", '<c-p>', "<cmd>Telescope find_files<cr>")
@@ -101,8 +97,11 @@ map("n", '<c-d>', '<c-d>zz')
 map("n", '<c-u>', '<c-u>zz')
 
 -- keep selection after indent/dedent
-vnoremap('>', '>gv')
-vnoremap('<', '<gv')
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+-- quit nvim
+map("n", "qq", "<cmd>qa<cr>")
 
 -- move highlighted text up and down
 vnoremap("J", ":m '>+1<cr>gv=gv")
@@ -118,26 +117,48 @@ map("n", "N", "Nzzzv")
 -- enter zen-mode
 map("n", "<leader>zm", "<cmd>ZenMode<cr>")
 
--- move between splits
-map("n", '<c-h>', '<c-w>h')
-map("n", '<c-l>', '<c-w>l')
-map("n", '<c-j>', '<c-w>j')
-map("n", '<c-k>', '<c-w>k')
-
--- move between tabs
-map("n", 'H', '<cmd>tabprevious<cr>')
-map("n", 'L', '<cmd>tabnext<cr>')
-
--- save in insert mode
-inoremap("<C-s>", "<cmd>:w<cr><esc>")
-
 -- Add undo break-points
 inoremap(",", ",<c-g>u")
 vim.keymap.set("i", ".", ".<c-g>u")
 vim.keymap.set("i", ";", ";<c-g>u")
 
+-- buffers --
 
-cnoremap("%%", "<C-R>=fnameescape(expand('%:h')).'/'<cr>")
+-- misc.
+map("n", "<leader>bb", "<cmd>enew<cr>", { desc = "new buffer" })
+map("n", "bd",":bp|bd#<cr>", { desc = "close buffer but not window" })
+map({ "i", "n", "v", "s", }, "<C-s>", "<cmd>w<cr><esc>", { desc = "write buffer" })
+map("n", "<leader>a", ":e#<cr>", { desc = "edit alternate buffer" })
+
+
+-- windows --
+
+-- open and close windows
+map("n", "<leader>w\\", "<cmd>vsplit<cr>", { desc = "split window right" })
+map("n", "<leader>w-", "<cmd>split<cr>", { desc = "split window below" })
+map("n", "<leader>\\", "<cmd>vnew<cr>", { desc = "new split window right" })
+map("n", "<leader>-", "<cmd>new<cr>", { desc = "new split window below" })
+map("n", "<leader>wd", "<cmd>quit<cr>", { desc = "new split window below" })
+
+-- move between windows
+map("n", '<c-h>', '<c-w>h')
+map("n", '<c-l>', '<c-w>l')
+map("n", '<c-j>', '<c-w>j')
+map("n", '<c-k>', '<c-w>k')
+
+
+-- tabs --
+
+-- open and close tabs
+map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>")
+map("n", "<leader><tab>d", "<cmd>tabclose<cr>")
+
+-- move between tabs
+map("n", 'H', '<cmd>tabprevious<cr>')
+map("n", 'L', '<cmd>tabnext<cr>')
+map("n", "<leader><tab>l", "<cmd>tablast<cr>")
+map("n", "<leader><tab>f", "<cmd>tabfirst<cr>")
+
 
 -- easy-motion
 -- move to two characters, and line below and above

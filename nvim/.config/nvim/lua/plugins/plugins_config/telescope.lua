@@ -51,7 +51,7 @@ telescope.setup {
     mappings = {
       i = {
         ["<c-h>"] = "which_key",
-        ["<esc>"] = actions.close,
+        ["jk"] = actions.close,
         ["<c-j>"] = actions.move_selection_next,
         ["<c-k>"] = actions.move_selection_previous,
         ["<c-u>"] = false, -- use <c-u> for default "clear input" behaviour
