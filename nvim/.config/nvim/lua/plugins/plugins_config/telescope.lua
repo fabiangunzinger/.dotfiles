@@ -87,6 +87,9 @@ telescope.load_extension('file_browser')
 telescope.load_extension('dap')
 telescope.load_extension('projects')
 
+-- find files quick access
+vim.keymap.set("n", '<c-p>', "<cmd>Telescope find_files<cr>")
+
 wk.register(
 {
   f = {
