@@ -20,6 +20,17 @@ vim.b.slime_cell_delimiter = "#%%"
 vim.g.slime_target = "neovim"
 -- vim.g.slime_python_ipython = 1
 
+-- send code
+map("n", '<leader><cr>', '<Plug>SlimeSendCell')
+-- with ctrl+Enter, just like in e.g. RStudio
+-- needs kitty (or other terminal) config:
+-- map shift+enter send_text all \x1b[13;2u
+-- map ctrl+enter send_text all \x1b[13;5u
+-- nnoremap('<c-cr>', '<Plug>SlimeSendCell')
+-- nnoremap('<c-cr>', '<Plug>SlimeSendCell')
+-- nnoremap('<s-cr>', '<Plug>SlimeSendCell')
+-- inoremap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
+
 wk.register({
   ['<cr>'] = { '<Plug>SlimeRegionSend', 'run code region' },
   ['<leader>'] = { '<Plug>SlimeRegionSend', 'run code region' },

@@ -28,6 +28,7 @@ return {
       end
     },
   },
+
   -- send code to repl
   {
     'jpalardy/vim-slime',
@@ -35,6 +36,7 @@ return {
       require("plugins.plugins_config.slime")
     end,
   },
+
   -- lsp
   {
     'VonHeikemen/lsp-zero.nvim',

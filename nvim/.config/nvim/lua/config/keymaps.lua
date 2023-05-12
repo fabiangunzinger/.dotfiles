@@ -87,12 +87,12 @@ map("n", "<leader>\\", "<cmd>vnew<cr>", { desc = "new split window right" })
 map("n", "<leader>-", "<cmd>new<cr>", { desc = "new split window below" })
 map("n", "<leader>wd", "<cmd>quit<cr>", { desc = "new split window below" })
 
--- -- move between windows
--- -- handled by tmux config
--- map("n", '<c-h>', '<c-w>h')
--- map("n", '<c-l>', '<c-w>l')
--- map("n", '<c-j>', '<c-w>j')
--- map("n", '<c-k>', '<c-w>k')
+-- move between windows
+-- handled by tmux config
+map("n", '<c-h>', '<c-w>h')
+map("n", '<c-l>', '<c-w>l')
+map("n", '<c-j>', '<c-w>j')
+map("n", '<c-k>', '<c-w>k')
 
 -- resizing windows using <shift> arrow keys
 map("n", "<S-Up>", "<cmd>resize +2<CR>")
@@ -157,17 +157,6 @@ local function switchTheme()
     -- vim.cmd [[Catppuccin latte]]
   end
 end
-
--- send code
-map("n", '<leader><cr>', '<Plug>SlimeSendCell')
--- with ctrl+Enter, just like in e.g. RStudio
--- needs kitty (or other terminal) config:
--- map shift+enter send_text all \x1b[13;2u
--- map ctrl+enter send_text all \x1b[13;5u
--- nnoremap('<c-cr>', '<Plug>SlimeSendCell')
--- nnoremap('<c-cr>', '<Plug>SlimeSendCell')
--- nnoremap('<s-cr>', '<Plug>SlimeSendCell')
--- inoremap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
 
 wk.register(
 {
