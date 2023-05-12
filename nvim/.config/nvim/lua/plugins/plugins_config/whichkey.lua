@@ -110,15 +110,13 @@ wk.register(
     mp = { ":-tabmove<cr>", "curren to previous" },
     mn = { ":+tabmove<cr>", "current to next" },
   },
-
   c = {
-    name = "code",
-    s = { '<cmd>SlimeConfig<cr>', 'slime config' },
-    v = {"<cmd>lua _VERTICAL_TERM()<cr>", "vertical terminal" },
-    h = {"<cmd>lua _HORIZONTAL_TERM()<cr>", "horizontal terminal" },
-    f = { "<cmd>lua _FLOAT_TERM()<cr>", "flating terminal" },
-    p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "python terminal" },
-    t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "htop" },
+    name = 'code',
+    s = { ':SlimeConfig<cr>', 'slime config' },
+    n = { ':vsplit term://$SHELL<cr>', 'new terminal' },
+    r = { ':vsplit term://R<cr>', 'new R terminal' },
+    p = { ':vsplit term://python<cr>', 'new python terminal' },
+    i = { ':vsplit term://ipython<cr>', 'new ipython terminal' },
     c = {
       name = "copilot",
       d = { "<cmd>Copilot disable<cr>", "disable copilot" },
