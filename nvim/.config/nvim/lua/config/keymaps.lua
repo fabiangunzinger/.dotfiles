@@ -87,11 +87,12 @@ map("n", "<leader>\\", "<cmd>vnew<cr>", { desc = "new split window right" })
 map("n", "<leader>-", "<cmd>new<cr>", { desc = "new split window below" })
 map("n", "<leader>wd", "<cmd>quit<cr>", { desc = "new split window below" })
 
--- move between windows
-map("n", '<c-h>', '<c-w>h')
-map("n", '<c-l>', '<c-w>l')
-map("n", '<c-j>', '<c-w>j')
-map("n", '<c-k>', '<c-w>k')
+-- -- move between windows
+-- -- handled by tmux config
+-- map("n", '<c-h>', '<c-w>h')
+-- map("n", '<c-l>', '<c-w>l')
+-- map("n", '<c-j>', '<c-w>j')
+-- map("n", '<c-k>', '<c-w>k')
 
 -- resizing windows using <shift> arrow keys
 map("n", "<S-Up>", "<cmd>resize +2<CR>")

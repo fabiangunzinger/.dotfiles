@@ -80,7 +80,7 @@ return {
 
   -- enhanced terminal usage
   {
-    "akinsho/toggleterm.nvim", version = '*',
+    "akinsho/toggleterm.nvim",
     config = function()
       require("plugins.plugins_config.toggleterm")
     end

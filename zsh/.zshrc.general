@@ -56,7 +56,7 @@ alias fzs='nvim ~/.zshrc'
 alias pas='acs'   # pretty aliases
 
 # virtual environments
-function mve() { $1 -m venv .venv; }
+function cve() { $1 -m venv .venv; }
 alias ave='source ./.venv/bin/activate'
 alias dve='deactivate'
 
