@@ -31,7 +31,7 @@ return {
     end
   },
 
-  -- colorschemes 
+  -- colorschemes
   {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
@@ -178,7 +178,7 @@ return {
     end
   },
 
-  -- projects 
+  -- projects
   {
     "ahmedkhalf/project.nvim",
     config = function()
@@ -275,7 +275,7 @@ return {
   },
 
   -- show keybinding help window
-  { 
+  {
     'folke/which-key.nvim',
     config = function()
       require("plugins.plugins_config.whichkey")

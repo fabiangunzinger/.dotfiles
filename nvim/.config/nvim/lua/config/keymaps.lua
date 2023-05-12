@@ -134,6 +134,6 @@ map("n", '<leader><cr>', '<Plug>SlimeSendCell')
 -- needs kitty (or other terminal) config:
 -- map shift+enter send_text all \x1b[13;2u
 -- map ctrl+enter send_text all \x1b[13;5u
-nnoremap('<c-cr>', '<Plug>SlimeSendCell')
+-- nnoremap('<c-cr>', '<Plug>SlimeSendCell')
 -- nnoremap('<s-cr>', '<Plug>SlimeSendRegion')
 -- inoremap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
