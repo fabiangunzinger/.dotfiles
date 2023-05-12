@@ -1,15 +1,7 @@
-local present, slime = pcall(require, "vim-slime")
-if not present then
-  return
-end
-
-local present, wk = pcall(require, "whick-key")
-if not present then
-  return
-end
-
-
 vim.b.slime_cell_delimiter = "#%%"
+
+-- Disable default mappings
+vim.g.slime_no_mappings = 1
 
 -- code destination
 -- -- tmux
@@ -20,19 +12,14 @@ vim.b.slime_cell_delimiter = "#%%"
 vim.g.slime_target = "neovim"
 -- vim.g.slime_python_ipython = 1
 
--- send code
-map("n", '<leader><cr>', '<Plug>SlimeSendCell')
--- with ctrl+Enter, just like in e.g. RStudio
--- needs kitty (or other terminal) config:
--- map shift+enter send_text all \x1b[13;2u
--- map ctrl+enter send_text all \x1b[13;5u
--- nnoremap('<c-cr>', '<Plug>SlimeSendCell')
--- nnoremap('<c-cr>', '<Plug>SlimeSendCell')
--- nnoremap('<s-cr>', '<Plug>SlimeSendCell')
--- inoremap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
+vim.keymap.set("n", "<c-cr>", "<Plug>SlimeRegionSend")
+vim.keymap.set("n", "<s-cr>", "<Plug>SlimeLineSend")
+vim.keymap.set("x", "<cr>", "<Plug>SlimeRegionSend")
 
-wk.register({
-  ['<cr>'] = { '<Plug>SlimeRegionSend', 'run code region' },
-  ['<leader>'] = { '<Plug>SlimeRegionSend', 'run code region' },
-}, { mode = 'v', prefix = "<leader>" })
 
+
+-- wk.register({
+--   ['<cr>'] = { '<Plug>SlimeRegionSend', 'run code region' },
+--   ['<leader>'] = { '<Plug>SlimeRegionSend', 'run code region' },
+-- }, { mode = 'v', prefix = "<leader>" })
+--
