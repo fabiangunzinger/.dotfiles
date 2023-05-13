@@ -88,14 +88,12 @@ lualine.setup({
     },
     lualine_y = {
       {
-        "location",
-        fmt = customLocation,
+        "datetime",
+        fmt = CustomDatetime
       },
     },
     lualine_z = {
       {
-        "progress",
-        fmt = customProgress,
       },
     },
   },
@@ -136,7 +134,7 @@ lualine.setup({
     lualine_c = {
       {
         "filename",
-        path = 3,
+        path = 0,
         symbols = {
           modified = "[+]",
           readonly = "[]",
@@ -144,22 +142,18 @@ lualine.setup({
         },
       },
     },
-    lualine_x = {
-      {
-        "datetime",
-        fmt = CustomDatetime
-      }
-    },
+    lualine_x = {},
     lualine_y = {
       {
-        "buffers",
-        mode = 4,
-        show_filename_only = true,
-        max_length = vim.o.columns * 1 / 2
+        "location",
+        fmt = customLocation,
       },
     },
     lualine_z = {
-      { "tabs" },
+      {
+        "progress",
+        fmt = customProgress,
+      },
     },
   },
   inactive_sections = {},

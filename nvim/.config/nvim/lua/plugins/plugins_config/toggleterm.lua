@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local wk = require("which-key")
+
 toggleterm.setup {
   size = 20,
   open_mapping = [[<c-\>]],
@@ -93,29 +95,9 @@ end
 
 -- -- vim.keymap.set("n", "<leader>cv", "<cmd>lua _VERTICAL_TERM()<cr>")
 -- -- vim.keymap.set("n", "<leader>ch", "<cmd>lua _HORIZONTAL_TERM()<cr>")
--- -- vim.keymap.set("n", "<leader>cf", "<cmd>lua _FLOAT_TERM()<cr>")
+-- vim.keymap.set("n", "<leader>cf", "<cmd>lua _FLOAT_TERM()<cr>")
 -- -- vim.keymap.set("n", "<leader>cp", "<cmd>lua _PYTHON_TOGGLE()<cr>")
 -- -- vim.keymap.set("n", "<leader>ct", "<cmd>lua _HTOP_TOGGLE()<cr>")
 -- --
 -- local wk = require("which-key")
 
--- wk.register({
---   c = {
---     name = "code",
---     v = {"<cmd>lua _VERTICAL_TERM()<cr>"},
---     h = {"<cmd>lua _HORIZONTAL_TERM()<cr>"},
---     f = { "<cmd>lua _FLOAT_TERM()<cr>"},
---     p = { "<cmd>lua _PYTHON_TOGGLE()<cr>"},
---     t = { "<cmd>lua _HTOP_TOGGLE()<cr>"},
---   }, { mode = {"n"}, prefix = "<leader>"},
--- })
---     -- c = {
---     --   name = 'code',
---     --   c = { ':SlimeConfig<cr>', 'slime config' },
---     --   n = {  ':vsplit term://$SHELL<cr>', 'new terminal (vertical)' },
---     --   h = {  ':split term://$SHELL<cr>', 'new terminal (horizontal)' },
---     --   p = {  ':vsplit term://python<cr>', 'new python terminal' },
---     --   i = {  ':vsplit term://ipython<cr>', 'new ipython terminal' },
---     --   r = {  ':vsplit term://R<cr>', 'new R terminal' },
---     --   s = {  ':echo b:terminal_job_id<cr>', 'show terminal id' },
---     -- },

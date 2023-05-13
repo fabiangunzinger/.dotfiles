@@ -1,15 +1,7 @@
-local present, slime = pcall(require, "vim-slime")
-if not present then
-  return
-end
-
-local present, wk = pcall(require, "whick-key")
-if not present then
-  return
-end
-
-
 vim.b.slime_cell_delimiter = "#%%"
+
+-- Disable default mappings
+vim.g.slime_no_mappings = 1
 
 -- code destination
 -- -- tmux
@@ -20,8 +12,7 @@ vim.b.slime_cell_delimiter = "#%%"
 vim.g.slime_target = "neovim"
 -- vim.g.slime_python_ipython = 1
 
-wk.register({
-  ['<cr>'] = { '<Plug>SlimeRegionSend', 'run code region' },
-  ['<leader>'] = { '<Plug>SlimeRegionSend', 'run code region' },
-}, { mode = 'v', prefix = "<leader>" })
-
+vim.keymap.set("n", "<c-cr>", "<Plug>SlimeParagraphSend")
+vim.keymap.set("x", "<cr>", "<Plug>SlimeRegionSend")
+vim.keymap.set("n", "<s-cr>", "<Plug>SlimeLineSend")
+vim.keymap.set("n", "<leader><cr>", "<Plug>SlimeMotionSend")
