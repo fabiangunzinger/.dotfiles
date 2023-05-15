@@ -71,6 +71,7 @@ map("n", "N", "Nzzzv")
 map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
+map("i", "-", "-<c-g>u")
 
 -- buffers
 map("n", "<leader>bb", "<cmd>enew<cr>", { desc = "new buffer" })

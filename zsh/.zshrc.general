@@ -11,16 +11,24 @@
 # chatgpt
 source "$HOME/.openai_key.zsh"
 
+# venv
+function cve() { $1 -m venv .venv; }
+alias ave='source ./.venv/bin/activate'
+alias dve='deactivate'
+
+alias pi='python -m pip install'
+alias pf='python -m pip freeze > requirements.txt'
+alias pir='python -m pip install -r requriements.txt'
+
+alias aqu='source ~/.venvs/quarto3.10/bin/activate'
+
 # ssh
 function sshn() { ssh-keygen -t ed25519 -C $1; }
 
-# pip
-alias pi='python -m pip install'
-
 # blog
-alias bpr='quarto preview'
-alias bre='quarto render && hugo'
-function bnp() { "hugo new posts/$1"; }
+alias wpr='quarto preview'
+alias wre='quarto render && hugo'
+function wnp() { hugo new posts/$1; }
 
 # nvim
 alias v="nvim"
@@ -55,24 +63,6 @@ alias omzu='omz update'
 alias fzs='nvim ~/.zshrc'
 alias pas='acs'   # pretty aliases
 
-# virtual environments
-function cve() { $1 -m venv .venv; }
-alias ave='source ./.venv/bin/activate'
-alias dve='deactivate'
-
-# activate commonly used venvs
-alias aqu='source ~/.venvs/quarto3.10/bin/activate'
-
-
-# blog
-alias dwo='dpr; cd wowchemy'
-alias dwop='dwo; cd content/post'
-alias dwoc='dwo; cd config/_default'
-alias awo='dwop; ca wow'
-alias jwo='awo; jula'
-function hnp() { hugo new --kind post content/post/$1; }
-alias hs='hugo server -D'
-alias nbc='jupyter nbconvert --to html'
 
 # running processes
 alias rp='ps aux | grep '               # ..pattern; list processes

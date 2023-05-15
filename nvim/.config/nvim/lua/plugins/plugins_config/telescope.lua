@@ -24,7 +24,7 @@ local often_used_dirs = {
   "~/.dotfiles",
   "~/notes/",
   "~/dev/projects/notes/",
-  "~/dev/projects/blog/",
+  "~/dev/projects/fabiangunzinger.github.io/",
 }
 
 
