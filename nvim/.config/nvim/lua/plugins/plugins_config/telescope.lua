@@ -85,7 +85,7 @@ telescope.load_extension('fzf')
 telescope.load_extension('ui-select')
 telescope.load_extension('file_browser')
 telescope.load_extension('dap')
-telescope.load_extension('projects')
+-- telescope.load_extension('projects')
 
 -- find files quick access
 vim.keymap.set("n", '<c-p>', "<cmd>Telescope find_files<cr>")
@@ -97,6 +97,7 @@ wk.register(
     f = { '<cmd>Telescope find_files<cr>', 'files' },
     g = { '<cmd>Telescop live_grep<cr>', 'grep' },
     b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "buffer" },
+    d = { "<cmd>Telescope buffers<cr>", "buffers" },
     h = { '<cmd>Telescope help_tags<cr>', 'help tags' },
     k = { '<cmd>Telescope keymaps<cr>', 'keymaps' },
     r = { '<cmd>Telescope lsp_references<cr>', 'references' },
@@ -104,11 +105,10 @@ wk.register(
     M = { "<cmd>Telescope man_pages<cr>", "man pages" },
     c = { "<cmd>Telescope git_commits<cr>", "git commits" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "symbols" },
-    d = { "<cmd>Telescope buffers<cr>", "buffers" },
     q = { "<cmd>Telescope quickfix<cr>", "quickfix" },
     l = { "<cmd>Telescope loclist<cr>", "loclist" },
     j = { "<cmd>Telescope jumplist<cr>", "marks" },
-    p = { "project" },
+    -- p = { "project" },
     o = { function() builtin.find_files({ search_dirs = often_used_dirs }) end, "search often used dirs" }
   },
 }, { mode = 'n', prefix = '<leader>' }
