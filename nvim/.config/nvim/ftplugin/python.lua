@@ -43,6 +43,7 @@ neotest.setup({
       },
       args = { "--log-level", "DEBUG", "--quiet" },
       runner = "pytest",
+      python = ".venv/bin/python"
     })
   }
 })
