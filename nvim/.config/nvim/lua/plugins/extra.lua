@@ -142,9 +142,20 @@ return {
   { "stevearc/dressing.nvim" },
   { "nvim-neotest/neotest-python" },
   { "nvim-neotest/neotest" },
-  { 'mfussenegger/nvim-dap' },
-  { 'rcarriga/nvim-dap-ui' },
-  { "mfussenegger/nvim-dap-python" },
+
+  -- debugging
+  {
+    'mfussenegger/nvim-dap',
+    dependencies = {
+      {
+        'rcarriga/nvim-dap-ui',
+        config = function()
+          require("plugins.plugins_config.nvim-dap-ui")
+        end
+      },
+      { 'mfussenegger/nvim-dap-python' },
+    },
+  },
 
   -- git integration
   {

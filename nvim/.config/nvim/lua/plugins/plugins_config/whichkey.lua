@@ -133,7 +133,7 @@ wk.register(
     o = { "<cmd>lua require'dap'.step_over()<cr>", "debug over" },
     i = { "<cmd>lua require'dap'.step_into()<cr>", "debug into" },
     r = { "<cmd>lua require'dap'.repl_open()<cr>", "debug repl" },
-    u = { "<cmd>lua require'dapui'.toggle()<cr>", "debug into" },
+    u = { "<cmd>lua require'dapui'.toggle()<cr>", "dapui toggle" },
     t = {
       name = "test",
       m = { "<cmd>lua require('neotest').run.run()<cr>", "test method" },

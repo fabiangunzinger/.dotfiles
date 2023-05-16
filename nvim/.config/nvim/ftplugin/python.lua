@@ -27,7 +27,9 @@ null_ls.setup({ sources = sources })
 
 -- debugging
 local dap_python = require("dap-python")
+local dapui = require("dapui")
 dap_python.setup("~/.venvs/debugpy3.10/bin/python")
+dapui.setup()
 
 
 -- testing
