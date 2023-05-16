@@ -15,7 +15,7 @@ require("mason-lspconfig").setup({
   automatic_installation = true
 })
 
--- lsp setup 
+-- lsp setup
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({
     buffer = bufnr,
@@ -48,7 +48,7 @@ lspconfig.lua_ls.setup {
   settings = {
     Lua = {
       diagnostics = {
-        globals = { 'vim', 'quarto', 'pandoc', 'io', 'string', 'print', 'require', 'table', },
+        globals = { 'vim', 'quarto', 'pandoc' },
         disable = { 'trailing-space' },
       },
     },
