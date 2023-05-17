@@ -108,6 +108,7 @@ wk.register(
     q = { "<cmd>Telescope quickfix<cr>", "quickfix" },
     l = { "<cmd>Telescope loclist<cr>", "loclist" },
     j = { "<cmd>Telescope jumplist<cr>", "marks" },
+    w = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
     -- p = { "project" },
     o = { function() builtin.find_files({ search_dirs = often_used_dirs }) end, "search often used dirs" }
   },

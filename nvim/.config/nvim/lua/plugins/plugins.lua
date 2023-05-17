@@ -203,6 +203,13 @@ return {
     end
   },
 
+  {
+  'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup {}
+  end
+  },
+
   -- send code to repl
   {
     'jpalardy/vim-slime',
@@ -234,6 +241,9 @@ return {
       vim.cmd.colorscheme "gruvbox"
     end
   },
+  { "catppuccin/nvim", name = "catppuccin" },
+  { 'rose-pine/neovim', name = 'rose-pine' },
+  { 'folke/tokyonight.nvim' },
 
   -- copilot
   {
@@ -278,13 +288,6 @@ return {
   --       }
   --     }
   --   end
-  -- },
-
-  -- {
-  -- 'lewis6991/gitsigns.nvim',
-  --   config = function()
-  --     require('gitsigns').setup {}
-  -- end
   -- },
 
   -- -- tab bar

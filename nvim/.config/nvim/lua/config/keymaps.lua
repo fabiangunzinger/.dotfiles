@@ -43,9 +43,6 @@ map("n", "<leader>sv", "<cmd>luafile: $MYVIMRC<cr>")
 -- open help for word under cursor
 map("n", '<leader>vh', ':execute "h " . expand("<cword>")<cr>')
 
--- source entire file
-map("n", '<leader>xx', ':w<cr>:source %<cr>')
-
 -- center after search and jumps
 map("n", 'n', "nzz")
 map("n", '<c-d>', '<c-d>zz')
@@ -81,9 +78,8 @@ map("n", '<leader>ls', ':ls!<cr>', { desc = "list hidden buffers" })
 -- open and close windows
 map("n", "<leader>w\\", "<cmd>vsplit<cr>", { desc = "split window right" })
 map("n", "<leader>w-", "<cmd>split<cr>", { desc = "split window below" })
-map("n", "<leader>\\", "<cmd>vnew<cr>", { desc = "new split window right" })
-map("n", "<leader>-", "<cmd>new<cr>", { desc = "new split window below" })
-map("n", "<leader>wd", "<cmd>quit<cr>", { desc = "new split window below" })
+map("n", "<leader>\\", "<cmd>vnew<cr>", { desc = "empty split window right" })
+map("n", "<leader>-", "<cmd>new<cr>", { desc = "empty split window below" })
 
 -- move between windows
 map("n", '<c-h>', '<c-w>h')
@@ -106,6 +102,8 @@ map("n", 'H', '<cmd>tabprevious<cr>')
 map("n", 'L', '<cmd>tabnext<cr>')
 map("n", "<leader><tab>l", "<cmd>tablast<cr>")
 map("n", "<leader><tab>f", "<cmd>tabfirst<cr>")
+map("n", "<leader><tab>p", "<:-tabmove<cr>", { desc = "current to previous" })
+map("n", "<leader><tab>n", ":+tabmove<cr>", { desc = "current to next" })
 
 -- Set key mappings for terminal mode
 function _G.set_terminal_keymaps()

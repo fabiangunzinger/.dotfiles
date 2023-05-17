@@ -1,51 +1,100 @@
 local wk = require("which-key")
 
--- show kepbindings with whichkey
-local function open_plugin()
-  local word = vim.fn.expand('<cWORD>')
-  -- url = string.match(url, '".+"')
-  local url = string.match(word, '%b""')
-  if url ~= nil then
-    url = string.gsub(url, '["\']', '')
-  else
-    url = string.match(word, "%b''")
-    if url ~= nil then
-      url = string.gsub(url, '["\']', '')
-    end
-  end
-  url = 'https://github.com/' .. url
-  local cmd = "!brave-browser " .. url
-  vim.cmd(cmd)
-end
 
-local function switchTheme()
-  if vim.o.background == 'light' then
-    vim.o.background = 'dark'
-    -- vim.cmd [[Catppuccin mocha]]
-  else
-    vim.o.background = 'light'
-    -- vim.cmd [[Catppuccin latte]]
-  end
-end
+wk.setup {
+  plugins = {
+    marks = true, -- shows a list of your marks on ' and `
+    registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+    spelling = {
+      enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+      suggestions = 20, -- how many suggestions should be shown in the list?
+    },
+    presets = {
+      operators = true, -- adds help for operators like d, y, ...
+      motions = true, -- adds help for motions
+      text_objects = true, -- help for text objects triggered after entering an operator
+      windows = true, -- default bindings on <c-w>
+      nav = true, -- misc bindings to work with windows
+      z = true, -- bindings for folds, spelling and others prefixed with z
+      g = true, -- bindings for prefixed with g
+    },
+  },
+  -- add operators that will trigger motion and text object completion
+  -- to enable all native operators, set the preset / operators plugin above
+  operators = { gc = "Comments" },
+  key_labels = {
+    -- override the label used to display some keys. It doesn't effect WK in any other way.
+    -- For example:
+    -- ["<space>"] = "SPC",
+    -- ["<cr>"] = "RET",
+    -- ["<tab>"] = "TAB",
+  },
+  motions = {
+    count = true,
+  },
+  icons = {
+    breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+    separator = "➜", -- symbol used between a key and it's label
+    group = "+", -- symbol prepended to a group
+  },
+  popup_mappings = {
+    scroll_down = "<c-d>", -- binding to scroll down inside the popup
+    scroll_up = "<c-u>", -- binding to scroll up inside the popup
+  },
+  window = {
+    border = "none", -- none, single, double, shadow
+    position = "bottom", -- bottom, top
+    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
+    padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
+    winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+    zindex = 1000, -- positive value to position WhichKey above other floating windows.
+  },
+  layout = {
+    height = { min = 4, max = 25 }, -- min and max height of the columns
+    width = { min = 20, max = 50 }, -- min and max width of the columns
+    spacing = 3, -- spacing between columns
+    align = "left", -- align columns left, center or right
+  },
+  ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
+  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "^:", "^ ", "^call ", "^lua " }, -- hide mapping boilerplate
+  show_help = true, -- show a help message in the command line for using WhichKey
+  show_keys = true, -- show the currently pressed key and its label as a message in the command line
+  triggers = "auto", -- automatically setup triggers
+  -- triggers = {"<leader>"} -- or specifiy a list manually
+  -- list of triggers, where WhichKey should not wait for timeoutlen and show immediately
+  triggers_nowait = {
+    -- marks
+    -- "`",
+    -- "'",
+    -- "g`",
+    "g'",
+    -- registers
+    -- '"',
+    -- "<c-r>",
+    -- spelling
+    "z=",
+  },
+  triggers_blacklist = {
+    -- list of mode / prefixes that should never be hooked by WhichKey
+    -- this is mostly relevant for keymaps that start with a native binding
+    i = { "j", "k" },
+    v = { "j", "k" },
+  },
+  -- disable the WhichKey popup for certain buf types and file types.
+  -- Disabled by default for Telescope
+  disable = {
+    buftypes = {},
+    filetypes = {},
+  },
+}
+
+
 
 wk.register(
   {
     g = {
       name = "git",
-      g = { ":Neogit<cr>", "neogit" },
       s = { ":Gitsigns<cr>", "gitsigns" },
-      pl = { ":Octo pr list<cr>", "gh pr list" },
-      pr = { ":Octo review start<cr>", "gh pr review" },
-      w = {
-        name = "worktree",
-        c = { ":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "worktree create" },
-        s = { ":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "worktree switch" },
-      },
-      d = {
-        name = 'diff',
-        o = { ':DiffviewOpen<cr>', 'open' },
-        c = { ':DiffviewClose<cr>', 'close' },
-      },
       c = {
         name = "git conflict",
         o = { "<Plug>(git-conflict-ours)", "use ours" },
@@ -58,8 +107,6 @@ wk.register(
     },
     v = {
       name = 'vim',
-      p = {open_plugin, 'open plugin'},
-      t = { switchTheme, 'switch theme' },
       c = { ':Telescope colorscheme<cr>', 'colortheme' },
       l = { ':Lazy<cr>', 'Lazy' },
       m = { ':Mason<cr>', 'Mason' },
@@ -79,50 +126,12 @@ wk.register(
         d = { vim.diagnostic.disable, 'disable' },
         e = { vim.diagnostic.enable, 'enable' },
       },
-      g = { ':Neogen<cr>', 'neogen docstring'}
-    },
-    q = {
-      name = 'quarto',
-      a = { ":QuartoActivate<cr>", 'activate' },
-      c = {
-        name = "git conflict",
-        o = { "<Plug>(git-conflict-ours)", "use ours" },
-      },
-      p = { ":lua require'quarto'.quartoPreview()<cr>", 'preview' },
-      q = { ":lua require'quarto'.quartoClosePreview()<cr>", 'close' },
-      h = { ":QuartoHelp ", 'help' },
-      e = { ":lua require'otter'.export()<cr>", 'export' },
-      E = { ":lua require'otter'.export(true)<cr>", 'export overwrite' },
-    },
-    s = {
-      name = "spellcheck",
-      s = { "<cmd>Telescope spell_suggest<cr>", "spelling" },
-      ['/'] = { '<cmd>setlocal spell!<cr>', 'spellcheck' },
-      n = { ']s', 'next' },
-      p = { '[s', 'previous' },
-      g = { 'zg', 'good' },
-      r = { 'zg', 'rigth' },
-      w = { 'zw', 'wrong' },
-      b = { 'zw', 'bad' },
-      ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
-    },
-    t = {
-      name = "tab",
-      a = { ":$tabnew<cr>", "new tab" },
-      c = { ":tabclose<cr>", "close tab" },
-      o = { ":tabonly<cr>", "only this tab" },
-      n = { ":tabnext<cr>", "next tab" },
-      p = { ":tabprevious<cr>", "previous tab" },
-      f = { ":tabfirst<cr>", "first tab" },
-      l = { ":tablast<cr>", "last tab" },
-      mp = { ":-tabmove<cr>", "curren to previous" },
-      mn = { ":+tabmove<cr>", "current to next" },
     },
     c = {
       name = "code",
       s = { '<cmd>SlimeConfig<cr>', 'slime config' },
-      v = {"<cmd>lua _VERTICAL_TERM()<cr>", "vertical terminal" },
-      h = {"<cmd>lua _HORIZONTAL_TERM()<cr>", "horizontal terminal" },
+      v = { "<cmd>lua _VERTICAL_TERM()<cr>", "vertical terminal" },
+      h = { "<cmd>lua _HORIZONTAL_TERM()<cr>", "horizontal terminal" },
       f = { "<cmd>lua _FLOAT_TERM()<cr>", "flating terminal" },
       p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "python terminal" },
       t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "htop" },
@@ -133,7 +142,16 @@ wk.register(
         -- n = { "<Plug>(copilot-next)", "next suggestion" },
         -- p = { "<Plug>(copilot-prev)", "previous suggestion" },
         -- s = { "<Plug>(copilot-suggest)", "suggest" },
-      }
+      },
+      q = {
+        name = 'quarto',
+        a = { ":QuartoActivate<cr>", 'activate' },
+        p = { ":lua require'quarto'.quartoPreview()<cr>", 'preview' },
+        q = { ":lua require'quarto'.quartoClosePreview()<cr>", 'close' },
+        h = { ":QuartoHelp ", 'help' },
+        e = { ":lua require'otter'.export()<cr>", 'export' },
+        E = { ":lua require'otter'.export(true)<cr>", 'export overwrite' },
+      },
     },
     d = {
       name = "debug",
@@ -176,5 +194,3 @@ wk.register({
 wk.register({
   ['q'] = { ':norm @q<cr>', 'repat q macro' },
 }, { mode = 'v' })
-
-

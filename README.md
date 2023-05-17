@@ -1,4 +1,4 @@
-# .dotfiles
+#r .dotfiles
 
 ## dotfile management
 
@@ -77,6 +77,14 @@ Remember:
 - I use `lazy.nvim` as my package manager.
 
 - For `quarto` autocompletion to work, I need to select the kernel I want to use in the quarto doc, and I need to have the corresponding venv activated when I start nvim.
+
+
+## Quarto setup
+
+- Install Quarto on mac `brew install -cask quarto`.
+
+- 
+
 
 
 ## Acknowledgements
