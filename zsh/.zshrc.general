@@ -114,7 +114,7 @@ pe() { vi $(find . -name *$1*); }
 
 # jupyter kernels
 ## Install ipykernel of venv in current directory into jupyter venv
-function iki { ./.venv/bin/python -m ipykernel install --prefix=~/.venvs/jupyter3.10/ --name "$1"; }
+function iki { ./.venv/bin/python -m ipykernel install --prefix=$HOME/.venvs/jupyter3.10/ --name "$1"; }
 ## Install ipykernel into its own project environment
 function ikio { python -m ipykernel install --name $1 --user; }
 ## Manage kernels
