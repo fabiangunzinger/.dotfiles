@@ -127,58 +127,6 @@ wk.register(
         e = { vim.diagnostic.enable, 'enable' },
       },
     },
-<<<<<<< HEAD
-    g = { ':Neogen<cr>', 'neogen docstring'}
-  },
-  q = {
-    name = 'quarto',
-    a = { ":QuartoActivate<cr>", 'activate' },
-    p = { ":lua require'quarto'.quartoPreview()<cr>", 'preview' },
-    q = { ":lua require'quarto'.quartoClosePreview()<cr>", 'close' },
-    h = { ":QuartoHelp ", 'help' },
-    e = { ":lua require'otter'.export()<cr>", 'export' },
-    E = { ":lua require'otter'.export(true)<cr>", 'export overwrite' },
-  },
-  h = {
-    name = 'hidden',
-    h = {':set conceallevel=1<cr>', 'hide/conceal'},
-    s = {':set conceallevel=0<cr>', 'show/unconceal'},
-  },
-  -- s = {
-
-  --   name = "spellcheck",
-  --   s = { "<cmd>Telescope spell_suggest<cr>", "spelling" },
-  --   ['/'] = { '<cmd>setlocal spell!<cr>', 'spellcheck' },
-  --   n = { ']s', 'next' },
-  --   p = { '[s', 'previous' },
-  --   g = { 'zg', 'good' },
-  --   r = { 'zg', 'rigth' },
-  --   w = { 'zw', 'wrong' },
-  --   b = { 'zw', 'bad' },
-  --   ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
-  -- },
-
-  t = {
-    name = "tab",
-    a = { ":$tabnew<cr>", "new tab" },
-    c = { ":tabclose<cr>", "close tab" },
-    o = { ":tabonly<cr>", "only this tab" },
-    n = { ":tabnext<cr>", "next tab" },
-    p = { ":tabprevious<cr>", "previous tab" },
-    f = { ":tabfirst<cr>", "first tab" },
-    l = { ":tablast<cr>", "last tab" },
-    mp = { ":-tabmove<cr>", "curren to previous" },
-    mn = { ":+tabmove<cr>", "current to next" },
-  },
-  c = {
-    name = 'code',
-    s = { ':SlimeConfig<cr>', 'slime config' },
-    n = { ':vsplit term://$SHELL<cr>', 'new terminal' },
-    r = { ':vsplit term://R<cr>', 'new R terminal' },
-    p = { ':vsplit term://python<cr>', 'new python terminal' },
-    i = { ':vsplit term://ipython<cr>', 'new ipython terminal' },
-=======
->>>>>>> stable
     c = {
       name = "code",
       s = { '<cmd>SlimeConfig<cr>', 'slime config' },
@@ -220,31 +168,9 @@ wk.register(
         f = { "<cmd>lua require('neotest').run.run({ vim.fn.expand('%') })<cr>", "test file" },
         F = { "<cmd>lua require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' })<cr>", "test file DAP" },
         s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "test summary" }
-      }
-    }
-<<<<<<< HEAD
-  },
-  d = {
-    name = "debug",
-    b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "debug breakpoint" },
-    c = { "<cmd>lua require'dap'.continue()<cr>", "debug continue" },
-    o = { "<cmd>lua require'dap'.step_over()<cr>", "debug over" },
-    i = { "<cmd>lua require'dap'.step_into()<cr>", "debug into" },
-    r = { "<cmd>lua require'dap'.repl_open()<cr>", "debug repl" },
-    u = { "<cmd>lua require'dapui'.toggle()<cr>", "dapui toggle" },
-    t = {
-      name = "test",
-      m = { "<cmd>lua require('neotest').run.run()<cr>", "test method" },
-      M = { "<cmd>lua require('neotest').run.run({ strategy = 'dap' })<cr>", "test method DAP" },
-      f = { "<cmd>lua require('neotest').run.run({ vim.fn.expand('%') })<cr>", "test file" },
-      F = { "<cmd>lua require('neotest').run.run({ vim.fn.expand('%'), strategy = 'dap' })<cr>", "test file DAP" },
-      s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "test summary" }
-    }
-  }
-}, { mode = 'n', prefix = '<leader>' }
-=======
+      },
+    },
   }, { mode = 'n', prefix = '<leader>' }
->>>>>>> stable
 )
 
 
