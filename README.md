@@ -1,4 +1,4 @@
-# .dotfiles
+#r .dotfiles
 
 ## dotfile management
 
@@ -81,6 +81,14 @@ Remember:
 ## Useful stuff
 
 - [Figlet](http://www.figlet.org/) creates font banners. To use, after brew install, do something like `figlet -f colossal "Hello world"`. 
+
+
+## Quarto setup
+
+- Install Quarto on mac `brew install -cask quarto`.
+
+- 
+
 
 
 ## Acknowledgements

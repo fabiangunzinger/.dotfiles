@@ -45,27 +45,8 @@ neotest.setup({
       },
       args = { "--log-level", "DEBUG", "--quiet" },
       runner = "pytest",
+      python = ".venv/bin/python"
     })
   }
 })
 
--- keybindings
-local wk = require("which-key")
-
-local opts = {
-  mode = "n", -- NORMAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-}
-
-local mappings = {
-  p = {
-    name = "python",
-    c = { "<cmd>lua require('swenv.api').pick_venv()<cr>", "choose venv" },
-  }
-}
-
-wk.register(mappings, opts)
