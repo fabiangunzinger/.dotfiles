@@ -236,12 +236,18 @@ return {
   -- colorschemes
   {
     "ellisonleao/gruvbox.nvim",
-    priority = 1000,
+    -- priority = 1000,
+    -- config = function()
+    --   vim.cmd.colorscheme "gruvbox"
+    -- end
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
     config = function()
-      vim.cmd.colorscheme "gruvbox"
+      vim.cmd.colorscheme "catppuccin-macchiato"
     end
   },
-  { "catppuccin/nvim", name = "catppuccin" },
 
   -- copilot
   {
