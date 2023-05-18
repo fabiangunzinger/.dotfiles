@@ -1,7 +1,10 @@
 return {
 
   -- common dependencies
-  { 'nvim-lua/plenary.nvim' },
+  {
+    'nvim-lua/plenary.nvim',
+    tag = "v0.1.3",
+  },
 
   -- object finder
   {
@@ -18,10 +21,10 @@ return {
   { 'nvim-telescope/telescope-file-browser.nvim' },
   -- { 'nvim-telescope/telescope-project.nvim' },
 
-  -- filetree
+  -- filetree (has only 'nightly' tags)
   {
     "nvim-tree/nvim-tree.lua",
-    version = "*",
+    commit = "736c7ff59065275f0483af4b7f07a9bc41449ad0",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
@@ -31,7 +34,9 @@ return {
   },
 
   -- statusbar
-  { 'nvim-lualine/lualine.nvim',
+  { 
+    'nvim-lualine/lualine.nvim',
+    commit = "05d78e9fd0cdfb4545974a5aa14b1be95a86e9c9",
     config = function()
       require("plugins.plugins_config.lualine")
     end
@@ -40,6 +45,7 @@ return {
   -- show keybinding help window
   {
     'folke/which-key.nvim',
+    version = "1.4.2",
     config = function()
       require("plugins.plugins_config.whichkey")
     end,
@@ -48,6 +54,7 @@ return {
   -- completion
   {
     'hrsh7th/nvim-cmp',
+    version = "0.0.1",
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-nvim-lsp-signature-help' },
@@ -67,17 +74,25 @@ return {
     end
   },
 
+  -- lsp plugins
+  {
+    "williamboman/mason.nvim",
+    version = "1.1.0",
+    build = ":MasonUpdate",
+    config = function()
+      require("mason").setup()
+    end,
+  },
+
   -- lsp
   {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    commit = "22650751435e8d31ea65ab97a66393cabad244a8",
     dependencies = {
       {'neovim/nvim-lspconfig'},
       {
         'williamboman/mason.nvim',
-        build = function()
-          vim.cmd('MasonUpdate')
-        end,
+        build = ":MasonUpdate",
       },
       {'williamboman/mason-lspconfig.nvim'},
       -- Autocompletion
@@ -93,7 +108,7 @@ return {
   -- snippets
   {
     "L3MON4D3/LuaSnip",
-    version = 1,
+    version = "1.2.1",
     dependencies = {
       'honza/vim-snippets',
       config = function()
@@ -108,6 +123,7 @@ return {
   -- syntax highlighs
   {
     'nvim-treesitter/nvim-treesitter',
+    tag = "v0.9.0",
     config = function()
       require("plugins.plugins_config.treesitter")
     end
@@ -130,18 +146,18 @@ return {
     end
   },
 
-  -- quarto support
-  {
-    'quarto-dev/quarto-nvim',
-    dev = false,
-    dependencies = {
-      { 'hrsh7th/nvim-cmp' },
-      { 'jmbuhr/otter.nvim'},
-    },
-    config = function()
-      require("plugins.plugins_config.quarto")
-    end
-  },
+  -- -- quarto support
+  -- {
+  --   'quarto-dev/quarto-nvim',
+  --   dev = false,
+  --   dependencies = {
+  --     { 'hrsh7th/nvim-cmp' },
+  --     { 'jmbuhr/otter.nvim'},
+  --   },
+  --   config = function()
+  --     require("plugins.plugins_config.quarto")
+  --   end
+  -- },
 
   -- use . after plugin map
   { 'tpope/vim-repeat' },
@@ -164,8 +180,7 @@ return {
   -- smart commenting
   {
     'numToStr/Comment.nvim',
-    version = nil,
-    branch = 'master',
+    commit = "e1fe53117aab24c378d5e6deaad786789c360123",
     config = true,
   },
 
@@ -235,13 +250,14 @@ return {
 
   -- colorschemes
   {
-    "ellisonleao/gruvbox.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
+    version = "1.1.1",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme "gruvbox"
+      vim.cmd.colorscheme "catppuccin-macchiato"
     end
   },
-  { "catppuccin/nvim", name = "catppuccin" },
 
   -- copilot
   {
