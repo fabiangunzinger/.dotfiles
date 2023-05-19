@@ -1,13 +1,27 @@
---  bootstrap lazy package manager
---  <https://github.com/folke/lazy.nvim>
+-- --  bootstrap lazy package manager
+-- --  <https://github.com/folke/lazy.nvim>
+-- local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+-- if not vim.loop.fs_stat(lazypath) then
+--   vim.fn.system({
+--     "git",
+--     "clone",
+--     "--filter=blob:none",
+--     "--single-branch",
+--     "https://github.com/folke/lazy.nvim.git",
+--     lazypath,
+--   })
+-- end
+-- vim.opt.runtimepath:prepend(lazypath)
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
-    "--single-branch",
     "https://github.com/folke/lazy.nvim.git",
+    -- "--branch=stable", -- latest stable release
+    "--branch=v9.16.1", -- latest stable release
     lazypath,
   })
 end
