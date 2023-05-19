@@ -31,6 +31,8 @@
 - I use [`bat`](https://github.com/sharkdp/bat) (an improved version of cat) to
   quickly view files.
 
+- I follow [this](https://www.reddit.com/r/vim/comments/u1kppk/comment/i4ecygu/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button) suggestion and map the meta key to my left option key, so I can use `M` key bindings in vim. I do this by setting the mapping in iTerm: `ITerm2 -> Preferences -> Profiles -> keys -> General -> Choose "left Option key " as "Esc+"`.
+
 
 ## Python setup 
 
