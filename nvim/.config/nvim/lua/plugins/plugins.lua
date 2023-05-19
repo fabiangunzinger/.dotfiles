@@ -90,6 +90,8 @@ return {
     end
   },
 
+  { "jose-elias-alvarez/null-ls.nvim" },
+
   -- snippets
   {
     "L3MON4D3/LuaSnip",
@@ -244,6 +246,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
+    priority = 1000,
     config = function()
       vim.cmd.colorscheme "catppuccin-macchiato"
     end
@@ -323,9 +326,10 @@ return {
   --   end
   -- },
 
-  -- { "jose-elias-alvarez/null-ls.nvim" },
-  -- { "ChristianChiarulli/swenv.nvim" },
+  -- -- pretty looking ui
   -- { "stevearc/dressing.nvim" },
+
+  -- { "ChristianChiarulli/swenv.nvim" },
 
   -- -- pretty diagnostics list
   -- { "folke/trouble.nvim", config = function()
