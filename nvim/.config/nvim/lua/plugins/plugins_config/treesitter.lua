@@ -13,7 +13,7 @@ configs.setup {
     'lua',
     'vim',
     'query',
-    'latex'
+    'latex',
   },
   highlight = {
     enable = true,

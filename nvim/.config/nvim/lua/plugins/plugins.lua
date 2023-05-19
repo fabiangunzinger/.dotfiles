@@ -2,7 +2,7 @@ return {
 
   -- common dependencies
   {
-    'nvim-ua/plenary.nvim',
+    'nvim-lua/plenary.nvim',
     tag = "v0.1.3",
   },
 
@@ -140,7 +140,7 @@ return {
   -- syntax highlighs
   {
     'nvim-treesitter/nvim-treesitter',
-    tag = "v0.9.0",
+    commit = "05df88ebaa94d30d682d076244615786d9e7c1a5",
     config = function()
       require("plugins.plugins_config.treesitter")
     end
@@ -175,7 +175,7 @@ return {
     'quarto-dev/quarto-nvim',
     version = "0.10.0",
     dependencies = {
-      { 'jmbuhr/otter.nvim', verison = "0.12.0" },
+      { 'jmbuhr/otter.nvim', version = "0.12.0" },
       'nvim-cmp'
     },
     config = function()
@@ -282,7 +282,7 @@ return {
   -- measure startuptime
   {
     "dstein64/vim-startuptime",
-    verson = "4.4.0",
+    version = "4.4.0",
     cmd = "StartupTime",
     config = function()
       vim.g.startuptime_tries = 10
