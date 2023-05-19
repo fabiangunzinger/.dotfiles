@@ -3,6 +3,7 @@ if not present then
   return
 end
 
+
 quarto.setup {
   debug = false,
   closePreviewOnExit = true,

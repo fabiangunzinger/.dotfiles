@@ -183,14 +183,14 @@ return {
     end
   },
 
-  -- show blank lines
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    version = "2.20.4",
-    config = function()
-      require("plugins.plugins_config.indent-blankline")
-    end
-  },
+  -- -- show blank lines
+  -- {
+  --   'lukas-reineke/indent-blankline.nvim',
+  --   version = "2.20.4",
+  --   config = function()
+  --     require("plugins.plugins_config.indent-blankline")
+  --   end
+  -- },
 
   -- use . after plugin map
   { 'tpope/vim-repeat' },
