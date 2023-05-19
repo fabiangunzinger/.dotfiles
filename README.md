@@ -76,7 +76,7 @@ Remember:
 
 ### Installation
 
-- To avoid unwanted updates from core neovim and plugins, I install neovim from source and pin plugins to specific versions. I only update when I have a specific reason to do so.
+- To avoid unwanted updates from core neovim and plugins, I install neovim from source and pin plugins to specific versions, tags, or commits. I only update when I have a specific reason to do so.
 
 - To install neovim from source, I followed [these](https://github.com/neovim/neovim/wiki/Building-Neovim) instructions. I clone the neovim repo into my home directory. After installing the dependencies via homebrew, the commands are the following:
 
@@ -93,16 +93,6 @@ sudo make install
 sudo rm /usr/local/bin/nvim
 sudo rm -r /usr/local/share/nvim/
 ```
-
-
-
-
-
-
-
-
-
-- I use [EditorConfig](https://editorconfig.org) for coding style configuration across projects. For my personal use, I store the default configuration in `~/.editorconfig`. Whenever I need different configs for a project, I add an editorconfig file with `root = true` in the project directory. (Nvim 0.9 has EditorConfig built in, so no plugin is needed for this.)
 
 - I use `lazy.nvim` as my package manager.
 
