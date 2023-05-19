@@ -321,9 +321,4 @@ return {
       require("plugins.plugins_config.chatgpt")
     end,
   },
-
-
-
 }
-
-

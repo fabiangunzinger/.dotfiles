@@ -2,9 +2,12 @@
 def adder(a, b):
     return a + b
 
+a = 5
+
+
 
 def test_adder():
-    assert adder(2, 3) == 5
+ assert adder(2, 3) == 5
     assert adder(-2, 5) == 3
     assert adder(0, 0) == 0
     assert adder(2.5, 3.5) == 6.0
