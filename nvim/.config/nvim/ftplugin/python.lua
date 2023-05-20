@@ -1,7 +1,6 @@
 -- slime
 vim.b.slime_cell_delimiter = "#%%"
 
-
 -- lsp support
 local lspconfig = require("lspconfig")
 local pyright_opts = {
@@ -22,7 +21,7 @@ local sources = {
   null_ls.builtins.diagnostics.flake8
 }
 
-null_ls.setup({ sources = sources })
+null_ls.register({ sources = sources })
 
 
 -- debugging

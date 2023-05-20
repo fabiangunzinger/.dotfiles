@@ -1,12 +1,9 @@
-local present, lsp = pcall(require, "lsp-zero")
+local present, lspconfig = pcall(require, "lspconfig")
 if not present then
   return
 end
 
-local lspconfig = require("lspconfig")
 local util = require("lspconfig.util")
-
-lsp.preset({})
 
 -- mason setup - and automatically install
 -- uninstalled language servers
