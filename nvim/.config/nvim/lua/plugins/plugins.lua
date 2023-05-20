@@ -120,7 +120,10 @@ return {
     end
   },
 
-  { "jose-elias-alvarez/null-ls.nvim" },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    commit = "77e53bc3bac34cc273be8ed9eb9ab78bcf67fa48",
+  },
 
   -- snippets
   {
