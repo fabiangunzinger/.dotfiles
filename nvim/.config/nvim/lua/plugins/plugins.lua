@@ -321,4 +321,11 @@ return {
       require("plugins.plugins_config.chatgpt")
     end,
   },
+
+  -- quick file navigation
+  { 
+    'ThePrimeagen/harpoon', 
+    commit = "8cb54c4"
+  },
+
 }
