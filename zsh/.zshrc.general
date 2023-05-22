@@ -96,9 +96,9 @@ alias tfd='tf destroy'
 
 # tmux
 alias tmls='tmux ls'
-function tmns() { tmux new-session -s $1; }
-function tmas() { tmux attach-session -t $1; }
-function tmks() { tmux kill-session -t $1; }
+function tmn() { tmux new-session -s $1; }
+function tma() { tmux attach-session -t $1; }
+function tmk() { tmux kill-session -t $1; }
 
 # open files
 alias fzg='ddf; cd zsh; nvim zshrc.general'
