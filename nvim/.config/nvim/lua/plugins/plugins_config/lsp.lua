@@ -12,15 +12,15 @@ require("mason-lspconfig").setup({
   automatic_installation = true
 })
 
--- lsp setup
-lsp.on_attach(function(client, bufnr)
-  lsp.default_keymaps({
-    buffer = bufnr,
-    preserve_mappings = false
-  })
-end)
+-- -- lsp setup
+-- lsp.on_attach(function(client, bufnr)
+--   lsp.default_keymaps({
+--     buffer = bufnr,
+--     preserve_mappings = false
+--   })
+-- end)
 
-lsp.setup()
+-- lsp.setup()
 
 -- language server serup
 lspconfig.r_language_server.setup({})

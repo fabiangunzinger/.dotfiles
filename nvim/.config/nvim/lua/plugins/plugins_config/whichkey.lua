@@ -172,7 +172,7 @@ wk.register(
       },
     },
     h = {
-      name = "harpoon",
+      name = "Harpoon",
       h = { ':lua require("harpoon.ui").toggle_quick_menu()<cr>', "Toggle menu" },
       m = { ':lua require("harpoon.mark").add_file()<cr>', "Mark file" },
       n = { ':lua require("harpoon.ui").nav_next()<cr>', "Next file" },

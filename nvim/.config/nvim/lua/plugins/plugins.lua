@@ -352,9 +352,6 @@ return {
   { 
     'ThePrimeagen/harpoon', 
     commit = "8cb54c4",
-    config = function()
-      require("plugins.plugins_config.harpoon.lua")
-    end,
   },
 
 }
