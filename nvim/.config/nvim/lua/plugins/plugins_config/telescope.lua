@@ -55,6 +55,8 @@ telescope.setup {
         ["<c-j>"] = actions.move_selection_next,
         ["<c-k>"] = actions.move_selection_previous,
         ["<c-u>"] = false, -- use <c-u> for default "clear input" behaviour
+        ["<tab>"] = false, -- use tab in insert mode (instead of picker behaviour)
+          
 
       }
     }
@@ -89,6 +91,8 @@ telescope.load_extension('dap')
 
 -- find files quick access
 vim.keymap.set("n", '<c-p>', "<cmd>Telescope find_files<cr>")
+
+
 
 wk.register(
 {
