@@ -197,8 +197,8 @@ wk.register({
   ['<m-i>']         = { 'o```{r}<cr>```<esc>O', "r code chunk" },
   ['<cm-i>']        = { 'o```{python}<cr>```<esc>O', "r code chunk" },
   ['<m-I>']         = { 'o```{python}<cr>```<esc>O', "r code chunk" },
-  ['<c-k>'] = { ':lua require("harpoon.ui").nav_next()<cr>', "Next file" },
-  ['<c-j>'] = { ':lua require("harpoon.ui").nav_prev()<cr>', "Previous file" },
+  ['<c-m>'] = { ':lua require("harpoon.ui").nav_next()<cr>', "Next file" },
+  ['<c-n>'] = { ':lua require("harpoon.ui").nav_prev()<cr>', "Previous file" },
 }, { mode = 'n' })
 
 -- visual mode

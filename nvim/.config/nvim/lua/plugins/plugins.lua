@@ -89,16 +89,6 @@ return {
     end
   },
 
-  -- lsp plugins
-  {
-    "williamboman/mason.nvim",
-    version = "1.1.0",
-    build = ":MasonUpdate",
-    config = function()
-      require("mason").setup()
-    end,
-  },
-
   -- lsp
 
   -- {
@@ -106,11 +96,6 @@ return {
   --   commit = "22650751435e8d31ea65ab97a66393cabad244a8",
   --   dependencies = {
   --     { 'neovim/nvim-lspconfig', version = "0.1.4" },
-  --     { 'williamboman/mason-lspconfig.nvim', version = "1.4.0" },
-  --     { 
-  --       'hrsh7th/cmp-nvim-lsp',
-  --       commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef"
-  --     },
   --     'mason.nvim',
   --     'nvim-cmp',
   --     'cmp-nvim-lsp',
@@ -130,18 +115,14 @@ return {
     branch = 'master',
     event = "BufReadPre",
     dependencies = {
-      { "williamboman/mason-lspconfig.nvim" },
-      { "williamboman/mason.nvim" },
-      { "hrsh7th/cmp-nvim-lsp" },
+      { 'williamboman/mason-lspconfig.nvim', version = "1.4.0" },
+      { "williamboman/mason.nvim", version = "1.1.0", build = ":MasonUpdate" },
+      { 'hrsh7th/cmp-nvim-lsp', commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef" },
     },
     config = function()
       require('plugins.plugins_config.lsp')
     end
   },
-
-
-
-
 
   {
     "jose-elias-alvarez/null-ls.nvim",

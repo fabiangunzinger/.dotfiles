@@ -12,8 +12,6 @@ vim.g.loaded_perl_provider = 0
 -- TODO: check whether I need this in addition to using treesitter
 vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r' }
 
-vim.opt.filetype.plugin = 1
-
 -- Misc.
 vim.opt.termguicolors = true
 vim.opt.history = 5000   -- lines to remember

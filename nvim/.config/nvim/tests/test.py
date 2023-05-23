@@ -5,7 +5,6 @@ def adder(a, b):
 a = 5
 
 
-
 def test_adder():
  assert adder(2, 3) == 5
     assert adder(-2, 5) == 3
