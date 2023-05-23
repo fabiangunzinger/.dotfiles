@@ -1,9 +1,8 @@
-
+ 
 def adder(a, b):
     return a + b
 
 a = 5
-
 
 
 def test_adder():
