@@ -15,23 +15,10 @@ return {
       require("plugins.plugins_config.telescope")
     end
   },
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build = 'make',
-    commit = "580b6c48651cabb63455e97d7e131ed557b8c7e2" 
-  },
-  {
-    'nvim-telescope/telescope-dap.nvim',
-    commit = "313d2ea12ae59a1ca51b62bf01fc941a983d9c9c" 
-  },
-  {
-    'nvim-telescope/telescope-ui-select.nvim',
-    commit = "62ea5e58c7bbe191297b983a9e7e89420f581369"
-  },
-  {
-    'nvim-telescope/telescope-file-browser.nvim',
-    commit = "1aa7f12ce797bb5b548c96f38b2c93911e97c543"
-  },
+  { 'nvim-telescope/telescope-fzf-native.nvim', commit = "580b6c4", build = 'make' },
+  { 'nvim-telescope/telescope-dap.nvim', commit = "313d2ea" },
+  { 'nvim-telescope/telescope-ui-select.nvim', commit = "62ea5e5" },
+  { 'nvim-telescope/telescope-file-browser.nvim', commit = "1aa7f12" },
 
   -- filetree
   {
@@ -71,7 +58,7 @@ return {
     'hrsh7th/nvim-cmp',
     version = "0.0.1",
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lsp', commit = "0e6b2ed" },
       { 'hrsh7th/cmp-nvim-lsp-signature-help' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
@@ -90,44 +77,12 @@ return {
   },
 
   -- lsp
-
-  -- {
-  --   'VonHeikemen/lsp-zero.nvim',
-  --   commit = "22650751435e8d31ea65ab97a66393cabad244a8",
-  --   dependencies = {
-  --     { 'neovim/nvim-lspconfig', version = "0.1.4" },
-  --     'mason.nvim',
-  --     'nvim-cmp',
-  --     'cmp-nvim-lsp',
-  --     'LuaSnip',
-  --   },
-  --   config = function()
-  --     require('plugins.plugins_config.lsp')
-  --   end
-  -- },
-
-
-
-  {
-    'neovim/nvim-lspconfig',
-    tag = nil,
-    version = nil,
-    branch = 'master',
-    event = "BufReadPre",
-    dependencies = {
-      { 'williamboman/mason-lspconfig.nvim', version = "1.4.0" },
-      { "williamboman/mason.nvim", version = "1.1.0", build = ":MasonUpdate" },
-      { 'hrsh7th/cmp-nvim-lsp', commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef" },
-    },
-    config = function()
-      require('plugins.plugins_config.lsp')
-    end
-  },
-
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    commit = "77e53bc3bac34cc273be8ed9eb9ab78bcf67fa48",
-  },
+  { "williamboman/mason.nvim", version = "1.1.0" },
+  { 'williamboman/mason-lspconfig.nvim', version = "1.4.0" },
+  { 'neovim/nvim-lspconfig', version = "0.1.4" },
+  { "jose-elias-alvarez/null-ls.nvim", commit = "77e53bc" },
+  { "jay-babu/mason-null-ls.nvim", version = "2.0.2" },
+  -- { "jay-babu/mason-null-ls.nvim", commit = "1fcf055" },
 
   -- snippets
   {

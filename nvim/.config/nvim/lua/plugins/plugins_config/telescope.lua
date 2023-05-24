@@ -56,8 +56,6 @@ telescope.setup {
         ["<c-k>"] = actions.move_selection_previous,
         ["<c-u>"] = false, -- use <c-u> for default "clear input" behaviour
         ["<tab>"] = false, -- use tab in insert mode (instead of picker behaviour)
-          
-
       }
     }
   },

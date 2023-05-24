@@ -7,6 +7,7 @@ vim.b.slime_cell_delimiter = "#%%"
 --
 --
 --
+
 -- -- -- formatting and linting
 -- local null_ls = require("null-ls")
 --
@@ -19,6 +20,9 @@ vim.b.slime_cell_delimiter = "#%%"
 -- }
 --
 -- null_ls.register({ sources = sources })
+
+
+
 --
 --
 -- -- debugging
