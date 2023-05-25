@@ -71,6 +71,9 @@ Remember:
 
 - Don't rename a directory containing a virtual environment -- recreate the environment in a new directory with the desired name and delete the old one.
 
+Benefits:
+
+- It fixes venv issues in nvim. When using pyenv, nvim would find mutliple versions of Python in the dedicated host environment. With this approach, it finds a single version. 
 
 ## nvim
 
@@ -96,7 +99,6 @@ sudo rm -r /usr/local/share/nvim/
 
 - I use `lazy.nvim` as my package manager.
 
-- For `quarto` autocompletion to work, I need to select the kernel I want to use in the quarto doc, and I need to have the corresponding venv activated when I start nvim.
 
 ## Useful stuff
 
@@ -107,7 +109,7 @@ sudo rm -r /usr/local/share/nvim/
 
 - Install Quarto on mac `brew install -cask quarto`.
 
-- 
+- For `quarto` autocompletion to work, I need to select the kernel I want to use in the quarto doc, and I need to have the corresponding venv activated when I start nvim.
 
 
 

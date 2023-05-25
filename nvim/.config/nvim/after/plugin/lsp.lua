@@ -11,17 +11,8 @@ end
 local util = lspconfig.util
 local lsp_defaults = util.default_config
 
-
--- Global mappings
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
-
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
--- See `:help vim.lsp.*` for documentation on any of the below functions
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
@@ -30,6 +21,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+    vim.keymap.set('n', '<space>ld', vim.diagnostic.open_float, opts)
     vim.keymap.set('n', '<space>ll', vim.diagnostic.setloclist, opts)
     vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<leader>lR', "<cmd>Telescope lsp_references<cr>", opts)
