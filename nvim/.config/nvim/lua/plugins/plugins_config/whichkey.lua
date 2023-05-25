@@ -55,7 +55,7 @@ wk.setup {
     spacing = 3, -- spacing between columns
     align = "left", -- align columns left, center or right
   },
-  ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
+  ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "^:", "^ ", "^call ", "^lua " }, -- hide mapping boilerplate
   show_help = true, -- show a help message in the command line for using WhichKey
   show_keys = true, -- show the currently pressed key and its label as a message in the command line
@@ -112,24 +112,8 @@ wk.register(
       m = { ':Mason<cr>', 'Mason' },
       s = { ':e $MYVIMRC | :cd %:p:h | split . | wincmd k<cr>', 'Settings' },
     },
-    -- l = {
-    --   name = 'LSP',
-    --   r = { '<cmd>Telescope lsp_references<cr>', 'references' },
-    --   R = { vim.lsp.buf.rename, 'rename' },
-    --   D = { vim.lsp.buf.type_definition, 'type definition' },
-    --   a = { vim.lsp.buf.code_action, 'coda action' },
-    --   e = { vim.diagnostic.open_float, 'diagnostics' },
-    --   i = { "<cmd>LspInfo<cr>", "Info" },
-    --   f = { vim.lsp.buf.format { async = true }, 'format' },
-    --   o = { ':SymbolsOutline<cr>', 'outline' },
-    --   d = {
-    --     name = 'diagnostics',
-    --     d = { vim.diagnostic.disable, 'disable' },
-    --     e = { vim.diagnostic.enable, 'enable' },
-    --   },
-    -- },
-    c = {
-      name = "code",
+    t = {
+      name = "Terminals",
       s = { '<cmd>SlimeConfig<cr>', 'slime config' },
       v = { "<cmd>lua _VERTICAL_TERM()<cr>", "vertical terminal" },
       h = { "<cmd>lua _HORIZONTAL_TERM()<cr>", "horizontal terminal" },

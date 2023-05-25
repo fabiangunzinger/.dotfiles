@@ -74,7 +74,7 @@ map("n", "<leader>bb", "<cmd>enew<cr>", { desc = "new buffer" })
 map("n", "bd",":bp|bd#<cr>", { desc = "close buffer but not window" })
 map({ "i", "n", "v", "s", }, "<C-s>", "<cmd>w<cr><esc>", { desc = "write buffer" })
 map("n", "<leader>a", ":e#<cr>", { desc = "edit alternate buffer" })
-map("n", '<leader>ls', ':ls!<cr>', { desc = "list hidden buffers" })
+-- map("n", '<leader>ls', ':ls!<cr>', { desc = "list hidden buffers" })
 
 -- open and close windows
 map("n", "<leader>w\\", "<cmd>vsplit<cr>", { desc = "split window right" })
