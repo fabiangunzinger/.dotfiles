@@ -1,6 +1,8 @@
-import sys
 
-import numpy as np import pandas as pd
+import sys
+import import
+import numpy as np
+import pandas as pd
 import pytest
 
 mylist = [1, 2, 3, 4, 5]

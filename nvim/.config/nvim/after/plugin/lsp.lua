@@ -9,7 +9,6 @@ if not present then
 end
 
 local util = lspconfig.util
-local lsp_defaults = util.default_config
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -31,57 +30,117 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-
 -- Custom diagnostic settings
 vim.diagnostic.config({
-    virtual_text = false,
-  })
+  virtual_text = false,
+})
 
+
+-- local cmp_nvim_lsp = require('cmp_nvim_lsp')
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Install and activate LSP servers
 -- Servers are installed with Mason and activated with lspconfig
-local lsp_servers = {
-  pyright = {
-    single_file_support = true,
-  },
-  r_language_server = {},
-  -- marksman setup also requires the following file and content
-  -- $home/.config/marksman/config.toml
-  -- [core]
-  -- markdown.file_extensions = ["md", "markdown", "qmd"]
-  marksman = {
-    filetypes = { 'markdown', 'quarto' },
-    root_dir = util.root_pattern(".git", ".marksman.toml", "_quarto.yml"),
-  },
-  ltex = {
-    filetypes = { "markdown", "tex", "quarto" },
-  },
-  lua_ls = {
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { 'vim', 'quarto', 'pandoc' },
-          disable = { 'trailing-space' },
-        },
-      },
-    }
-  },
-  bashls = {
-    filetypes = { 'sh', 'bash' }
-  },
-}
-
 require("mason").setup()
 require("mason-lspconfig").setup({
   auto_install = true,
-  ensure_installed = lsp_servers,
+  ensure_installed = {
+    "pyright",
+    "r_language_server",
+    "marksman",
+    "ltex",
+    "lua_ls",
+    "bashls",
+  },
 })
 
-for lsp, settings in pairs(lsp_servers) do
-  lspconfig[lsp].setup({
-    settings = settings,
-  })
-end
+lspconfig.pyright.setup {
+  single_file_support = true,
+}
+
+lspconfig.r_language_server.setup {}
+
+-- marksman setup also requires a config file
+-- $home/.config/marksman/config.toml
+-- [core]
+-- markdown.file_extensions = ["md", "markdown", "qmd"]
+lspconfig.marksman.setup {
+  -- capabilities = capabilities,
+  filetypes = { 'markdown', 'quarto' },
+  root_dir = util.root_pattern(".git", ".marksman.toml", "_quarto.yml"),
+}
+
+lspconfig.ltex.setup{
+  filetypes = { "markdown", "tex", "quarto" },
+}
+
+-- -- local function strsplit(s, delimiter)
+-- --   local result = {}
+-- --   for match in (s .. delimiter):gmatch("(.-)" .. delimiter) do
+-- --     table.insert(result, match)
+-- --   end
+-- --   return result
+-- -- end
+-- --
+-- -- local function get_quarto_resource_path()
+-- --   local f = assert(io.popen('quarto --paths', 'r'))
+-- --   local s = assert(f:read('*a'))
+-- --   f:close()
+-- --   return strsplit(s, '\n')[2]
+-- -- end
+
+-- local lua_library_files = vim.api.nvim_get_runtime_file("", true)
+-- local resource_path = get_quarto_resource_path()
+-- table.insert(lua_library_files, resource_path .. '/lua-types')
+-- local lua_plugin_paths = {}
+-- table.insert(lua_plugin_paths, resource_path .. '/lua-plugin/plugin.lua')
+
+-- Overview of all options is available at:
+-- https://github.com/luals/lua-language-server/blob/master/locale/en-us/setting.lua
+lspconfig.lua_ls.setup {
+  -- on_attach = on_attach,
+  -- capabilities = capabilities,
+  -- flags = lsp_flags,
+  settings = {
+    Lua = {
+      completion = {
+        callSnippet = "Replace"
+      },
+      runtime = {
+        version = 'LuaJIT',
+        plugin = lua_plugin_paths,
+      },
+      diagnostics = {
+        globals = { 'vim', 'quarto', 'pandoc', 'io', 'string', 'print', 'require', 'table', },
+        disable = { 'trailing-space' },
+      },
+      workspace = {
+        library = lua_library_files,
+        checkThirdParty = false,
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+-- lspconfig.lua_ls.setup {
+-- Lua = {
+-- diagnostics = {
+-- globals = { 'vim', 'quarto', 'pandoc' },
+-- disable = { 'trailing-space' },
+-- },
+-- },
+-- }
+
+lspconfig.bashls.setup {
+  filetypes = { 'sh', 'bash' },
+}
+
+
+
 
 
 -- Formatting and linting

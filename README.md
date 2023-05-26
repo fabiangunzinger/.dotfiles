@@ -1,4 +1,4 @@
-#r .dotfiles
+# fabian gunzinger, .dotfiles
 
 ## dotfile management
 
@@ -90,7 +90,7 @@ make CMAKE_BUILD_TYPE=Release
 sudo make install
 ```
 
-- To uninstall neovim, I'd use (from [here](https://www.chrisatmachine.com/posts/00-install-neovim)):
+- To uninstall neovim, I'd use:
 
 ```
 sudo rm /usr/local/bin/nvim
@@ -98,6 +98,12 @@ sudo rm -r /usr/local/share/nvim/
 ```
 
 - I use `lazy.nvim` as my package manager.
+
+
+### Misc.
+
+- For language-specific code completion to work (e.g. `np.` triggering all np functions), I need to open vim with an active venv with the required packages installed.
+
 
 
 ## Useful stuff

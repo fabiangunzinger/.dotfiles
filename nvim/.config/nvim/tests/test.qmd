@@ -16,13 +16,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import sys
+
+
 r = np.arange(0, 2, 0.01)
 theta = 2 * np.pi * r
 fig, ax = plt.subplots(
   subplot_kw = {'projection': 'polar'}
 )
 
-mylist = [1, 2,
 
 3, 4, 5]
 ax.plot(theta, r)
