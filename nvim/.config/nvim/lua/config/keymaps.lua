@@ -2,10 +2,6 @@ local map = function(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-
--- quit nvim
-map("n", "qq", "<cmd>qa<cr>")
-
 -- use jk to abort modes and search highlighting
 map("i", "jk", "<esc>")
 map("o", "jk", "<esc>")
@@ -118,11 +114,3 @@ function _G.set_terminal_keymaps()
   vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
 end
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
-
--- -- terminal mode
--- -- get out ouf terminal insert mode with esc
--- vim.keymap.set('t', '<esc>', [[<c-\><c-n>]], { silent = true, noremap = true })
--- --move to other window
--- vim.keymap.set('t', '<c-j>', [[<c-\><c-n><c-w>w]], { silent = true, noremap = true })
--- vim.keymap.set('n', '<leader>j', [[<c-w>wi]], { silent = true, noremap = true })
---
