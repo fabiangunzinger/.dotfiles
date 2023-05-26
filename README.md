@@ -1,4 +1,4 @@
-# fabian gunzinger, .dotfiles
+# .dotfiles
 
 ## dotfile management
 
