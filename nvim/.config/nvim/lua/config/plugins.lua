@@ -23,26 +23,6 @@ local plugins = {
   -- show keybinding help window
   { 'folke/which-key.nvim', version = "1.4.2" },
 
-  -- completion
-  {
-    'hrsh7th/nvim-cmp',
-    version = "0.0.1",
-    dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp', commit = "0e6b2ed" },
-      { 'hrsh7th/cmp-nvim-lsp-signature-help' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      { 'f3fora/cmp-spell' },
-      { 'ray-x/cmp-treesitter' },
-      { 'kdheepak/cmp-latex-symbols' },
-      { 'jmbuhr/cmp-pandoc-references' },
-      { 'honza/vim-snippets' },
-      { 'onsails/lspkind-nvim' },
-      'LuaSnip',
-    },
-  },
-
   -- lsp
   { "williamboman/mason.nvim", version = "1.1.0" },
   { 'williamboman/mason-lspconfig.nvim', version = "1.4.0" },
@@ -50,18 +30,6 @@ local plugins = {
   { "jose-elias-alvarez/null-ls.nvim", commit = "77e53bc" },
   { "jay-babu/mason-null-ls.nvim", version = "2.0.2" },
   { "jay-babu/mason-null-ls.nvim", commit = "1fcf055" },
-
-  -- snippets
-  {
-    "L3MON4D3/LuaSnip",
-    version = "1.2.1",
-    dependencies = {
-      'honza/vim-snippets',
-      config = function()
-        require("luasnip.loaders.from_snipmate").lazy_load()
-      end,
-    },
-  },
 
   -- syntax highlighs
   { 'nvim-treesitter/nvim-treesitter', commit = "05df88e" },
@@ -84,19 +52,19 @@ local plugins = {
   { 'quarto-dev/quarto-nvim', commit = "66791ef" },
 
   -- use . after plugin map
-  { 'tpope/vim-repeat' },
+  { 'tpope/vim-repeat', commit = "24afe92" },
 
   -- unix shell commands
-  { 'tpope/vim-eunuch' },
+  { 'tpope/vim-eunuch', commit = "291ef1f" },
 
   -- useful surround shortcuts
-  { 'tpope/vim-surround' },
+  { 'tpope/vim-surround', commit = "3d188ed" },
 
   -- powerful substitution and case conversions
-  { 'tpope/vim-abolish' },
+  { 'tpope/vim-abolish', commit = "cb3dcb2" },
 
   -- complementary pairs of mappings
-  { 'tpope/vim-unimpaired' },
+  { 'tpope/vim-unimpaired', commit = "6d44a6d" },
 
   -- use quickfix for bulk change/replace
   { 'stefandtw/quickfix-reflector.vim', version = "0.1" },
@@ -134,6 +102,30 @@ local plugins = {
 
   -- measure startuptime
   { "dstein64/vim-startuptime", version = "4.4.0" },
+
+  -- snippets
+  { 'honza/vim-snippets', version = "1.0.0" },
+  { "L3MON4D3/LuaSnip", version = "1.2.1" },
+
+  -- completion
+  {
+    'hrsh7th/nvim-cmp',
+    version = "0.0.1",
+    dependencies = {
+      { 'hrsh7th/cmp-nvim-lsp', commit = "0e6b2ed" },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'f3fora/cmp-spell' },
+      { 'ray-x/cmp-treesitter' },
+      { 'kdheepak/cmp-latex-symbols' },
+      { 'jmbuhr/cmp-pandoc-references' },
+      { 'honza/vim-snippets' },
+      { 'onsails/lspkind-nvim' },
+      'LuaSnip',
+    },
+  },
 
   -- colorschemes
   { 
