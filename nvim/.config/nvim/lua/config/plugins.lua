@@ -1,5 +1,8 @@
 local plugins = {
 
+  -- latex support
+  { 'lervag/vimtex', commit = "ed5c5ea" },
+
   -- common dependencies
   { 'nvim-lua/plenary.nvim', commit = "5254482" },
   { "nvim-tree/nvim-web-devicons", commit = "986875b" },
