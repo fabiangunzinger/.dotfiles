@@ -85,6 +85,7 @@ telescope.load_extension('fzf')
 telescope.load_extension('ui-select')
 telescope.load_extension('file_browser')
 telescope.load_extension('dap')
+telescope.load_extension('heading')
 -- telescope.load_extension('projects')
 
 -- find files quick access
@@ -101,6 +102,7 @@ wk.register(
     b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "buffer" },
     d = { "<cmd>Telescope buffers<cr>", "buffers" },
     h = { '<cmd>Telescope help_tags<cr>', 'help tags' },
+    H = { '<cmd>Telescope heading<cr>', 'heading' },
     k = { '<cmd>Telescope keymaps<cr>', 'keymaps' },
     r = { '<cmd>Telescope lsp_references<cr>', 'references' },
     m = { "<cmd>Telescope marks<cr>", "marks" },

@@ -16,6 +16,7 @@ local plugins = {
   { 'nvim-telescope/telescope-dap.nvim', commit = "313d2ea" },
   { 'nvim-telescope/telescope-ui-select.nvim', commit = "62ea5e5" },
   { 'nvim-telescope/telescope-file-browser.nvim', commit = "1aa7f12" },
+  { 'crispgm/telescope-heading.nvim', commit = "39e549c" },
 
   -- filetree
   { "nvim-tree/nvim-tree.lua", commit = "736c7ff" },
@@ -75,7 +76,8 @@ local plugins = {
   -- smart commenting
   { 'numToStr/Comment.nvim', commit = "e1fe531" },
 
-  -- tabular formatting
+  -- markdown support
+  -- { 'preservim/vim-markdown', version = "1.0.0" },
   { 'godlygeek/tabular', version = "1.0.0" },
 
   -- indention level objects
