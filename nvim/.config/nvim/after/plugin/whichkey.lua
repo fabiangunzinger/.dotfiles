@@ -112,15 +112,6 @@ wk.register(
       m = { ':Mason<cr>', 'Mason' },
       s = { ':e $MYVIMRC | :cd %:p:h | split . | wincmd k<cr>', 'Settings' },
     },
-    t = {
-      name = "Terminals",
-      s = { '<cmd>SlimeConfig<cr>', 'slime config' },
-      v = { "<cmd>lua _VERTICAL_TERM()<cr>", "vertical terminal" },
-      h = { "<cmd>lua _HORIZONTAL_TERM()<cr>", "horizontal terminal" },
-      f = { "<cmd>lua _FLOAT_TERM()<cr>", "flating terminal" },
-      p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "python terminal" },
-      t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "htop" },
-    },
     c = {
       name = "Code",
       c = {

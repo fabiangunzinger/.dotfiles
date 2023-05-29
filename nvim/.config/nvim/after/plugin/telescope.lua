@@ -37,6 +37,7 @@ telescope.setup {
     layout_config = {
       prompt_position = "top",
     },
+    path_display = { "smart" },
     vimgrep_arguments = {
       "rg",
       "--color=never", -- ignore colors (can't handle yet)

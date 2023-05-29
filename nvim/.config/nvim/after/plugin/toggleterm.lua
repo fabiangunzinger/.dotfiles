@@ -93,11 +93,15 @@ function _HORIZONTAL_TERM()
   horizontal_term:toggle(10)
 end
 
--- -- vim.keymap.set("n", "<leader>cv", "<cmd>lua _VERTICAL_TERM()<cr>")
--- -- vim.keymap.set("n", "<leader>ch", "<cmd>lua _HORIZONTAL_TERM()<cr>")
--- vim.keymap.set("n", "<leader>cf", "<cmd>lua _FLOAT_TERM()<cr>")
--- -- vim.keymap.set("n", "<leader>cp", "<cmd>lua _PYTHON_TOGGLE()<cr>")
--- -- vim.keymap.set("n", "<leader>ct", "<cmd>lua _HTOP_TOGGLE()<cr>")
--- --
--- local wk = require("which-key")
 
+wk.register({
+    t = {
+      name = "Terminals",
+      s = { '<cmd>SlimeConfig<cr>', 'slime config' },
+      v = { "<cmd>lua _VERTICAL_TERM()<cr>", "vertical terminal" },
+      h = { "<cmd>lua _HORIZONTAL_TERM()<cr>", "horizontal terminal" },
+      f = { "<cmd>lua _FLOAT_TERM()<cr>", "flating terminal" },
+      p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "python terminal" },
+      t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "htop" },
+    },
+})
