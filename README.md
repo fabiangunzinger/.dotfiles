@@ -12,9 +12,14 @@
 
 ## Mac setup
 
-- I use [homebrew](https://brew.sh) for package management.
+- Package management: I use [homebrew](https://brew.sh).
 
-- I use [Amethyst](https://github.com/ianyh/Amethyst) for window management.
+- Window manager: I use [Amethyst](https://github.com/ianyh/Amethyst) (`brew install amethyst`).
+
+- Browser: I'm currently trialling `brave` (`brew install brave`), and have the `darkreader` and `vimium` extensions installed.
+
+- Launcher: I use `raycast` (`brew install raycast`) instead of spotlight. For this to work, I disable the `cmd-space` keyboard shortcut for spotflight in `Settings - keyboard - shortcuts - spotlight` and make this the shortcut for raycast.
+
 
 
 ## Terminal setup
@@ -98,6 +103,7 @@ sudo rm -r /usr/local/share/nvim/
 ```
 
 - I use `lazy.nvim` as my package manager.
+
 
 
 ### Misc.

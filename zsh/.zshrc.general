@@ -13,7 +13,7 @@
 source "$HOME/.openai_key.zsh"
 
 # venv
-function cve() { $1 -m venv .venv; }
+function nve() { $1 -m venv .venv; }
 alias ave='source ./.venv/bin/activate'
 alias dve='deactivate'
 
@@ -22,6 +22,7 @@ alias pf='python -m pip freeze > requirements.txt'
 alias pir='python -m pip install -r requriements.txt'
 
 alias aqu='source ~/.venvs/quarto3.10/bin/activate'
+alias aju='source ~/.venvs/jupyter3.10/bin/activate'
 
 # ssh
 function sshn() { ssh-keygen -t ed25519 -C $1; }
