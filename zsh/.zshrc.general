@@ -9,10 +9,7 @@
 
 
 
-# chatgpt
-source "$HOME/.openai_key.zsh"
-
-# venv
+# Virtual environments
 function nve() { $1 -m venv .venv; }
 alias ave='source ./.venv/bin/activate'
 alias dve='deactivate'
@@ -24,35 +21,31 @@ alias pir='python -m pip install -r requriements.txt'
 alias aqu='source ~/.venvs/quarto3.10/bin/activate'
 alias aju='source ~/.venvs/jupyter3.10/bin/activate'
 
-# ssh
-function sshn() { ssh-keygen -t ed25519 -C $1; }
-
-# blog
+# Blog
 alias wpr='quarto preview'
 alias wre='quarto render && hugo'
 function wnp() { hugo new posts/$1; }
 
-# nvim
-alias v="nvim"
-alias vi="nvim +'Telescope find_files'"
-alias vg="nvim +'Telescope live_grep'"
+# Neovim
+alias vi="nvim"
+alias vif="nvim +'Telescope find_files'"
+alias vig="nvim +'Telescope live_grep'"
 
-# misc.
-# alias rm='rm -I'
-# alias rmr='rm -r'
-# alias ll='exa -l'
-# alias la='exa -l -a'
+# Search
+## fzf with bat preview
+alias fp="fzf --multi --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+## Open selected file in nvim
+alias fv='vi $(fp)'
+
+# ssh
+function sshn() { ssh-keygen -t ed25519 -C $1; }
+
+# Miscellaneous
 alias lg='la | grep $1'
 alias lt="exa --tree -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints|.DS_Store'"
 alias pwdc='pwd | pbcopy'
 
-# fzf
-## Show file preview using bat
-alias fp="fzf --multi --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-## Open selected file in nvim
-alias fvi='vi $(fp)'
-
-
+# zsh
 ## Help zsh find fzf plugin
 export FZF_BASE="$HOME/.fzf"
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files -g "!.git/"'
@@ -65,17 +58,10 @@ alias omzu='omz update'
 alias fzs='nvim ~/.zshrc'
 alias pas='acs'   # pretty aliases
 
-
 # running processes
 alias rp='ps aux | grep '               # ..pattern; list processes
 alias rpl='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10' # list largest
 alias rpk='kill'                        # ..process id to kill
-
-# search file in current folder (non-recursive, and recursive)
-alias f='find . -maxdepth 1 | grep '
-# alias ff='find . | grep '
-# search files recursively
-alias rgf='rg --files | rg'
 
 # look up word from dictionary
 function lu() { open dict://"$1"; }
@@ -230,4 +216,6 @@ fi
 # Set quarto python environments
 export QUARTO_PYTHON='/Users/fgu/.venvs/quarto3.10/bin/python3.10'
 
+# ChatGPT key
+source "$HOME/.openai_key.zsh"
 
