@@ -1,17 +1,17 @@
 [includeIf "gitdir:~/dev/projects/"]
-    path = ~/.gitconfig.personal
+  path = ~/.gitconfig.personal
 
 [includeIf "gitdir:~/.dotfiles/"]
-    path = ~/.gitconfig.personal
+  path = ~/.gitconfig.personal
 
 [includeIf "gitdir:~/notes/"]
-    path = ~/.gitconfig.personal
+  path = ~/.gitconfig.personal
 
 [includeIf "gitdir:~/dev/jet/"]
-    path = ~/.gitconfig.work
+  path = ~/.gitconfig.work
 
 [core]
-    editor = nvim
+  editor = nvim
 [init]
 	defaultBranch = main
 [user]
