@@ -1,0 +1,13 @@
+#!/bin/zsh
+# A simple script to kill a process by name. Use [tab] to select 
+# multiple processes and press [enter] to kill them or [esc] to cancel.
+
+local pid=$(ps -e | sed 1d | fzf -m --header='[kill:process]' | awk '{print $1}')
+
+if [[ -n "$pid" ]]
+then
+  echo $pid | xargs kill
+else
+  echo "No process selected"
+fi
+
