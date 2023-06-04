@@ -1,6 +1,6 @@
 # .dotfiles
 
-## dotfile management
+## Dotfile management
 
 - I manage my dotfiles with [stow](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/), inspired by the setup of [Jannis Buhr](https://github.com/jmbuhr/.dotfiles).
 
@@ -12,13 +12,21 @@
 
 ## Mac setup
 
+- Remap caps look to control.
+
 - Package management: I use [homebrew](https://brew.sh).
 
 - Window manager: I use [Amethyst](https://github.com/ianyh/Amethyst) (`brew install amethyst`).
 
-- Browser: I'm currently trialling `brave` (`brew install brave`), and have the `darkreader` and `vimium` extensions installed.
+- Browser: I'm currently trialling `brave` (`brew install brave`), and have the `darkreader` and `vimium` extensions installed. Otherwise I'm using Safari.
 
-- Launcher: I use `raycast` (`brew install raycast`) instead of spotlight. For this to work, I disable the `cmd-space` keyboard shortcut for spotflight in `Settings - keyboard - shortcuts - spotlight` and make this the shortcut for raycast.
+### Raycast
+
+- I use `raycast` (`brew install raycast`) as my launcher instead of spotlight. This allows me to use a host of useful extensions.
+
+- For this to work, I disable the `cmd-space` keyboard shortcut for spotflight in `Settings - keyboard - shortcuts - spotlight` and make this the shortcut for raycast.
+
+- Export settings and installed extensions from the advanced settings tab and then import it on the new machine.
 
 
 
@@ -112,7 +120,11 @@ sudo rm -r /usr/local/share/nvim/
 
 
 
-## Useful stuff
+## Useful tools
+
+```
+brew install tldr               # example based documentation
+```
 
 - [Figlet](http://www.figlet.org/) creates font banners. To use, after brew install, do something like `figlet -f colossal "Hello world"`. 
 
