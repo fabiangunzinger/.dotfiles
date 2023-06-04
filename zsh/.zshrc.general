@@ -86,7 +86,7 @@ alias tfs='tf show'
 alias tfd='tf destroy'
 
 # tmux
-alias tmls='tmux ls'
+alias tml='tmux ls'
 function tmn() { tmux new-session -s $1; }
 function tma() { tmux attach-session -t $1; }
 function tmk() { tmux kill-session -t $1; }
