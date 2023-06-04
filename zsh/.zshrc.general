@@ -41,9 +41,10 @@ alias fv='vi $(fp)'
 function sshn() { ssh-keygen -t ed25519 -C $1; }
 
 # Miscellaneous
-alias lg='la | grep $1'
+alias lg='ls -la | grep $1'
 alias lt="exa --tree -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints|.DS_Store'"
 alias pwdc='pwd | pbcopy'
+alias rmf='rm -rf'
 
 # zsh
 ## Help zsh find fzf plugin

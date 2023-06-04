@@ -9,7 +9,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 
--- Misc.
+-- misc.
 vim.opt.termguicolors = true
 vim.opt.history = 5000   -- lines to remember
 vim.opt.spelllang='en_gb'   -- spell checker uses british english
@@ -52,6 +52,6 @@ vim.g.vim_markdown_auto_insert_bullets = false
 vim.opt.smartindent = true
 vim.opt.breakindent = true
 
--- Custom Python host
+-- custom python host
 -- See: https://neovim.io/doc/user/provider.html#provider-python
 vim.g.python3_host_prog = "~/.venvs/nvim3.10/bin/python3.10"
