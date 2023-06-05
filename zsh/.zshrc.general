@@ -26,16 +26,17 @@ alias wpr='quarto preview'
 alias wre='quarto render && hugo'
 function wnp() { hugo new posts/$1; }
 
+# Search
+## Recursively search for pattern in current directory, and preview
+## results in fzf.
+alias fp="fd --hidden | fzf --multi --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+## Open selected file in nvim
+alias vii='vi $(fp)'
+
 # Neovim
 alias vi="nvim"
 alias vif="nvim +'Telescope find_files'"
 alias vig="nvim +'Telescope live_grep'"
-
-# Search
-## fzf with bat preview
-alias fp="fzf --multi --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-## Open selected file in nvim
-alias fv='vi $(fp)'
 
 # ssh
 function sshn() { ssh-keygen -t ed25519 -C $1; }
