@@ -10,12 +10,12 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<c-j>'] = cmp.select_next_item(),
-    ['<c-k>'] = cmp.select_prev_item(),
-    ['<cr>'] = cmp.confirm({ select = true }),
-    ['<c-f>'] = cmp.scroll_docs(-4),
-    ['<c-d>'] = cmp.scroll_docs(4),
-    ['<c-space>'] = cmp.abort(),
+    ['<c-j>'] = cmp.mapping.select_next_item(),
+    ['<c-k>'] = cmp.mapping.select_prev_item(),
+    ['<cr>'] = cmp.mapping.confirm({ select = true }),
+    ['<c-f>'] = cmp.mapping.scroll_docs(-4),
+    ['<c-d>'] = cmp.mapping.scroll_docs(4),
+    ['<c-space>'] = cmp.mapping.abort(),
   },
   autocomplete = false,
   formatting = {
