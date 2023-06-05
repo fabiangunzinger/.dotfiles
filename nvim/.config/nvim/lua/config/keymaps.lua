@@ -23,15 +23,15 @@ map("v", "<leader>p", "\"_dP")
 -- insert directory of current file into command line
 map("c", "%%","<C-R>=fnameescape(expand('%:h')).'/'<cr>")
 
--- open url under cursor without netrw_gx
-map("n", "gx", ":!open <c-r><c-a><cr>")
-
 -- make Y behave like C and D (see `h: Y`)
 map("n", "Y", "y$")
 
 -- move visual-line-wise
 map("n", "j", "gj")
 map("n", "k", "gk")
+
+-- open url under cursor without netrw_gx
+map("n", "gx", ":!open <c-r><c-a><cr>")
 
 -- source vimrc
 map("n", "<leader>sv", "<cmd>luafile: $MYVIMRC<cr>")
@@ -59,7 +59,7 @@ map("n", "J", "mzJ`z")
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 
--- Add undo break-points
+-- add undo break-points
 map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
@@ -103,7 +103,7 @@ map("n", "<leader><tab>f", "<cmd>tabfirst<cr>")
 map("n", "<leader><tab>p", "<:-tabmove<cr>", { desc = "current to previous" })
 map("n", "<leader><tab>n", ":+tabmove<cr>", { desc = "current to next" })
 
--- Set key mappings for terminal mode
+-- set key mappings for terminal mode
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
