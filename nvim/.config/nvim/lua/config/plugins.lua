@@ -1,5 +1,8 @@
 local plugins = {
 
+  -- undo tree
+  { 'mbbill/undotree', commit = "485f01e" },
+
   -- latex support
   { 'lervag/vimtex', commit = "ed5c5ea" },
 

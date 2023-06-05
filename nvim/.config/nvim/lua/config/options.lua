@@ -9,6 +9,12 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 
+-- disable vim backups and set undo directory
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
+vim.opt.undofile = true
+
 -- misc.
 vim.opt.termguicolors = true
 vim.opt.history = 5000   -- lines to remember
