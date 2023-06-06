@@ -217,7 +217,7 @@ fi
 
 
 # Set quarto python environments
-export QUARTO_PYTHON='/Users/fgu/.venvs/quarto3.10/bin/python3.10'
+export QUARTO_PYTHON="$HOME/.venvs/quarto3.10/bin/python3.10"
 
 # ChatGPT key
 source "$HOME/.openai_key.zsh"
