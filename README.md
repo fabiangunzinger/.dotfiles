@@ -29,6 +29,19 @@
 - Export settings and installed extensions from the advanced settings tab and then import it on the new machine.
 
 
+## Use GNU core utiliites
+
+- Add utilities to path in .zshrc
+```
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+```
+
+- Download utilities
+
+```
+brew install coreutils
+```
+
 
 ## Terminal setup
 
