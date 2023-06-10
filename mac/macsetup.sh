@@ -36,25 +36,8 @@ ssh-keygen -t ed25519 -C "jet_gh" -f ".ssh/jet_gh" -N ""
 gh auth login -h "github.je-labs.com" -w
 
 # Configuration files
-## Create directories
-echo "Creating dev directories..."
-cd
-mkdir -p dev/projects
-## Clone dotfiles
-echo "Cloning dotfiles..."
-cd dev/projects
-git clone git@github.com:fabiangunzinger/dotfiles.git
-## Create symlinks
-echo "Creating symlinks to config files..."
-cd
-DOTFILES=~/dev/projects/dotfiles
-ln -s $DOTFILES/nvim/init.vim ./.config/nvim
-ln -s $DOTFILES/zsh/.zshrc .
-ln -s $DOTFILES/git/.gitconfig .
-ln -s $DOTFILES/git/.gitignore_global .
-ln -s $DOTFILES/ssh/config .ssh
-ln -s $DOTFILES/iterm2/starship.toml ./.config
-ln -s $DOTFILES/tmux/.tmux.conf .
+## Clone .dotfiles to ~/ and run install to create symlinks
+
 
 # Python
 

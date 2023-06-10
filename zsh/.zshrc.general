@@ -8,6 +8,11 @@
 # For a full list of active aliases, run `alias`.
 
 
+export FABIB=~/.dotfiles/latex/fabib.bib
+export EDITOR=nvim
+export VISUAL="$EDITOR"
+
+
 
 # Virtual environments
 function nve() { $1 -m venv .venv; }
@@ -209,12 +214,10 @@ eval "$(starship init zsh)"
 # }
 # ensure_tmux_is_running
 
-
 # Add homebrew to path
 if [ "$(whoami)" = "fabian.gunzinger" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-
 
 # Set quarto python environments
 export QUARTO_PYTHON="$HOME/.venvs/quarto3.10/bin/python3.10"

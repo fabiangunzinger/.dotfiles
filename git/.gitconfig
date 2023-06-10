@@ -1,14 +1,11 @@
-[includeIf "gitdir:~/dev/projects/"]
+[includeIf "gitdir:~/dev/personal/"]
   path = ~/.gitconfig.personal
+
+[includeIf "gitdir:~/dev/work/"]
+  path = ~/.gitconfig.work
 
 [includeIf "gitdir:~/.dotfiles/"]
   path = ~/.gitconfig.personal
-
-[includeIf "gitdir:~/notes/"]
-  path = ~/.gitconfig.personal
-
-[includeIf "gitdir:~/dev/jet/"]
-  path = ~/.gitconfig.work
 
 [core]
   editor = nvim
