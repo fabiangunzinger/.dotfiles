@@ -102,6 +102,7 @@ local plugins = {
   -- send code to repl
   { 'jpalardy/vim-slime', commit = "bb15285",
     init = function()
+
       vim.b['quarto_is_' .. 'python' .. '_chunk'] = false
         Quarto_is_in_python_chunk = function()
           require 'otter.tools.functions'.is_otter_language_context('python')
