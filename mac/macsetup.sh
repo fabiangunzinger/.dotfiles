@@ -13,8 +13,6 @@ echo "Installing homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Neovim
-# Install `nvim` and `pynvim` (into env used for nvim) to enable use of Python plugins.
-# Python interpreter is set in init.vim.
 echo "Installing Neovim..."
 brew install nvim
 pip3 install pynvim
@@ -76,16 +74,13 @@ brew install --cask font-hack-nerd-font
 ## Manually import iterm2-profiles.json (iterm2/Profiles/Other actions)
 ## todo: automatically import iterm2-profiles.json
 
-## Install starwhip prompt
-brew install starship
-
 # Install autocompletions extension
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-## Install fuzzy finder (FZF)
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
-
+# ## Install fuzzy finder (FZF)
+# git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+# ~/.fzf/install
+#
 ## Install ripgrep
 brew install ripgrep
 
@@ -102,7 +97,7 @@ brew install tmux
 brew install reattach-to-user-namespace
 
 
-## Install battery
+## Install battery (used for tmux status bar)
 brew tap Goles/battery
 brew install battery
 
@@ -113,11 +108,6 @@ brew install rename
 ## exa
 ## Using zsh plugin for handy aliases: https://github.com/MohamedElashri/exa-zsh
 brew install exa
-
-
-# Docker
-# Useful guide: https://www.cprime.com/resources/blog/docker-for-mac-with-homebrew-a-step-by-step-tutorial/
-brew install --cask docker
 
 
 # macOS applications
@@ -133,18 +123,7 @@ brew install --cask flux
 brew install --cask firefox
 
 
-
 # Stuff I might not need any longer
-
-brew tap hashicorp/tap
-brew install hashicorp/tap/terraform
-# Latex
-
 
 brew install fzf
 $(brew --prefix)/opt/fzf/install
-
-# miniconda install (check that it contains python version you want)
-curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-bash Miniconda3-latest-MacOSX-x86_64.sh
-rm Miniconda3-latest-MacOSX-x86_64.sh
