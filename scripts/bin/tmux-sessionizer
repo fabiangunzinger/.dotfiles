@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Inspired by https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
+# Modified to use $MYDIRS instead of listing all directories, so I can use same
+# list of variables to open in vim/telescope and tmux, and to use tat
+# to not repeat the core logic unnecessarily.
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(find $MYDIRS -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+cd $selected
+tat

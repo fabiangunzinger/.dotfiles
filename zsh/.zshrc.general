@@ -13,6 +13,8 @@ export EDITOR=nvim
 export VISUAL="$EDITOR"
 
 
+bindkey -s ^f "tmux-sessionizer\n"
+
 
 # Virtual environments
 function nve() { $1 -m venv .venv; }
@@ -205,14 +207,13 @@ eval "$(starship init zsh)"
 # Given that new shell session starts in home directory, this will
 # start a session in that directory
 
-# This is disabled for now. Actually not that helpful. If I restart terminal, I can just connect to tmux by opening a running session or by using tat in current directory.
-# _not_inside_tmux() { [[ -z "$TMUX" ]] }
-# ensure_tmux_is_running() {
-#   if _not_inside_tmux; then
-#     tat
-#   fi
-# }
-# ensure_tmux_is_running
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tat
+  fi
+}
+ensure_tmux_is_running
 
 # Add homebrew to path
 if [ "$(whoami)" = "fabian.gunzinger" ]; then
@@ -229,4 +230,4 @@ source "$HOME/.openai_key.zsh"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 
-
+export MYDIRS="$HOME/.dotfiles/"
