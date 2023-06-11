@@ -8,6 +8,7 @@
 # For a full list of active aliases, run `alias`.
 
 
+export MYDIRS="$HOME/.dotfiles/ $HOME/dev/"
 export FABIB=~/.dotfiles/latex/fabib.bib
 export EDITOR=nvim
 export VISUAL="$EDITOR"
@@ -206,6 +207,7 @@ eval "$(starship init zsh)"
 # Start tmux session on startup
 # Given that new shell session starts in home directory, this will
 # start a session in that directory
+# In hotkey window, this will start session from the / directory, which I don't want.
 
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 ensure_tmux_is_running() {
@@ -230,4 +232,3 @@ source "$HOME/.openai_key.zsh"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 
-export MYDIRS="$HOME/.dotfiles/"
