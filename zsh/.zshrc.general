@@ -153,10 +153,13 @@ ensure_tmux_is_running
 
 bindkey -s ^f "tmux-sessionizer\n"
 
-export MYDIRS="$HOME/.dotfiles/ $HOME/dev/"
+export MYDIRS="$HOME/.dotfiles/"
 export FABIB=~/.dotfiles/latex/fabib.bib
 export EDITOR=nvim
 export VISUAL="$EDITOR"
+
+# Using starship prompt
+eval "$(starship init zsh)"
 
 # Personal scripts
 export PATH="$HOME/bin:$PATH"
