@@ -2,20 +2,9 @@
 # general alises
 #################################################
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-
-
-export MYDIRS="$HOME/.dotfiles/ $HOME/dev/"
-export FABIB=~/.dotfiles/latex/fabib.bib
-export EDITOR=nvim
-export VISUAL="$EDITOR"
-
-
-bindkey -s ^f "tmux-sessionizer\n"
-
+# Search
+alias fp="fd --hidden | fzf --multi --preview 'bat --style=numbers --color=always {}'"
+alias vii='fp | xargs -o nvim'
 
 # Virtual environments
 function nve() { $1 -m venv .venv; }
@@ -34,13 +23,6 @@ alias wpr='quarto preview'
 alias wre='quarto render && hugo'
 function wnp() { hugo new posts/$1; }
 
-# Search
-## Recursively search for pattern in current directory, and preview
-## results in fzf.
-alias fp="fd --hidden | fzf --multi --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-## Open selected file in nvim
-alias vii='vi $(fp)'
-
 # Neovim
 alias vi="nvim"
 alias vif="nvim +'Telescope find_files'"
@@ -55,34 +37,14 @@ alias lt="exa --tree -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints|.DS_
 alias pwdc='pwd | pbcopy'
 alias rmf='rm -rf'
 
-# zsh
-## Help zsh find fzf plugin
-export FZF_BASE="$HOME/.fzf"
-export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files -g "!.git/"'
-export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-
 # Oh My Zsh
 alias rom='omz reload'   # use this instead of source!
 alias omzu='omz update'
 alias fzs='nvim ~/.zshrc'
 alias pas='acs'   # pretty aliases
 
-# running processes
-alias rp='ps aux | grep '               # ..pattern; list processes
-alias rpl='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10' # list largest
-alias rpk='kill'                        # ..process id to kill
-
-# look up word from dictionary
-function lu() { open dict://"$1"; }
-
-# disk space and directory structure
-alias dum='du -h | sort -n -r | more'
-alias dud='du -h -d 2'
-
 # misc. commands
 alias jula='jupyter lab'
-alias clh='open -a safari https://localhost:9999'
 alias vgp='vimgolf put '
 
 # terraform
@@ -106,11 +68,6 @@ alias fz='vi ~/.zshrc'
 alias fzm='vi ~/.tmux.conf'
 # open vim in project
 alias vzs='ddf; cd zsh; vi'
-
-# blog shortcuts
-alias nb='open https://fabiangunzinger.github.io/blog/'
-pn() { vi $(date +'%Y-%m-%d-')"$1"; }
-pe() { vi $(find . -name *$1*); }
 
 # jupyter kernels
 ## Install ipykernel of venv in current directory into jupyter venv
@@ -185,30 +142,7 @@ alias gbD='git branch -D'          # force delete branch with uncommited edits
 # general config
 #################################################
 
-# ## editor for remote and local sessions
-if [[ -n $ssh_connection ]]; then
- export editor='vim'
-else
- export editor='nvim'
-fi
-
-# Adding poetry to path
-export PATH="$HOME/.local/bin:$PATH"
-
-# Adding $HOME/bin to front of path so I can override system executables
-# with my personal ones if needed. Generally, save all my personal scripts
-# in $HOME/bin
-export PATH="$HOME/bin:$PATH"
-
-# Using starship prompt
-eval "$(starship init zsh)"
-
-
 # Start tmux session on startup
-# Given that new shell session starts in home directory, this will
-# start a session in that directory
-# In hotkey window, this will start session from the / directory, which I don't want.
-
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 ensure_tmux_is_running() {
   if _not_inside_tmux; then
@@ -217,18 +151,45 @@ ensure_tmux_is_running() {
 }
 ensure_tmux_is_running
 
-# Add homebrew to path
+bindkey -s ^f "tmux-sessionizer\n"
+
+export MYDIRS="$HOME/.dotfiles/ $HOME/dev/"
+export FABIB=~/.dotfiles/latex/fabib.bib
+export EDITOR=nvim
+export VISUAL="$EDITOR"
+
+# Personal scripts
+export PATH="$HOME/bin:$PATH"
+
+# GNU instead of BSD coreutils
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+
+# Poetry 
+export PATH="$HOME/.local/bin:$PATH"
+
+# fzf
+export FZF_BASE="$HOME/.fzf"
+export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files -g "!.git/"'
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+
+# Set quarto python environment
+export QUARTO_PYTHON="$HOME/.venvs/quarto3.10/bin/python3.10"
+
+# ChatGPT authentication
+source "$HOME/.openai_key.zsh"
+
+# Homebrew
 if [ "$(whoami)" = "fabian.gunzinger" ]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Set quarto python environments
-export QUARTO_PYTHON="$HOME/.venvs/quarto3.10/bin/python3.10"
+# Editor for remote and local sessions
+if [[ -n $ssh_connection ]]; then
+ export editor='vim'
+else
+ export editor='nvim'
+fi
 
-# ChatGPT key
-source "$HOME/.openai_key.zsh"
 
-# Add coreutils to path (use GNU tools instead of BSD tools)
-export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 
