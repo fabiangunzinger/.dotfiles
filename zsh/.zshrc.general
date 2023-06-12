@@ -2,10 +2,6 @@
 # general alises
 #################################################
 
-# Search
-alias fp="fd --hidden | fzf --multi --preview 'bat --style=numbers --color=always {}'"
-alias vii='fp | xargs -o nvim'
-
 # Virtual environments
 function nve() { $1 -m venv .venv; }
 alias ave='source ./.venv/bin/activate'
@@ -175,6 +171,10 @@ export PATH="$HOME/.local/bin:$PATH"
 export FZF_BASE="$HOME/.fzf"
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files -g "!.git/"'
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+
+# Search
+alias fp="fd --hidden | fzf --multi --preview 'bat --style=numbers --color=always {}'"
+alias vii='fp | xargs -o nvim'
 
 # Set quarto python environment
 export QUARTO_PYTHON="$HOME/.venvs/quarto3.10/bin/python3.10"
