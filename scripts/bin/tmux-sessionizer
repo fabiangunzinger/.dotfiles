@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Inspired by ThePrimeagen's tmux-sessionizer.
+# Modified to use $MYDIRS instead of listing all directories,
+# so I can use the same list across applications.
+
+echo $MYDIRS
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  selected=$(find ${MYDIRS[@]} -maxdepth 1 -type d | fzf)
+fi
+
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+cd $selected
+tat
+
+
+

@@ -100,7 +100,70 @@ local plugins = {
   { 'lewis6991/gitsigns.nvim', version = "0.6" },
 
   -- send code to repl
-  { 'jpalardy/vim-slime', commit = "bb15285" },
+  { 'jpalardy/vim-slime', commit = "bb15285",
+    init = function()
+
+      vim.b['quarto_is_' .. 'python' .. '_chunk'] = false
+        Quarto_is_in_python_chunk = function()
+          require 'otter.tools.functions'.is_otter_language_context('python')
+        end
+
+        vim.cmd [[
+        function SlimeOverride_EscapeText_quarto(text)
+        call v:lua.Quarto_is_in_python_chunk()
+        if exists('g:slime_python_ipython') && len(split(a:text,"\n")) > 1 && b:quarto_is_python_chunk
+        return ["%cpaste -q", "\n", a:text, "--", "\n"]
+        else
+        return a:text
+        end
+        endfunction
+        ]]
+
+        local function mark_terminal()
+          vim.g.slime_last_channel = vim.b.terminal_job_id
+          vim.print(vim.g.slime_last_channel)
+        end
+
+        local function set_terminal()
+          vim.b.slime_config = { jobid = vim.g.slime_last_channel }
+        end
+
+        vim.b.slime_cell_delimiter = "# %%"
+
+        -- slime, neovvim terminal
+        vim.g.slime_target = "neovim"
+        vim.g.slime_python_ipython = 1
+
+        -- -- slime, tmux
+        -- vim.g.slime_target = 'tmux'
+        -- vim.g.slime_bracketed_paste = 1
+        -- vim.g.slime_default_config = { socket_name = "default", target_pane = ".2" }
+
+        local function toggle_slime_tmux_nvim()
+          if vim.g.slime_target == 'tmux' then
+            pcall(function()
+              vim.b.slime_config = nil
+              vim.g.slime_default_config = nil
+            end
+            )
+            -- slime, neovvim terminal
+            vim.g.slime_target = "neovim"
+            vim.g.slime_bracketed_paste = 0
+            vim.g.slime_python_ipython = 1
+          elseif vim.g.slime_target == 'neovim' then
+            pcall(function()
+              vim.b.slime_config = nil
+              vim.g.slime_default_config = nil
+            end
+            )
+            -- -- slime, tmux
+            vim.g.slime_target = 'tmux'
+            vim.g.slime_bracketed_paste = 1
+            vim.g.slime_default_config = { socket_name = "default", target_pane = ".2" }
+          end
+        end
+    end
+  },
 
   -- fast search
   { 'BurntSushi/ripgrep', version = "13.0.0" },

@@ -2,13 +2,6 @@
 # fabmac config
 #################################################
 
-export FABIB=~/dev/projects/dotfiles/latex/fabib.bib
-export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"      # use gnu grep
-export PATH="/Users/fgu/.local/bin:$PATH"                   # add poetry topath
-export EDITOR=nvim
-export VISUAL="$EDITOR"
-
-export PATH="/Users/fabian.gunzinger/.local/bin:$PATH"
 
 #################################################
 # fabmac aliases

@@ -1,16 +1,16 @@
 #!/bin/sh
 #
 # Attach or create tmux session named the same as current directory.
+# Slightly adapted from: https://github.com/christoomey/dotfiles/blob/master/bin/tat
 
-path_name="$(basename "$PWD" | tr -d .)"
-session_name=${1-$path_name}
+session_name="$(basename "$PWD" | tr -d .)"
 
 not_in_tmux() {
   [ -z "$TMUX" ]
 }
 
 session_exists() {
-  tmux has-session -t "=$session_name"
+  tmux has-session -t "$session_name"
 }
 
 create_detached_session() {
