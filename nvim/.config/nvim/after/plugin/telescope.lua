@@ -23,7 +23,6 @@ local wk = require("which-key")
 -- local often_used_dirs = os.getenv("MYDIRS")
 local often_used_dirs = {
   "~/.dotfiles",
-  "~/notes/",
   "~/dev/personal/notes/",
   "~/dev/personal/fabiangunzinger.github.io/",
 }
