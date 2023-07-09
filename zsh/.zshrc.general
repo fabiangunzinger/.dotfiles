@@ -15,9 +15,9 @@ alias aqu='source ~/.venvs/quarto3.10/bin/activate'
 alias aju='source ~/.venvs/jupyter3.10/bin/activate'
 
 # Blog
-alias wpr='quarto preview'
-alias wre='quarto render && hugo'
-function wnp() { hugo new posts/$1; }
+alias qpr='quarto preview'
+alias qre='quarto render && hugo'
+function hnp() { hugo new posts/$1; }
 
 # Neovim
 alias vi="nvim"
