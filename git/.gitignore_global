@@ -25,6 +25,11 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# VS Code #
+###########
+
+*.code-workspace
+
 # Vim #
 #######
 
