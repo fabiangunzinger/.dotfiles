@@ -101,6 +101,14 @@ Benefits:
 
 - It fixes venv issues in nvim. When using pyenv, nvim would find mutliple versions of Python in the dedicated host environment. With this approach, it finds a single version. 
 
+Disadvantages:
+
+- I much prefer to install Python version programmaticall via pyenv.
+
+- Python only provides installers for actively supported versions. This means that if I need to install an older version to be compatible with a project I'm working on, I can't install it in this same way. This is a major disadvantage.
+
+
+
 ## nvim
 
 ### Installation

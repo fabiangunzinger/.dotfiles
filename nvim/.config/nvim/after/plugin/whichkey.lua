@@ -169,9 +169,9 @@ wk.register({
   ['gf']            = { ':e <cfile><CR>', 'edit file' },
   ['co']            = { 'o#%%<cr>', 'new code chunk below' },
   ['cO']            = { 'O#%%<cr>', 'new code chunk above' },
-  ['<m-i>']         = { 'o```{r}<cr>```<esc>O', "r code chunk" },
-  ['<cm-i>']        = { 'o```{python}<cr>```<esc>O', "r code chunk" },
-  ['<m-I>']         = { 'o```{python}<cr>```<esc>O', "r code chunk" },
+  ['<m-i>']         = { 'o```{python}<cr>```<esc>O', "Python code chunk" },
+  -- ['<cm-i>']        = { 'o```{python}<cr>```<esc>O', "r code chunk" },
+  -- ['<m-I>']         = { 'o```{python}<cr>```<esc>O', "r code chunk" },
   ['<c-m>'] = { ':lua require("harpoon.ui").nav_next()<cr>', "Next file" },
   ['<c-n>'] = { ':lua require("harpoon.ui").nav_prev()<cr>', "Previous file" },
 }, { mode = 'n' })

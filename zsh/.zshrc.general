@@ -8,6 +8,7 @@ alias ave='source ./.venv/bin/activate'
 alias dve='deactivate'
 
 alias pi='python -m pip install'
+alias pl='python -m pip list'
 alias pf='python -m pip freeze > requirements.txt'
 alias pir='python -m pip install -r requriements.txt'
 

@@ -1,3 +1,8 @@
+-- Note: for now, the slime config is in config/plugins.lua
+--
+--
+--
+--
 -- kickstarter config --
 -- vim.b['quarto_is_' .. 'python' .. '_chunk'] = false
 -- Quarto_is_in_python_chunk = function()

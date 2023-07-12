@@ -162,6 +162,26 @@ local plugins = {
             vim.g.slime_default_config = { socket_name = "default", target_pane = ".2" }
           end
         end
+
+
+        vim.g.slime_no_mappings = 1
+
+        wk = require('which-key')
+
+        wk.register({
+          ["<leader>"] = {
+            ["<leader>"] = {
+              ["s"] = { toggle_slime_tmux_nvim, "Toggle tmux/nvim terminal" },
+              ["t"] = { mark_terminal, "Mark terminal" },
+              ["T"] = { set_terminal, "Set terminal" },
+            },
+          },
+        })
+
+        vim.keymap.set('x', '<c-c><c-c>', '<Plug>SlimeRegionSend')
+        vim.keymap.set('n', '<c-c><c-c>', '<Plug>SlimeParagraphSend')
+        vim.keymap.set('n', '<leader><cr>', '<Plug>SlimeSendCell')
+
     end
   },
 

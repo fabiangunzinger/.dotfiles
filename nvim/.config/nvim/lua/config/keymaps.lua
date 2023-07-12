@@ -115,3 +115,4 @@ function _G.set_terminal_keymaps()
 end
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
+-- map("n", "<m-i>", 'o```{python}<cr>```<esc>O', { desc = "Insert Python code chunk" })
