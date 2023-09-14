@@ -89,6 +89,9 @@ local plugins = {
   -- distraction free writing
   { "folke/zen-mode.nvim", tag = "v1.2.0" },
 
+  -- title-case text
+  { 'christoomey/vim-titlecase', commit = "69a697c" },
+
   -- highlight yanked region
   { 'machakann/vim-highlightedyank', commit = "fa3f57b" },
  
