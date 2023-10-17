@@ -109,7 +109,7 @@ Overview of virtual environment tools:
 
 - [poetry](https://python-poetry.org) is a packaging and dependency manager.
 
-### Running code
+### Running code
 
 - I run all Python commands with the `-m` flag (i.e. `python -m pip install`, `python -m black`, `python -m jupyter notebook`) to be as sure as possible that I use the correct Python version (I have created alias for all of them).
 
@@ -223,7 +223,7 @@ brew install tldr               # example based documentation
 - For `quarto` autocompletion to work, I need to select the kernel I want to use in the quarto doc, and I need to have the corresponding venv activated when I start nvim.
 
 
-## Note taking
+## Note taking
 
 - I currently use Apple notes because it is leightweight and syncs seamlessly across all my devices.
 
