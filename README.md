@@ -109,7 +109,7 @@ Overview of virtual environment tools:
 
 - [poetry](https://python-poetry.org) is a packaging and dependency manager.
 
-### Running code:
+### Running code
 
 - I run all Python commands with the `-m` flag (i.e. `python -m pip install`, `python -m black`, `python -m jupyter notebook`) to be as sure as possible that I use the correct Python version (I have created alias for all of them).
 
@@ -159,7 +159,7 @@ rm -r ~/.local/share/nvim/
 - For language-specific code completion to work (e.g. `np.` triggering all np functions), I need to open vim with an active venv with the required packages installed.
 
 
-## SSH setup
+## SSH
 
 - I want access to work and personal Github projects on all my machines, and I use `.gitconfig` files to make this all work smoothly. My setup largely follows the steps in [this](https://blog.gitguardian.com/8-easy-steps-to-set-up-multiple-git-accounts/) tutorial:
 
