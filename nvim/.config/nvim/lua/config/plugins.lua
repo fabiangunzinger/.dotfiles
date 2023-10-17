@@ -14,7 +14,8 @@ local plugins = {
   { 'ThePrimeagen/harpoon', commit = "8cb54c4" },
 
   -- object finder
-  { 'nvim-telescope/telescope.nvim', commit = "6d3fbff" },
+  -- { 'nvim-telescope/telescope.nvim', commit = "6d3fbff" },
+  { 'nvim-telescope/telescope.nvim', version = "0.1.4" },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make', commit = "580b6c4" },
   { 'nvim-telescope/telescope-dap.nvim', commit = "313d2ea" },
   { 'nvim-telescope/telescope-ui-select.nvim', commit = "62ea5e5" },
@@ -30,16 +31,19 @@ local plugins = {
   -- show keybinding help window
   { 'folke/which-key.nvim', version = "1.4.2" },
 
-  -- lsp
-  { "williamboman/mason.nvim", version = "1.1.0" },
-  { 'williamboman/mason-lspconfig.nvim', version = "1.4.0" },
-  { 'neovim/nvim-lspconfig', version = "0.1.4" },
+  -- -- lsp
+  { "williamboman/mason.nvim", version = "1.8.1" },
+  -- { "williamboman/mason.nvim", version = "1.1.0" },
+  { 'williamboman/mason-lspconfig.nvim', version = "1.18.0" },
+  -- { 'williamboman/mason-lspconfig.nvim', version = "1.4.0" },
+  { 'neovim/nvim-lspconfig', tag = "0.1.4" },
   { "jose-elias-alvarez/null-ls.nvim", commit = "77e53bc" },
   { "jay-babu/mason-null-ls.nvim", version = "2.0.2" },
   { "jay-babu/mason-null-ls.nvim", commit = "1fcf055" },
 
   -- syntax highlighs
-  { 'nvim-treesitter/nvim-treesitter', commit = "05df88e" },
+  { 'nvim-treesitter/nvim-treesitter'},
+  -- { 'nvim-treesitter/nvim-treesitter', commit = "05df88e" },
   { 'nvim-treesitter/nvim-treesitter-textobjects', commit = "95b76b9" },
 
   -- testing
@@ -206,7 +210,7 @@ local plugins = {
     'hrsh7th/nvim-cmp',
     version = "0.0.1",
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp', commit = "0e6b2ed" },
+      { 'hrsh7th/cmp-nvim-lsp'},
       { 'hrsh7th/cmp-nvim-lsp-signature-help' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },

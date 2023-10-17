@@ -1,5 +1,8 @@
 # .dotfiles
 
+Setting up a development machine can be painful. Here I want to collect what I do, why I do it, and how I use my setup.
+
+
 ## Dotfile management
 
 - I manage my dotfiles with [stow](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/), inspired by the setup of [Jannis Buhr](https://github.com/jmbuhr/.dotfiles).
@@ -10,40 +13,17 @@
 
 - Not all folders in `.dotfiles` contain dotfiles I want to symlink to my home directory. Those who do are added to `$STOW_FOLDERS` in the installation script. Hence, if I add a new folder with dotfiles I want to link, I have to change said script accordingly.
 
+
 ## Mac setup
 
 - Remap caps look to control.
 
 - Package management: I use [homebrew](https://brew.sh).
 
-- Window manager: I use [Amethyst](https://github.com/ianyh/Amethyst) (`brew install amethyst`).
-
-- Browser: I'm currently trialling `brave` (`brew install brave`), and have the `darkreader` and `vimium` extensions installed. Otherwise I'm using Safari.
-
-### Raycast
-
-- I use `raycast` (`brew install raycast`) as my launcher instead of spotlight. This allows me to use a host of useful extensions.
-
-- For this to work, I disable the `cmd-space` keyboard shortcut for spotflight in `Settings - keyboard - shortcuts - spotlight` and make this the shortcut for raycast.
-
-- Export settings and installed extensions from the advanced settings tab and then import it on the new machine.
+- Window manager: I'm not using any for now, but want to try [Amethyst](https://github.com/ianyh/Amethyst) (`brew install amethyst`).
 
 
-## Use GNU core utiliites
-
-- Add utilities to path in .zshrc
-```
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
-```
-
-- Download utilities
-
-```
-brew install coreutils
-```
-
-
-## Terminal setup
+## Terminal
 
 - I use zsh as my shell and [oh my zsh](https://ohmyz.sh) for configuration.
 
@@ -57,25 +37,29 @@ brew install coreutils
 - I use [`bat`](https://github.com/sharkdp/bat) (an improved version of cat) to
   quickly view files.
 
-- I follow [this](https://www.reddit.com/r/vim/comments/u1kppk/comment/i4ecygu/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button) suggestion and map the meta key to my left option key, so I can use `M` key bindings in vim. I do this by setting the mapping in iTerm: `ITerm2 -> Preferences -> Profiles -> keys -> General -> Choose "left Option key " as "Esc+"`.
+- I use GNU cor utilities, which I download and add to path in .zshrc as follows:
+
+```
+brew install coreutils
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
+```
 
 
-## Python setup 
+## Python
 
-- I follow the advice from [Nobody has time for Python](https://bitecode.substack.com/p/relieving-your-python-packaging-pain).
+- I follow the advice from [Nobody has time for Python](https://bitecode.substack.com/p/relieving-your-python-packaging-pain) and stick to the basics.
 
-Installation:
+### Installation
 
-- I install [stable](https://devguide.python.org/versions/) Python versions (i.e. not the latest ones) using the official installers from [python.org](https://www.python.org/downloads/macos/) (the universal2 installers, to ensure compatibility with Apple silicon.
+- I install [stable](https://devguide.python.org/versions/) Python versions (i.e. not the latest ones) using the official universal2 installers from [python.org](https://www.python.org/downloads/macos/).
 
-- After downloading and installing, I click `Install Certificates.command` in the finder window that opens to complete the installation.
+- After downloading and installing, I click `Install Certificates.command` in the finder window to complete the installation.
 
-Virtual environments:
+### Virtual environments
 
 - I use `venv` to manage virtual environments.
 
-- I create a virtual environment for each project, call it `.venv`, and save it
-  in the project's root directory.
+- I create a virtual environment for each project, call it `.venv`, and save it in the project's root directory.
 
 - I select the desired Python version explicitly (e.g. `python3.10 venv .venv`).
 
@@ -85,37 +69,66 @@ Virtual environments:
 
 - I keep small scripts in a project called `sandbox` with its own virtual environment so that I don't need to create a separate virtual environment for each small script I write.
 
-- Virtual environments that are requried for specific applications (e.g. nvim, or quarto) are stored in my home directory with an informative name (e.g. `nvim3.10`).
+- Virtual environments that are requried for specific applications (e.g. nvim, or quarto) are stored in `~/venvs` with an informative name (e.g. `nvim3.10`).
 
-Running code:
+- I don't move virtual environments -- I recreate them instead.
 
-- I run all Python commands with the `-m` flag (i.e. `python -m pip install`, `python -m black`, `python -m jupyter notebook` to be as sure as possible that I use the correct Python version).
-
-Remember:
-
-- Don't move a virtual environment -- recreate it instead.
-
-- Don't rename a directory containing a virtual environment -- recreate the environment in a new directory with the desired name and delete the old one.
+- If I rename a folder that contains a virtual environment, I delete the environment and create a new one.
 
 Benefits:
 
-- It fixes venv issues in nvim. When using pyenv, nvim would find mutliple versions of Python in the dedicated host environment. With this approach, it finds a single version. 
+- It reduces the risk of anything going wrong.
+
+- It fixes venv issues in nvim. When using pyenv, nvim would find mutliple versions of Python in the dedicated host environment. With this approach, it finds a single version.
+
+- While not perfect (see below), the approach works well given my workflow, which is why I stick to it.
 
 Disadvantages:
 
 - I much prefer to install Python version programmaticall via pyenv.
 
-- Python only provides installers for actively supported versions. This means that if I need to install an older version to be compatible with a project I'm working on, I can't install it in this same way. This is a major disadvantage.
+- Python only provides installers for actively supported versions. This means that if I need to install an older version to be compatible with a project I'm working on, I can't install it in this same way.
+
+- I prefer managing virtual envs with pyenv-virtualenv and give them names corresponding to the project.
+
+Overview of virtual environment tools:
+
+- [pyenv](https://github.com/pyenv/pyenv) is a Python version manager.
+
+- [pipenv](https://pipenv.pypa.io/en/latest/) is a dependency manager for
+  Python projects. Allows for using pip and virtualenv together.
+
+- [virtualenv](https://github.com/pypa/virtualenv) is a tool to create isolated
+  virtual Python environments.
+
+- [pyenv-virtualenv](https://github.com/pyenv/pyenv-virtualenv) is a pyenv
+  plugin that allows you to use pyenv to manage virtualenvs.
+
+- [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)
+  provides a set of wrappers to work with virtualenvs.
+
+- [poetry](https://python-poetry.org) is a packaging and dependency manager.
+
+### Running code:
+
+- I run all Python commands with the `-m` flag (i.e. `python -m pip install`, `python -m black`, `python -m jupyter notebook`) to be as sure as possible that I use the correct Python version (I have created alias for all of them).
+
+### Jupyter notebooks
+
+- I work with notebooks in VSCode, which solves any issues with kernel management because VSCode just finds the project's virtual environment.
+
+- To use notebooks in a browser, I found Ethan Rosenthal's [approach]](https://www.ethanrosenthal.com/2022/02/01/everything-gets-a-package/) useful.
 
 
+## vim
 
-## nvim
+- I use Neovim.
 
 ### Installation
 
-- To avoid unwanted updates from core neovim and plugins, I install neovim from source and pin plugins to specific versions, tags, or commits. I only update when I have a specific reason to do so.
+- To avoid unwanted updates from core neovim and plugins, I install Neovim from source and pin plugins to specific versions, tags, or commits. I only update when I have a specific reason to do so.
 
-- To install neovim from source, I followed [these](https://github.com/neovim/neovim/wiki/Building-Neovim) instructions. I clone the neovim repo into my home directory. After installing the dependencies via homebrew, the commands are the following:
+- To install Neovim from source, I followed [these](https://github.com/neovim/neovim/wiki/Building-Neovim) instructions. I clone repo into my home directory. After installing the dependencies via homebrew, the commands are the following:
 
 ```
 git clone https://github.com/neovim/neovim.git
@@ -124,21 +137,72 @@ make CMAKE_BUILD_TYPE=Release
 sudo make install
 ```
 
-- To uninstall neovim, I'd use:
+- To completely uninstall neovim, I'd use:
 
 ```
 sudo rm /usr/local/bin/nvim
 sudo rm -r /usr/local/share/nvim/
 ```
 
+### Misc.
+
 - I use `lazy.nvim` as my package manager.
 
+- To delete all packages (so they get newly installed on next startup) I use:
 
+```
+rm -r ~/.local/share/nvim/
+```
 
-### Misc.
+- I follow [this](https://www.reddit.com/r/vim/comments/u1kppk/comment/i4ecygu/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button) suggestion and map the meta key to my left option key, so I can use `M` key bindings in vim. I do this by setting the mapping in iTerm: `ITerm2 -> Preferences -> Profiles -> keys -> General -> Choose "left Option key " as "Esc+"`.
 
 - For language-specific code completion to work (e.g. `np.` triggering all np functions), I need to open vim with an active venv with the required packages installed.
 
+
+## SSH setup
+
+- I want access to work and personal Github projects on all my machines, and I use `.gitconfig` files to make this all work smoothly. My setup largely follows the steps in [this](https://blog.gitguardian.com/8-easy-steps-to-set-up-multiple-git-accounts/) tutorial:
+
+1. Create ssh key without creating a passphrase: `cd ~/.ssh` and `ssh-keygen -t rsa -C "personal-email-address" -f "github_personal"`. The -t flag allows me to specify the type of key I want to generate, the -C flag to add a comment, the -f flag to add a file name.
+
+2. Add SSH keys to SSH agent: `ssh-add ~/.ssh/github_personal`.
+
+3. Add SSH public key to Github account: go to account's SSH and GPG keys page in setting and add new account.
+
+4. Create a config file `~/.ssh/config` to ensure the SSH agent uses the right key when connecting to a remote repository (I think this is not actually needed, and it's currently disabled in my settings).
+
+```{markdown}
+Host *
+    AddKeysToAgent yes
+```
+
+5. Create a global `.gitconfig` file that tells git which config file to use depending on the directory I'm in (see [here](https://git-scm.com/docs/git-config#_conditional_includes) for details).
+
+```{markdown}
+[includeIf "gitdir:~/dev/personal/"]
+    path = ~/dev/projects/dotfiles/git/.gitconfig.personal
+
+[includeIf "gitdir:~/dev/work/"]
+    path = ~/dev/projects/dotfiles/git/.gitconfig.work
+
+[core]
+    editor = nvim
+```
+
+6. Create the personal config file.
+
+```{markdown}
+[user]
+    name = fabiangunzinger
+    email = fa.gunzinger@gmail.com
+
+[core]
+    sshCommand = "ssh -i ~/.ssh/github_personal"
+```
+
+7. Done. I then repeat the same process for my work projects.
+
+8. This way, when I'm in any directory in `~/dev/personal`, Github uses my personal email and user name as well as my personal ssh key for all connections. A very similar result coult be achieved by using `~/.ssh/config`, as described [here](https://www.freecodecamp.org/news/the-ultimate-guide-to-ssh-setting-up-ssh-keys/) and [here](https://gist.github.com/rahularity/86da20fe3858e6b311de068201d279e3), with the main difference that I'd have to manually specify username and email every time I clone a new repo, because there is no way to automatically set them via ssh. This would be slightly annoying, which is why I use gitconfig.
 
 
 ## Useful tools
@@ -149,13 +213,23 @@ brew install tldr               # example based documentation
 
 - [Figlet](http://www.figlet.org/) creates font banners. To use, after brew install, do something like `figlet -f colossal "Hello world"`. 
 
+- I use `raycast` (`brew install raycast`) as my secondary launcher in addition to spotlight. I access it with `cmd-shift-space`, and mostly use it as a convenient way to access ChatGPT. I export settings and installed extensions from the advanced settings tab and then import it on the new machine.
 
-## Quarto setup
+
+## Quarto
 
 - Install Quarto on mac `brew install -cask quarto`.
 
 - For `quarto` autocompletion to work, I need to select the kernel I want to use in the quarto doc, and I need to have the corresponding venv activated when I start nvim.
 
+
+## Note taking
+
+- I currently use Apple notes because it is leightweight and syncs seamlessly across all my devices.
+
+- It has two major disadvantages: it requires context switching away from the terminal, which increasingly bothers me, and it doesn't allow for version control.
+
+- I'm constantly tempted to switch to something like Obsidian and have played around with it, but I'd have to pay to sync notes across devices.
 
 
 ## Acknowledgements

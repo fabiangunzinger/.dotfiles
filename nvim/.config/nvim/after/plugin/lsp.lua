@@ -47,7 +47,7 @@ require("mason-lspconfig").setup({
     "pyright",
     "marksman",
     "ltex",
-    "lua_ls",
+    -- "lua_ls",
     "bashls",
   },
 })
@@ -119,15 +119,6 @@ lspconfig.lua_ls.setup {
     },
   },
 }
-
--- lspconfig.lua_ls.setup {
--- Lua = {
--- diagnostics = {
--- globals = { 'vim', 'quarto', 'pandoc' },
--- disable = { 'trailing-space' },
--- },
--- },
--- }
 
 lspconfig.bashls.setup {
   filetypes = { 'sh', 'bash' },

@@ -196,5 +196,6 @@ else
  export editor='nvim'
 fi
 
-
+# Python startup script
+export PYTHONSTARTUP="$HOME/scripts/pythonstartup.py"
 
