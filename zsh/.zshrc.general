@@ -9,6 +9,7 @@ alias dve='deactivate'
 
 alias pi='python -m pip install'
 alias piu='python -m pip install --upgrade'
+alias pit='python -m pip install --index-url https://test.pypi.org/simple/ --no-deps'
 alias pl='python -m pip list'
 alias pf='python -m pip freeze > requirements.txt'
 alias pir='python -m pip install -r requriements.txt'
