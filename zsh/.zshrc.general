@@ -8,12 +8,20 @@ alias ave='source ./.venv/bin/activate'
 alias dve='deactivate'
 
 alias pi='python -m pip install'
+alias piu='python -m pip install --upgrade'
+alias pit='python -m pip install --index-url https://test.pypi.org/simple/ --no-deps'
+alias pitu='python -m pip install --index-url https://test.pypi.org/simple/ --no-deps --upgrade'
 alias pl='python -m pip list'
 alias pf='python -m pip freeze > requirements.txt'
 alias pir='python -m pip install -r requriements.txt'
 
 alias aqu='source ~/.venvs/quarto3.10/bin/activate'
 alias aju='source ~/.venvs/jupyter3.10/bin/activate'
+
+# Python packaging
+alias pb='python -m build'
+alias tut='python -m twine upload --repository testpypi dist/*'
+alias tup='python -m twine upload dist/*'
 
 # Blog
 alias qpr='quarto preview'
