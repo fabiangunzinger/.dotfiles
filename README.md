@@ -119,6 +119,12 @@ Overview of virtual environment tools:
 
 - To use notebooks in a browser, I found Ethan Rosenthal's [approach]](https://www.ethanrosenthal.com/2022/02/01/everything-gets-a-package/) useful.
 
+### Startup script
+
+- Inspired by [this](https://www.bitecode.dev/p/happiness-is-a-good-pythonstartup) post, I use a startup script to automatically load frequently used packages and set some configurations.
+
+- Just like other scripts, the startup script is saved in `.dotfiles/scripts` and symlinked to a destination where Python can find it using `stow` (Python can find it because I set `PYTHONSTARTUP` to the respective path in my `zshrc`).
+
 
 ## vim
 
