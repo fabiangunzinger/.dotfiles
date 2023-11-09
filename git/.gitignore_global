@@ -27,7 +27,7 @@ Temporary Items
 
 # VS Code #
 ###########
-
+.vscode/
 *.code-workspace
 
 # Vim #
@@ -74,7 +74,7 @@ tags
 ######################
 
 *.log
-*.sql
+# *.sql # uncomment if you want to ignore SQL database files
 *.sqlite
 
 # LaTeX #
