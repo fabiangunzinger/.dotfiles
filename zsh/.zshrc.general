@@ -12,6 +12,7 @@ alias piu='python -m pip install --upgrade'
 alias pit='python -m pip install --index-url https://test.pypi.org/simple/'
 alias pitu='python -m pip install --index-url https://test.pypi.org/simple/ --upgrade'
 alias pl='python -m pip list'
+alias pg='python -m pip list | grep $1'
 alias pf='python -m pip freeze > requirements.txt'
 alias pir='python -m pip install -r requriements.txt'
 
