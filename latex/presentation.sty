@@ -110,7 +110,7 @@
 \newcommand*{\figtitle}[1]{{\centering\textbf{#1}\par\medskip}}
 
 
-
+% % blue shaded title boxes
 % \mode<presentation>
 % {
 %   \usetheme{default}
@@ -119,21 +119,21 @@
 %   \setbeamercovered{transparent}
 %   \setbeamertemplate{caption}[numbered]
 %   % \insertframenumber/\inserttotalframenumber
-
-
 % }
-% \addtobeamertemplate{navigation symbols}{}{%
-%     \usebeamerfont{footline}%
-%     \usebeamercolor[fg]{footline}%
-%     \hspace{1em}%
-%     \insertframenumber/\inserttotalframenumber
-% }
+
+% add page numbers
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
 
 % Add blue summary bar at the bottom of each slide
 % \usetheme{Boadilla}
 
 % Square bullet points
-% \useinnertheme{rectangles}
+\useinnertheme{rectangles}
 
 % Title case format
 % \captionsetup{labelfont=bf, font=bf}
