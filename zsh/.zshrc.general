@@ -21,8 +21,8 @@ alias aju='source ~/.venvs/jupyter3.10/bin/activate'
 
 # Python packaging
 alias pb='python -m build'
-alias tut='python -m twine upload --repository testpypi dist/*'
-alias tup='python -m twine upload dist/*'
+alias put='python -m twine upload --repository testpypi dist/*'
+alias pup='python -m twine upload dist/*'
 
 # Blog
 alias qpr='quarto preview'

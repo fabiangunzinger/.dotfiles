@@ -11,3 +11,5 @@ if [ -f '/Users/fabian.gunzinger/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/fabian.gunzinger/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/fabian.gunzinger/google-cloud-sdk/completion.zsh.inc'; fi
 
+# Add textlive to path
+export PATH="/usr/local/texlive/2023/bin/universal-darwin:$PATH"
