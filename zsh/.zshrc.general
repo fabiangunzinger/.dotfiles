@@ -15,7 +15,7 @@ alias pu='python -m pip uninstall'
 alias pl='python -m pip list'
 alias pg='python -m pip list | grep $1'
 alias pf='python -m pip freeze > requirements.txt'
-alias pir='python -m pip install -r requriements.txt'
+alias pir='python -m pip install -r requirements.txt'
 
 alias aqu='source ~/.venvs/quarto3.10/bin/activate'
 alias aju='source ~/.venvs/jupyter3.10/bin/activate'
