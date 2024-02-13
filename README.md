@@ -109,6 +109,12 @@ Overview of virtual environment tools:
 
 - [poetry](https://python-poetry.org) is a packaging and dependency manager.
 
+
+### Applications installation
+
+- To install applications like `poetry` and probably also `quarto`, I use `pipx`, which creates isolated environments for each application and thus ensures that they are isolated while still available systemwide.
+
+
 ### Running code
 
 - I run all Python commands with the `-m` flag (i.e. `python -m pip install`, `python -m black`, `python -m jupyter notebook`) to be as sure as possible that I use the correct Python version (I have created alias for all of them).
