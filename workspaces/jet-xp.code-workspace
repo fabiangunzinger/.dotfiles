@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "../../dev/work/jet-xp-core"
+		},
+		{
+			"path": "../../dev/work/jet-xp-experiment-metadata"
+		},
+		{
+			"path": "../../dev/work/jet-xp-metrics-library"
+		},
+		{
+			"path": "../../dev/work/jet-xp-pipelines"
+		},
+		{
+			"path": "../../dev/work/jet-xp-pypika"
+		},
+		{
+			"path": "../../dev/work/jet-xp-stats-engine"
+		},
+		{
+			"path": "../../dev/work/just-xp"
+		}
+	]
+}
