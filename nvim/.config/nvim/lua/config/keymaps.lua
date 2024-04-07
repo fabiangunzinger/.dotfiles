@@ -33,8 +33,26 @@ map("n", "k", "gk")
 -- open url under cursor without netrw_gx
 map("n", "gx", ":!open <c-r><c-a><cr>")
 
+-- Function to reload configuration modules
+function reload_config()
+    -- List of modules in the 'config' directory
+    local modules = { "config.keymaps", "config.options"}
+
+    -- Clear the cache for each module and reload it
+    for _, module in ipairs(modules) do
+        package.loaded[module] = nil
+        require(module)
+    end
+end
+
 -- source vimrc
-map("n", "<leader>sv", "<cmd>luafile: $MYVIMRC<cr>")
+map("n", "<leader>sv", ':lua reload_config()<cr>')
+
+-- Bind the reload function to a keymap (optional)
+-- For example, bind it to <leader>rc in normal mode
+-- vim.api.nvim_set_keymap('n', '<leader>rc', ':lua reload_config()<CR>', { noremap = true, silent = true })
+
+
 
 -- open help for word under cursor
 map("n", '<leader>vh', ':execute "h " . expand("<cword>")<cr>')

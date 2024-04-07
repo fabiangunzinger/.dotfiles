@@ -11,8 +11,13 @@ local plugins = {
   { "nvim-tree/nvim-web-devicons", commit = "986875b" },
 
   -- quick file navigation
-  { 'ThePrimeagen/harpoon', commit = "8cb54c4" },
-
+  -- { 'ThePrimeagen/harpoon', commit = "8cb54c4" },
+  {
+      "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      commit = "a38be6e",
+  },
   -- object finder
   -- { 'nvim-telescope/telescope.nvim', commit = "6d3fbff" },
   { 'nvim-telescope/telescope.nvim', version = "0.1.4" },

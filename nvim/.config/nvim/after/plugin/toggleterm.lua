@@ -28,6 +28,7 @@ toggleterm.setup {
 }
 
 local Terminal = require("toggleterm.terminal").Terminal
+
 local lazygit = Terminal:new {
   cmd = "lazygit",
   hidden = true,
@@ -78,6 +79,7 @@ function _FLOAT_TERM()
 end
 
 local vertical_term = Terminal:new {
+  cmd = "python",
   direction = "vertical",
   }
 
@@ -86,6 +88,7 @@ function _VERTICAL_TERM()
 end
 
 local horizontal_term = Terminal:new {
+  cmd = "python",
   direction = "horizontal",
 }
 
@@ -94,14 +97,14 @@ function _HORIZONTAL_TERM()
 end
 
 
-wk.register({
-    t = {
-      name = "Terminals",
-      s = { '<cmd>SlimeConfig<cr>', 'slime config' },
-      v = { "<cmd>lua _VERTICAL_TERM()<cr>", "vertical terminal" },
-      h = { "<cmd>lua _HORIZONTAL_TERM()<cr>", "horizontal terminal" },
-      f = { "<cmd>lua _FLOAT_TERM()<cr>", "flating terminal" },
-      p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "python terminal" },
-      t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "htop" },
-    },
-})
+-- wk.register({
+--     c = {
+--       name = "code",
+--       f = { "<cmd>lua _FLOAT_TERM()<cr>", "float terminal" },
+--       h = { "<cmd>lua _HORIZONTAL_TERM()<cr>", "horizontal terminal" },
+--       p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "python" },
+--       s = { '<cmd>SlimeConfig<cr>', 'slime config' },
+--       t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "htop" },
+--       v = { "<cmd>lua _VERTICAL_TERM()<cr>", "vertical terminal" },
+--     },
+-- })

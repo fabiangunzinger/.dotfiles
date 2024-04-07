@@ -91,9 +91,7 @@ telescope.load_extension('heading')
 -- telescope.load_extension('projects')
 
 -- find files quick access
-vim.keymap.set("n", '<c-p>', "<cmd>Telescope find_files<cr>")
-
-
+-- vim.keymap.set("n", '<c-p>', "<cmd>Telescope find_files<cr>")
 
 wk.register(
 {

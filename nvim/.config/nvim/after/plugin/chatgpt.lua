@@ -147,19 +147,19 @@ chatgpt.setup {
   predefined_chat_gpt_prompts = "https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv",
 }
 
-wk.register({
-    p = {
-        name = "ChatGPT",
-        a = { "<cmd>ChatGPTActAs<cr>", "Act as" },
-        p = { "<cmd>ChatGPT<cr>", "Chat" },
-        c = { "<cmd>ChatGPTCompleteCode<cr>", "Complete code" },
-        e = { "<cmd>ChatGPTEditWithInstructions<cr>", "Edit with instructions" },
-        r = { "<cmd>ChatGPTRun<cr>", "Run" },
-    },
-}, {
-    prefix = "<leader>",
-    mode = { "n", "v" },
-})
+-- wk.register({
+--     p = {
+--         name = "ChatGPT",
+--         a = { "<cmd>ChatGPTActAs<cr>", "Act as" },
+--         p = { "<cmd>ChatGPT<cr>", "Chat" },
+--         c = { "<cmd>ChatGPTCompleteCode<cr>", "Complete code" },
+--         e = { "<cmd>ChatGPTEditWithInstructions<cr>", "Edit with instructions" },
+--         r = { "<cmd>ChatGPTRun<cr>", "Run" },
+--     },
+-- }, {
+--     prefix = "<leader>",
+--     mode = { "n", "v" },
+-- })
 
 
 -- When using ChatGPT and ChatGPTEditWithInstructions, the following keybindings are available:

@@ -92,42 +92,21 @@ wk.setup {
 
 wk.register(
   {
-    g = {
-      name = "git",
-      s = { ":Gitsigns<cr>", "gitsigns" },
-      c = {
-        name = "git conflict",
-        o = { "<Plug>(git-conflict-ours)", "use ours" },
-        t = { "<Plug>(git-conflict-theirs)", "use theirs" },
-        b = { "<Plug>(git-conflict-both)", "use both" },
-        x = { "<Plug>(git-conflict-none)", "use none" },
-        p = { "<Plug>(git-conflict-prev-conflict)", "previous conflict" },
-        n = { "<Plug>(git-conflict-next-conflict)", "next conflict" },
-      },
-    },
-    v = {
-      name = 'Vim',
-      c = { ':Telescope colorscheme<cr>', 'colortheme' },
-      l = { ':Lazy<cr>', 'Lazy' },
-      m = { ':Mason<cr>', 'Mason' },
-      s = { ':e $MYVIMRC | :cd %:p:h | split . | wincmd k<cr>', 'Settings' },
-    },
-    c = {
-      name = "Code",
-      c = {
-        name = "Copilot",
+    a = {
+      name = "ai",
+      p = {
+        name = "copilot",
         d = { "<cmd>Copilot disable<cr>", "disable copilot" },
         e = { "<cmd>Copilot enable<cr>", "enable copilot" },
       },
-    },
-    q = {
-      name = 'Quarto',
-      a = { ":QuartoActivate<cr>", 'activate' },
-      p = { ":lua require'quarto'.quartoPreview()<cr>", 'preview' },
-      q = { ":lua require'quarto'.quartoClosePreview()<cr>", 'close' },
-      h = { ":QuartoHelp ", 'help' },
-      e = { ":lua require'otter'.export()<cr>", 'export' },
-      E = { ":lua require'otter'.export(true)<cr>", 'export overwrite' },
+      c = {
+        name = "chat gpt",
+        a = { "<cmd>ChatGPTActAs<cr>", "act as" },
+        p = { "<cmd>ChatGPT<cr>", "chat" },
+        c = { "<cmd>ChatGPTCompleteCode<cr>", "complete code" },
+        e = { "<cmd>ChatGPTEditWithInstructions<cr>", "edit with instructions" },
+        r = { "<cmd>ChatGPTRun<cr>", "run" },
+      },
     },
     d = {
       name = "debug",
@@ -146,6 +125,19 @@ wk.register(
         s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "test summary" }
       },
     },
+    g = {
+      name = "git",
+      s = { ":Gitsigns<cr>", "gitsigns" },
+      c = {
+        name = "git conflict",
+        o = { "<Plug>(git-conflict-ours)", "use ours" },
+        t = { "<Plug>(git-conflict-theirs)", "use theirs" },
+        b = { "<Plug>(git-conflict-both)", "use both" },
+        x = { "<Plug>(git-conflict-none)", "use none" },
+        p = { "<Plug>(git-conflict-prev-conflict)", "previous conflict" },
+        n = { "<Plug>(git-conflict-next-conflict)", "next conflict" },
+      },
+    },
     h = {
       name = "Harpoon",
       h = { ':lua require("harpoon.ui").toggle_quick_menu()<cr>', "Toggle menu" },
@@ -153,6 +145,22 @@ wk.register(
       n = { ':lua require("harpoon.ui").nav_next()<cr>', "Next file" },
       p = { ':lua require("harpoon.ui").nav_prev()<cr>', "Previous file" },
       t = { 'lua require("harpoon.term").gotoTerminal(1)<cr>', "Go to terminal 1" },
+    },
+    q = {
+      name = 'quarto',
+      a = { ":QuartoActivate<cr>", 'activate' },
+      p = { ":lua require'quarto'.quartoPreview()<cr>", 'preview' },
+      q = { ":lua require'quarto'.quartoClosePreview()<cr>", 'close' },
+      h = { ":QuartoHelp ", 'help' },
+      e = { ":lua require'otter'.export()<cr>", 'export' },
+      E = { ":lua require'otter'.export(true)<cr>", 'export overwrite' },
+    },
+    v = {
+      name = 'Vim',
+      c = { ':Telescope colorscheme<cr>', 'colortheme' },
+      l = { ':Lazy<cr>', 'Lazy' },
+      m = { ':Mason<cr>', 'Mason' },
+      s = { ':e $MYVIMRC | :cd %:p:h | split . | wincmd k<cr>', 'Settings' },
     },
   }, { mode = 'n', prefix = '<leader>' }
 )

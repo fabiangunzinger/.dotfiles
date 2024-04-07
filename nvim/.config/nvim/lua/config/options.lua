@@ -28,7 +28,8 @@ vim.opt.showcmd = true   -- show partial command
 vim.opt.scrolloff = 8 -- at least 8 lines away from border
 
 -- text wrapping
-vim.opt.wrap = true   -- wrap long lines
+-- vim.opt.wrap = true   -- wrap long lines
+vim.opt.textwidth = 90   -- wrap at 80 characters
 vim.opt.linebreak = true   -- don't break word
 
 -- splits
