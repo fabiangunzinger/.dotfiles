@@ -104,7 +104,7 @@ alias gaa='git add --all'           # add all modified files to index
 alias gap='git add --patch'         # stage individual hunks
 alias gc='git commit --verbose'     # show diff in editor
 alias gcm='git commit --message'    # commit with inline message
-alias gcam='gaa; gcm'               # add and commit all edited files
+alias gacm='gaa; gcm'               # add and commit all edited files
 alias gca='gc --amend'              # add changes to last commit or edit msg
 alias gcan='gcadd --no-edit'        # add changes to last commit (keep msg)
 

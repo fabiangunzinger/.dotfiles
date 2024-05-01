@@ -3,16 +3,27 @@
 Setting up a development machine can be painful. Here I want to collect what I do, why I do it, and how I use my setup.
 
 
-## Dotfile management
 
-- I manage my dotfiles with [stow](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/), inspired by the setup of [Jannis Buhr](https://github.com/jmbuhr/.dotfiles).
+## SSH
 
-- I store my dotfiles in `~/.dotfiles`.
+
+## Dotfiles
+
+Installation steps:
+
+```{bash}
+cd ~
+git clone git@github.com:fabiangunzinger/.dotfiles.git
+~/.dotfiles/install
+```
+
+Explanation:
+
+- I store my dotfiles in `~/.dotfiles` and manage them with [`stow`](https://alexpearce.me/2016/02/managing-dotfiles-with-stow/).
 
 - To create a symlink for each dotfile to my home directory, I simply run `~/.dotfiles/install`.
 
-- Not all folders in `.dotfiles` contain dotfiles I want to symlink to my home directory. Those who do are added to `$STOW_FOLDERS` in the installation script. Hence, if I add a new folder with dotfiles I want to link, I have to change said script accordingly.
-
+- Not all folders in `.dotfiles` contain dotfiles I want to symlink to my home directory. Those I want to add are listed in `$STOW_FOLDERS` in the installation script. Hence, if I add a new folder with files I want to link, I have to change said script accordingly.
 
 ## Mac setup
 
@@ -266,3 +277,6 @@ brew install tldr               # example based documentation
 - [Price Hiller](https://gitlab.orion-technologies.io/philler) has inspired me to separate plugin loading and configuration, and provided a great template for my lualine configuration.
 
 - The people at [Rocky Linux](https://docs.rockylinux.org/books/nvchad/), who provide the [NvChad](https://github.com/NvChad/NvChad) setup framework provide useful explanations on a number of plugins and setup steps (including the best documentation of useful Nvim-tree commands I could find).
+
+- [macOS Setup Guide](https://sourabhbajaj.com/mac-setup/) is a great
+resource.

@@ -98,6 +98,7 @@ wk.register(
   f = {
     name = 'find (telescope)',
     f = { '<cmd>Telescope find_files<cr>', 'files' },
+    a = { '<cmd>Telescope find_files<cr>', 'files' }, -- faster to type
     g = { '<cmd>Telescop live_grep<cr>', 'grep' },
     b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "buffer" },
     d = { "<cmd>Telescope buffers<cr>", "buffers" },
@@ -118,4 +119,3 @@ wk.register(
   },
 }, { mode = 'n', prefix = '<leader>' }
 )
-
