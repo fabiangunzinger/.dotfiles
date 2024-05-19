@@ -30,57 +30,23 @@ cd ~/.ssh
 
 echo "Authenticate personal account..."
 ssh-keygen -t rsa -C "personal_gh" -f "personal_gh" -N ""
+ssh-add ~/.ssh/personal_gh
 gh auth login -h "github.com" -w
 
 echo "Authenticate work account..."
-ssh-keygen -t ed25519 -C "jet_gh" -f ".ssh/jet_gh" -N ""
+ssh-keygen -t ed25519 -C "work_gh" -f ".ssh/work_gh" -N ""
+ssh-add ~/.ssh/work_gh
 gh auth login -h "github.je-labs.com" -w
+
+echo "Create config file..."
+
 ```
 
 Notes:
 
-- I want access to work and personal Github projects on all my machines, and I use `.gitconfig` files to make this all work smoothly.
+- I want access to work and personal GitHub projects on all my machines, and I want Github to automatically use my personal and work credentials depending on what directory I'm in. I use `.gitconfig` files to make this all work smoothly.
 
-1. Create ssh key without creating a passphrase: `cd ~/.ssh` and `ssh-keygen -t rsa -C "personal-email-address" -f "github_personal"`. The -t flag allows me to specify the type of key I want to generate, the -C flag to add a comment, the -f flag to add a file name.
-
-2. Add SSH keys to SSH agent: `ssh-add ~/.ssh/github_personal`.
-
-3. Add SSH public key to Github account: go to account's SSH and GPG keys page in setting and add new account.
-
-4. Create a config file `~/.ssh/config` to ensure the SSH agent uses the right key when connecting to a remote repository (I think this is not actually needed, and it's currently disabled in my settings).
-
-```{markdown}
-Host *
-    AddKeysToAgent yes
-```
-
-5. Create a global `.gitconfig` file that tells git which config file to use depending on the directory I'm in (see [here](https://git-scm.com/docs/git-config#_conditional_includes) for details).
-
-```{markdown}
-[includeIf "gitdir:~/dev/personal/"]
-    path = ~/dev/projects/dotfiles/git/.gitconfig.personal
-
-[includeIf "gitdir:~/dev/work/"]
-    path = ~/dev/projects/dotfiles/git/.gitconfig.work
-
-[core]
-    editor = nvim
-```
-
-6. Create the personal config file.
-
-```{markdown}
-[user]
-    name = fabiangunzinger
-    email = fa.gunzinger@gmail.com
-
-[core]
-    sshCommand = "ssh -i ~/.ssh/github_personal"
-```
-
-7. Done. I then repeat the same process for my work projects.
-
-8. This way, when I'm in any directory in `~/dev/personal`, Github uses my personal email and user name as well as my personal ssh key for all connections. A very similar result coult be achieved by using `~/.ssh/config`, as described [here](https://www.freecodecamp.org/news/the-ultimate-guide-to-ssh-setting-up-ssh-keys/) and [here](https://gist.github.com/rahularity/86da20fe3858e6b311de068201d279e3), with the main difference that I'd have to manually specify username and email every time I clone a new repo, because there is no way to automatically set them via ssh. This would be slightly annoying, which is why I use gitconfig.
+- In `ssh-keygen`, the `-t` flag allows me to specify the type of key I want to generate, the `-C` flag to add a comment, the `-f` flag to add a file name, and the `-N` flag to add a passphrase. `""` means no passphrase.
 
 
 
@@ -112,12 +78,13 @@ brew install --cask iterm2
 echo "Install oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-echo "Install coreutils"
+echo "GNU Install coreutils"
 brew install coreutils
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/bin:$PATH"
 
 echo "Install nerd font"
 brew install --cask font-hack-nerd-font
+brew install --cask font-source-code-pro
 
 echo "Install autocomplete extensions"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -157,16 +124,14 @@ brew install rename
 ## Using zsh plugin for handy aliases: https://github.com/MohamedElashri/exa-zsh
 brew install exa
 
+## Make iterm config script executable
+chmod +x /Users/$(whoami)/iterm2/.dotfiles/configure_iterm2.zsh
+
+## Run iterm config script
+/Users/$(whoami)/iterm2/.dotfiles/configure_iterm2.zsh
 
 
 ```
-
-Manual setup steps:
-
-- Select desired font in iterm (currently 'Hack Nerd Font').
-
-- Import iterm2-profiles.json from ~/.dotfiles/iterm2 (iterm2/Profiles/Other actions)
-
 
 Notes: 
 
@@ -184,6 +149,7 @@ Notes:
 
 - I use GNU cor utilities, which I download and add to path in .zshrc.
 
+
 ## tmux
 
 ```{bash}
@@ -192,8 +158,7 @@ brew install reattach-to-user-namespace
 ```
 
 Notes:
-## reattach-to-user-namespace utility allows scrolling in tmux (see
-## here: https://thoughtbot.com/blog/tmux-copy-paste-on-os-x-a-better-future)
+- `reattach-to-user-namespace` utility allows scrolling in tmux (see [here](https://thoughtbot.com/blog/tmux-copy-paste-on-os-x-a-better-future))
 
 
 
@@ -205,6 +170,11 @@ git clone https://github.com/neovim/neovim.git
 cd neovim
 make CMAKE_BUILD_TYPE=Release
 sudo make install
+
+# Create pynvim venv for neovim
+chmod +x /Users/$(whoami)/iterm2/nvim/pynvim_setup.zsh
+/Users/$(whoami)/iterm2/nvim/pynvim_setup.zsh
+
 ```
 
 Notes:
@@ -230,7 +200,8 @@ sudo rm -r /usr/local/share/nvim/
 rm -r ~/.local/share/nvim/
 ```
 
-- I follow [this](https://www.reddit.com/r/vim/comments/u1kppk/comment/i4ecygu/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button) suggestion and map the meta key to my left option key, so I can use `M` key bindings in vim. I do this by setting the mapping in iTerm: `ITerm2 -> Preferences -> Profiles -> keys -> General -> Choose "left Option key " as "Esc+"`.
+<!-- - I follow [this](https://www.reddit.com/r/vim/comments/u1kppk/comment/i4ecygu/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button) suggestion and map the meta key to my left option key, so I can use `M` key bindings in vim. I do this by setting the mapping in iTerm: `ITerm2 -> Preferences -> Profiles -> keys -> General -> Choose "left Option key " as "Esc+"`. -->
+<!---->
 
 - For language-specific code completion to work (e.g. `np.` triggering all np functions), I need to open vim with an active venv with the required packages installed.
 
@@ -240,8 +211,6 @@ rm -r ~/.local/share/nvim/
 ```{bash}
 mkdir -p ~/.venvs
 ```
-
-
 
 # Virtual environments
 # Go to ~/.venvs, and get requirements.tex for each one so I can reproduce on new machine
@@ -383,15 +352,16 @@ brew install pandoc
 brew install --cask \
     appcleaner \            # app uninstaller
     caffeine \              # prevent mac from sleeping
-    google-chrome \         # browser
+    firefox \               # browser
     flux \                  # screen color adjustment
+    google-chrome \         # browser
     rectangle \             # window manager
     skype \                 # video calls
     spotify \               # music
     skim \                  # pdf viewer
     chrome \                # browser
     whatsapp \              # messaging
-    firefox \               # browser
+    visual-studio-code \    # code editor
 ```
 
 
@@ -420,4 +390,4 @@ brew install --cask \
 - The people at [Rocky Linux](https://docs.rockylinux.org/books/nvchad/), who provide the [NvChad](https://github.com/NvChad/NvChad) setup framework provide useful explanations on a number of plugins and setup steps (including the best documentation of useful Nvim-tree commands I could find).
 
 - [macOS Setup Guide](https://sourabhbajaj.com/mac-setup/) is a great
-resource.
+resource for setting up a mac developmer machine.

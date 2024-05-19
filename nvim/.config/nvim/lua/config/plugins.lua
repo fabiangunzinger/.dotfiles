@@ -47,8 +47,7 @@ local plugins = {
   { "jay-babu/mason-null-ls.nvim", commit = "1fcf055" },
 
   -- syntax highlighs
-  { 'nvim-treesitter/nvim-treesitter'},
-  -- { 'nvim-treesitter/nvim-treesitter', commit = "05df88e" },
+  { 'nvim-treesitter/nvim-treesitter', version = "0.9.2" },
   { 'nvim-treesitter/nvim-treesitter-textobjects', commit = "95b76b9" },
 
   -- testing
@@ -110,6 +109,7 @@ local plugins = {
   -- git
   { 'akinsho/git-conflict.nvim', version = "1.1.2" },
   { 'lewis6991/gitsigns.nvim', version = "0.6" },
+  { 'tpope/vim-fugitive', version = "3.7" },
 
   -- send code to repl
   { 'jpalardy/vim-slime', commit = "bb15285",
