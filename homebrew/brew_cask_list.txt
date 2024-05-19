@@ -1,0 +1,9 @@
+amethyst
+appcleaner
+font-hack-nerd-font
+font-source-code-pro
+obsidian
+osxfuse
+quarto
+raycast
+rstudio

@@ -2,6 +2,20 @@
 
 Setting up a development machine can be painful. Here I want to collect what I do, why I do it, and how I use my setup.
 
+## Before a reset
+
+- Run the below for auto backups
+
+```{bash}
+\Users\$(whoami)\.dotfiles\backup.zsh
+```
+- Backup to external drive
+
+- Ensure there are no unpushed changes in git repositories
+
+- Ensure iCloud Drive is up to date (photos, docs, etc.)
+
+- Deactivate/sigh out of accounts (iTunes, iCloud)
 
 ## Xcode
 
@@ -352,7 +366,7 @@ brew install pandoc
 brew install --cask \
     appcleaner \            # app uninstaller
     caffeine \              # prevent mac from sleeping
-    firefox \               # browser
+    duckduckgo \            # browser
     flux \                  # screen color adjustment
     google-chrome \         # browser
     rectangle \             # window manager

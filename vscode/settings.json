@@ -1,0 +1,176 @@
+{
+    "cSpell.enabled": false,
+    "cSpell.userWords": [
+        "behaviour",
+        "Behavioural"
+    ],
+    "cSpell.enabledLanguageIds": [
+        "asciidoc",
+        "git-commit",
+        "json",
+        "jupyter",
+        "latex",
+        "markdown",
+        "plaintext",
+        "python",
+        "yaml",
+        "yml",
+        "quarto"
+    ],
+    
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.inlineSuggest.enabled": true,
+    "editor.minimap.enabled": false,
+
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+
+    // "afterDelay" option creates errors when editing code
+    // while live-rendering documents such as Quarto previews
+    // because unfinished code creates errors
+    "files.autoSave": "onFocusChange",
+
+    // "[python]": {
+    //     "editor.formatOnSave": true,
+    //     "editor.codeActionsOnSave": {
+    //         "source.fixAll": "explicit",
+    //         "source.organizeImports": "explicit"
+    //     },
+    //     "editor.defaultFormatter": "charliermarsh.ruff",
+    //     "diffEditor.codeLens": true,
+    // },
+
+    "[python]": {
+        "editor.formatOnSave": false,
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "never"
+        }
+    },
+
+    "git.openRepositoryInParentFolders": "never",
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "github.copilot.enable": {
+        "quarto": false,
+        "*": false,
+        "python": true
+    },
+    "jupyter.interactiveWindow.creationMode": "perFile",
+    "jupyter.askForKernelRestart": false,
+    "python.defaultInterpreterPath": "",
+    
+    "CodeGPT.apiKey": "CodeGPT Plus",
+    "CodeGPT.model": "CodeGPT Plus",
+
+    "notebook.output.textLineLimit": 1000,
+    // "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+        // "notebook.source.fixAll": true,
+        "notebook.source.organizeImports": true
+    },
+
+
+    "quarto.render.renderOnSave": true,    
+    "quarto.visualEditor.spellingDictionary": "en_GB",
+    "quarto.visualEditor.spelling": true,
+
+    "terminal.integrated.macOptionIsMeta": true,
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorBlinking": false,
+    "terminal.integrated.scrollback": 100000,
+    
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "d"
+            ],
+            "after": [
+                "d",
+                "d"
+            ]
+        },
+        {
+            "before": [
+                "<C-n>"
+            ],
+            "commands": [
+                ":nohl"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "lineBreakInsert"
+            ],
+            "silent": true
+        },
+        {
+            "before": ["<C-h>"],
+            "commands": ["workbench.action.focusLeftGroup"]
+        },
+        {
+            "before": ["<C-l>"],
+            "commands": ["workbench.action.focusRightGroup"]
+        },
+        {
+            "before": ["leader", "v"],
+            "commands": ["toggleVim"]
+        },
+
+        // {
+        //     "before": ["<C-D-j>"],
+        //     "commands": ["workbench.action.previousEditorInGroup"]
+        // },
+
+        {
+            "before": ["leader", "w"],
+            "commands": ["workbench.action.file.save"]
+        }
+    ],
+    "vim.leader": "<space>",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false
+    },
+    // To improve performance
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredDarkColorTheme": "Solarized Dark",
+    "workbench.preferredLightColorTheme": "Solarized Light",
+    "workbench.activityBar.location": "top",
+    // "workbench.colorTheme": "GitHub Dark",
+    "workbench.editorAssociations": {
+        "*.pdf": "latex-workshop-pdf-hook"
+    },
+    "workbench.colorTheme": "Solarized Dark",
+    "git.confirmSync": false,
+    "workbench.startupEditor": "none",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "github.copilot.editor.enableCodeActions": false,
+}
