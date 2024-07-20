@@ -9,6 +9,9 @@ map("c", "jk", "<c-c>")
 map("v", "jk", "v")
 map("n", 'jk', '<cmd>nohlsearch<cr>')
 
+-- quick save in insert node
+map('i', 'fd', '<cmd>write<cr>')
+
 -- copy into system clipboard
 map("n", "<leader>y", "\"+y")
 map("n", "<leader>y", "\"+y")
@@ -51,8 +54,7 @@ map("n", "<leader>sv", ':lua reload_config()<cr>')
 -- Bind the reload function to a keymap (optional)
 -- For example, bind it to <leader>rc in normal mode
 -- vim.api.nvim_set_keymap('n', '<leader>rc', ':lua reload_config()<CR>', { noremap = true, silent = true })
-
-
+-- map("n", "<leader>sv", "<cmd>luafile: $MYVIMKEYMAPS<cr>")
 
 -- open help for word under cursor
 map("n", '<leader>vh', ':execute "h " . expand("<cword>")<cr>')
