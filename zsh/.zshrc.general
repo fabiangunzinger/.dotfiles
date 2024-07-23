@@ -26,8 +26,8 @@ alias put='python -m twine upload --repository testpypi dist/*'
 alias pup='python -m twine upload dist/*'
 
 # Blog
-alias qpr='quarto preview'
-alias qre='quarto render && hugo'
+alias qp='quarto preview'
+alias qrh='quarto render && hugo'
 function hnp() { hugo new posts/$1; }
 
 # Neovim
