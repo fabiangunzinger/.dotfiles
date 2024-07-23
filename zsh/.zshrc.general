@@ -209,3 +209,7 @@ fi
 # Python startup script
 export PYTHONSTARTUP="$HOME/scripts/pythonstartup.py"
 
+
+# Misc environment variables
+export MYVIMKEYMAPS='$HOME/.dotfiles/nvim/.config/nvim/lua/config/keymaps.lua'
+export MYVIMOPTIONS='$HOME/.dotfiles/nvim/.config/nvim/lua/config/options.lua'

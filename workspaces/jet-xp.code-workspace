@@ -19,7 +19,18 @@
 			"path": "../../dev/work/jet-xp-stats-engine"
 		},
 		{
-			"path": "../../dev/work/just-xp"
+			"path": "../../dev/work/jet-xp"
+		},
+		{
+			"path": "../../dev/work/tmp"
 		}
-	]
+	],
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+		
+			
+
+		]
+	}
 }
