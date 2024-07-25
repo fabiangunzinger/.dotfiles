@@ -1,6 +1,5 @@
 local wk = require("which-key")
 
-
 wk.setup {
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
@@ -87,6 +86,4 @@ wk.setup {
     filetypes = {},
   },
 }
-
-
 

@@ -39,18 +39,18 @@ map("n", "gx", ":!open <c-r><c-a><cr>")
 
 -- Function to reload configuration modules
 function reload_config()
-    -- List of modules in the 'config' directory
-    local modules = { "config.keymaps", "config.options"}
+    local modules = { "config.autocommands", "config.keymaps", "config.options", "config.plugins" }
 
     -- Clear the cache for each module and reload it
     for _, module in ipairs(modules) do
         package.loaded[module] = nil
         require(module)
     end
+    print("Config reloaded!")
 end
 
 -- source vimrc
-map("n", "<leader>sv", ':lua reload_config()<cr>')
+map("n", "<leader>sv", function() reload_config() end)
 
 -- Bind the reload function to a keymap (optional)
 -- For example, bind it to <leader>rc in normal mode
@@ -58,7 +58,7 @@ map("n", "<leader>sv", ':lua reload_config()<cr>')
 -- map("n", "<leader>sv", "<cmd>luafile: $MYVIMKEYMAPS<cr>")
 
 -- open help for word under cursor
-map("n", '<leader>vh', ':execute "h " . expand("<cword>")<cr>')
+-- map("n", '<leader>vh', ':execute "h " . expand("<cword>")<cr>')
 
 -- center after search and jumps
 map("n", 'n', "nzz")
@@ -136,13 +136,21 @@ function _G.set_terminal_keymaps()
 end
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
-map("n", "<c-i>", 'o```{python}<cr>```<esc>O', { desc = "Insert Python code chunk" })
-
-
 -- -- normal mode without leader
--- wk.register({
---   ['<cm-i>'] = { insert_py_chunk(), 'python code chunk' },
--- }, {mode = 'n', silent = true})
+wk.register({
+  ['<c-LeftMouse>'] = { '<cmd>lua vim.lsp.buf.definition()<CR>', 'go to definition' },
+  ["<c-q>"]         = { '<cmd>q<cr>', 'close buffer' },
+  ['<esc>']         = { '<cmd>noh<cr>', 'remove search highlight' },
+  ['n']             = { 'nzzzv', 'center search' },
+  ['gN']            = { 'Nzzzv', 'center search' },
+  ['gl']            = { '<c-]>', 'open help link' },
+  ['gf']            = { ':e <cfile><CR>', 'edit file' },
+  ['co']            = { 'o#%%<cr>', 'new code chunk below' },
+  ['cO']            = { 'O#%%<cr>', 'new code chunk above' },
+  ['<c-i>']         = { 'o```{python}<cr>```<esc>O', "Python code chunk" },
+  ['<c-m>'] = { ':lua require("harpoon.ui").nav_next()<cr>', "Next file" },
+  ['<c-n>'] = { ':lua require("harpoon.ui").nav_prev()<cr>', "Previous file" },
+}, { mode = 'n', silent = true})
 
 
 -- normal mode with leader
@@ -213,7 +221,7 @@ wk.register(
     },
     v = {
       name = 'Vim',
-      c = { ':Telescope colorscheme<cr>', 'colortheme' },
+      c = { ':Telescope colorscheme<cr>', 'Colortheme' },
       l = { ':Lazy<cr>', 'Lazy' },
       m = { ':Mason<cr>', 'Mason' },
       s = { ':e $MYVIMRC | :cd %:p:h | split . | wincmd k<cr>', 'Settings' },
@@ -221,24 +229,6 @@ wk.register(
   }, { mode = 'n', prefix = '<leader>' }
 )
 
-
--- normal mode
-wk.register({
-  ['<c-LeftMouse>'] = { '<cmd>lua vim.lsp.buf.definition()<CR>', 'go to definition' },
-  ["<c-q>"]         = { '<cmd>q<cr>', 'close buffer' },
-  ['<esc>']         = { '<cmd>noh<cr>', 'remove search highlight' },
-  ['n']             = { 'nzzzv', 'center search' },
-  ['gN']            = { 'Nzzzv', 'center search' },
-  ['gl']            = { '<c-]>', 'open help link' },
-  ['gf']            = { ':e <cfile><CR>', 'edit file' },
-  ['co']            = { 'o#%%<cr>', 'new code chunk below' },
-  ['cO']            = { 'O#%%<cr>', 'new code chunk above' },
-  ['<m-i>']         = { 'o```{python}<cr>```<esc>O', "Python code chunk" },
-  -- ['<cm-i>']        = { 'o```{python}<cr>```<esc>O', "r code chunk" },
-  -- ['<m-I>']         = { 'o```{python}<cr>```<esc>O', "r code chunk" },
-  ['<c-m>'] = { ':lua require("harpoon.ui").nav_next()<cr>', "Next file" },
-  ['<c-n>'] = { ':lua require("harpoon.ui").nav_prev()<cr>', "Previous file" },
-}, { mode = 'n' })
 
 -- visual mode
 wk.register({

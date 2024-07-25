@@ -97,14 +97,14 @@ function _HORIZONTAL_TERM()
 end
 
 
--- wk.register({
---     c = {
---       name = "code",
---       f = { "<cmd>lua _FLOAT_TERM()<cr>", "float terminal" },
---       h = { "<cmd>lua _HORIZONTAL_TERM()<cr>", "horizontal terminal" },
---       p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "python" },
---       s = { '<cmd>SlimeConfig<cr>', 'slime config' },
---       t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "htop" },
---       v = { "<cmd>lua _VERTICAL_TERM()<cr>", "vertical terminal" },
---     },
--- })
+wk.register({
+    t = {
+      name = "terminal",
+      f = { "<cmd>lua _FLOAT_TERM()<cr>", "float terminal" },
+      h = { "<cmd>lua _HORIZONTAL_TERM()<cr>", "horizontal terminal" },
+      p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "python" },
+      s = { '<cmd>SlimeConfig<cr>', 'slime config' },
+      t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "htop" },
+      v = { "<cmd>lua _VERTICAL_TERM()<cr>", "vertical terminal" },
+    },
+})

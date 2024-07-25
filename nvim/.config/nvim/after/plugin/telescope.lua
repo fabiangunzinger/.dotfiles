@@ -96,26 +96,26 @@ telescope.load_extension('heading')
 wk.register(
 {
   f = {
-    name = 'find (telescope)',
-    f = { '<cmd>Telescope find_files<cr>', 'files' },
-    a = { '<cmd>Telescope find_files<cr>', 'files' }, -- faster to type
-    g = { '<cmd>Telescop live_grep<cr>', 'grep' },
-    b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "buffer" },
-    d = { "<cmd>Telescope buffers<cr>", "buffers" },
-    h = { '<cmd>Telescope help_tags<cr>', 'help tags' },
-    H = { '<cmd>Telescope heading<cr>', 'heading' },
-    k = { '<cmd>Telescope keymaps<cr>', 'keymaps' },
-    r = { '<cmd>Telescope lsp_references<cr>', 'references' },
-    m = { "<cmd>Telescope marks<cr>", "marks" },
-    M = { "<cmd>Telescope man_pages<cr>", "man pages" },
-    c = { "<cmd>Telescope git_commits<cr>", "git commits" },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "symbols" },
-    q = { "<cmd>Telescope quickfix<cr>", "quickfix" },
-    l = { "<cmd>Telescope loclist<cr>", "loclist" },
-    j = { "<cmd>Telescope jumplist<cr>", "marks" },
-    w = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
-    -- p = { "project" },
-    o = { function() builtin.find_files({ search_dirs = often_used_dirs }) end, "search often used dirs" }
+    name = 'Find',
+    a = { '<cmd>Telescope find_files<cr>', 'Files' }, -- faster to type
+    b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Buffer" },
+    c = { "<cmd>Telescope git_commits<cr>", "Git commits" },
+    d = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    f = { '<cmd>Telescope find_files<cr>', 'Files' },
+    g = { '<cmd>Telescop live_grep<cr>', 'Grep' },
+    h = { '<cmd>Telescope help_tags<cr>', 'Help tags' },
+    H = { '<cmd>Telescope heading<cr>', 'Heading' },
+    j = { "<cmd>Telescope jumplist<cr>", "Marks" },
+    k = { '<cmd>Telescope keymaps<cr>', 'Keymaps' },
+    l = { "<cmd>Telescope loclist<cr>", "Loclist" },
+    m = { "<cmd>Telescope marks<cr>", "Marks" },
+    M = { "<cmd>Telescope man_pages<cr>", "Man pages" },
+    o = { function() builtin.find_files({ search_dirs = often_used_dirs }) end, "Other dirs" },
+    -- p = { "Project" },
+    q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
+    r = { '<cmd>Telescope lsp_references<cr>', 'References' },
+    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbols" },
+    w = { '<cmd>Telescope spell_suggest<cr>', 'Suggest' },
   },
 }, { mode = 'n', prefix = '<leader>' }
 )
