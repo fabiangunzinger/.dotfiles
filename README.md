@@ -222,6 +222,15 @@ rm -r ~/.local/share/nvim/
 
 # Python
 
+## Install `uv`
+
+```{bash}
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+Update the below for use with `uv` as I start using it.
+
+
 ```{bash}
 mkdir -p ~/.venvs
 ```
