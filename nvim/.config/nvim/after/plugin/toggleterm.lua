@@ -97,14 +97,18 @@ function _HORIZONTAL_TERM()
 end
 
 
-wk.register({
+wk.register(
+  {
     t = {
-      name = "terminal",
-      f = { "<cmd>lua _FLOAT_TERM()<cr>", "float terminal" },
-      h = { "<cmd>lua _HORIZONTAL_TERM()<cr>", "horizontal terminal" },
-      p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "python" },
-      s = { '<cmd>SlimeConfig<cr>', 'slime config' },
-      t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "htop" },
-      v = { "<cmd>lua _VERTICAL_TERM()<cr>", "vertical terminal" },
+      name = "Terminal",
+      f = { "<cmd>lua _FLOAT_TERM()<cr>", "Floating" },
+      h = { "<cmd>lua _HORIZONTAL_TERM()<cr>", "Horizontal" },
+      p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+      n = { "<cmd>lua _NCDU_TOGGLE()<cr>", "Ncdu" },
+      s = { '<cmd>SlimeConfig<cr>', 'Slime config' },
+      t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
+      v = { "<cmd>lua _VERTICAL_TERM()<cr>", "Vertical" },
     },
-})
+  },
+  { mode = 'n', prefix = '<leader>' }
+)

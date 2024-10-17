@@ -15,7 +15,7 @@ Setting up a development machine can be painful. Here I want to collect what I d
 
 - Ensure iCloud Drive is up to date (photos, docs, etc.)
 
-- Deactivate/sigh out of accounts (iTunes, iCloud)
+- Deactivate/sign out of accounts (iTunes, iCloud)
 
 ## Xcode
 

@@ -44,7 +44,7 @@ local plugins = {
   { 'neovim/nvim-lspconfig', tag = "0.1.4" },
   { "jose-elias-alvarez/null-ls.nvim", commit = "77e53bc" },
   { "jay-babu/mason-null-ls.nvim", version = "2.0.2" },
-  { "jay-babu/mason-null-ls.nvim", commit = "1fcf055" },
+  -- { "jay-babu/mason-null-ls.nvim", commit = "1fcf055" },
 
   -- syntax highlighs
   { 'nvim-treesitter/nvim-treesitter', version = "0.9.2" },
