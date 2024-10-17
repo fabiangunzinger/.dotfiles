@@ -234,11 +234,20 @@ local plugins = {
   { 
     "catppuccin/nvim",
     name = "catppuccin",
-    priority = 1000,
+    -- priority = 1000,
     version = "1.2.1",
+    -- config = function()
+    --   vim.cmd("colorscheme catppuccin-macchiato")
+    -- end,
+  },
+  {
+    'sainnhe/gruvbox-material',
+    lazy = false,
+    priority = 1000,
     config = function()
-      vim.cmd("colorscheme catppuccin-macchiato")
-    end,
+      vim.g.gruvbox_material_enable_italic = true
+      vim.cmd.colorscheme('gruvbox-material')
+    end
   },
 
   -- ai support

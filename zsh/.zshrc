@@ -8,3 +8,5 @@ else
     source ~/.zshrc.workmac
 fi
 
+
+. "$HOME/.cargo/env"
