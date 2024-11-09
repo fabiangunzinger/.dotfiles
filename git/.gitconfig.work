@@ -1,6 +1,6 @@
 [user]
-    name = fabiangunzinger
-    email = fabian.gunzinger@justeattakeaway.com
+    name = fgunzinger
+    email = fabian.gunzinger@zalando.de
 
 [core]
     sshCommand = "ssh -i ~/.ssh/github_work"

@@ -37,14 +37,11 @@ local plugins = {
   { 'folke/which-key.nvim', version = "1.4.2" },
 
   -- -- lsp
-  { "williamboman/mason.nvim", version = "1.8.1" },
-  -- { "williamboman/mason.nvim", version = "1.1.0" },
-  { 'williamboman/mason-lspconfig.nvim', version = "1.18.0" },
-  -- { 'williamboman/mason-lspconfig.nvim', version = "1.4.0" },
-  { 'neovim/nvim-lspconfig', tag = "0.1.4" },
-  { "jose-elias-alvarez/null-ls.nvim", commit = "77e53bc" },
-  { "jay-babu/mason-null-ls.nvim", version = "2.0.2" },
-  -- { "jay-babu/mason-null-ls.nvim", commit = "1fcf055" },
+  { "williamboman/mason.nvim"},
+  { 'neovim/nvim-lspconfig'},
+  -- { 'williamboman/mason-lspconfig.nvim'},
+  -- { "jose-elias-alvarez/null-ls.nvim"},
+  -- { "jay-babu/mason-null-ls.nvim"},
 
   -- syntax highlighs
   { 'nvim-treesitter/nvim-treesitter', version = "0.9.2" },
@@ -243,24 +240,39 @@ local plugins = {
   {
     'sainnhe/gruvbox-material',
     lazy = false,
-    priority = 1000,
-    config = function()
-      vim.g.gruvbox_material_enable_italic = true
-      vim.cmd.colorscheme('gruvbox-material')
-    end
+    -- priority = 1000,
+    -- config = function()
+    --   vim.g.gruvbox_material_enable_italic = true
+    --   vim.cmd.colorscheme('gruvbox-material')
+    -- end
   },
+  {
+    'projekt0n/github-nvim-theme',
+    name = 'github-theme',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      require('github-theme').setup({
+        -- ...
+      })
+
+      vim.cmd('colorscheme github_dark_dimmed')
+    end,
+  },
+
+
 
   -- ai support
   { "github/copilot.vim" },
-  {
-    "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-lua/plenary.nvim",
-    },
-  },
+--   {
+--     "jackMort/ChatGPT.nvim",
+--     event = "VeryLazy",
+--     dependencies = {
+--       "MunifTanjim/nui.nvim",
+--       "nvim-lua/plenary.nvim",
+--       "nvim-lua/plenary.nvim",
+--     },
+--   },
 }
 
 

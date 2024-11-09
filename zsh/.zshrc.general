@@ -1,29 +1,24 @@
 #################################################
-# general alises
+# Alises
 #################################################
 
-# Virtual environments
-function nve() { $1 -m venv .venv; }
-alias ave='source ./.venv/bin/activate'
-alias dve='deactivate'
+# Basics
 
-alias pi='python -m pip install'
-alias piu='python -m pip install --upgrade'
-alias pit='python -m pip install --index-url https://test.pypi.org/simple/'
-alias pitu='python -m pip install --index-url https://test.pypi.org/simple/ --upgrade'
-alias pu='python -m pip uninstall'
-alias pl='python -m pip list'
-alias pg='python -m pip list | grep $1'
-alias pf='python -m pip freeze > requirements.txt'
-alias pir='python -m pip install -r requirements.txt'
+alias ..='cd ..'
 
-alias aqu='source ~/.venvs/quarto3.10/bin/activate'
-alias aju='source ~/.venvs/jupyter3.10/bin/activate'
+alias ls='eza' # replace ls by exa and allow all other exa arguments
+alias l='ls -lbF' #   list, size, type
+alias ll='ls -la' # long, all
+alias llm='ll --sort=modified' # list, long, sort by modification date
+alias la='ls -lbhHigUmuSa' # all list
+alias lx='ls -lbhHigUmuSa@' # all list and extended
+alias lS='ls -1' # one column by just names
+alias lg='ls -la | grep $1'
+alias lt="eza --tree -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints|.DS_Store'"
 
-# Python packaging
-alias pb='python -m build'
-alias put='python -m twine upload --repository testpypi dist/*'
-alias pup='python -m twine upload dist/*'
+alias pwdc='pwd | pbcopy'
+alias rmf='rm -rf'
+alias so='source ~/.zshrc'
 
 # Blog
 alias qp='quarto preview'
@@ -35,60 +30,13 @@ alias vi="nvim"
 alias vif="nvim +'Telescope find_files'"
 alias vig="nvim +'Telescope live_grep'"
 
-# ssh
-function sshn() { ssh-keygen -t ed25519 -C $1; }
-
-# Miscellaneous
-alias lg='ls -la | grep $1'
-alias lt="exa --tree -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints|.DS_Store'"
-alias pwdc='pwd | pbcopy'
-alias rmf='rm -rf'
-
-# Oh My Zsh
-alias rom='omz reload'   # use this instead of source!
-alias omzu='omz update'
-alias fzs='nvim ~/.zshrc'
-alias pas='acs'   # pretty aliases
-
-# misc. commands
-alias jula='jupyter lab'
-alias vgp='vimgolf put '
-
-# terraform
-alias tf='terraform'
-alias tfi='tf init'
-alias tfa='tf apply'
-alias tfo='tf output'
-alias tfoi='tf output instance_id'
-alias tfs='tf show'
-alias tfd='tf destroy'
-
-# tmux
+# Tmux
 alias tml='tmux ls'
 function tmn() { tmux new-session -s $1; }
 function tma() { tmux attach-session -t $1; }
 function tmk() { tmux kill-session -t $1; }
 
-# open files
-alias fzg='ddf; cd zsh; nvim zshrc.general'
-alias fz='vi ~/.zshrc'
-alias fzm='vi ~/.tmux.conf'
-# open vim in project
-alias vzs='ddf; cd zsh; vi'
-
-# jupyter kernels
-## Install ipykernel of venv in current directory into jupyter venv
-function iki { ./.venv/bin/python -m ipykernel install --prefix=$HOME/.venvs/jupyter3.10/ --name "$1"; }
-## Install ipykernel into its own project environment
-function ikio { python -m ipykernel install --name $1 --user; }
-## Manage kernels
-alias jkl='jupyter kernelspec list'
-function jkr { jupyter kernelspec remove $1; }
-
-# pandoc
-function pdmp() { pandoc "$1" -o "${1/md/pdf}"; }
-
-# github
+# Github
 alias ghp='git help'                # ..git verb for which help is needed
 alias gs='git status'               # verbose status
 alias gss='git status --short'      # cols are staging area and working-tree
@@ -146,37 +94,46 @@ alias gbD='git branch -D'          # force delete branch with uncommited edits
 
 
 #################################################
-# general config
+# Config
 #################################################
 
-# Start tmux session on startup
+# Set environment variables
+export MYDIRS=(~/.dotfiles/ ~/dev/work ~/dev/personal)
+export FABIB=$HOME/.dotfiles/latex/fabib.bib
+# Use vim for remote sessions because it's always available
+if [[ -n $ssh_connection ]]; then
+ export EDITOR='vim'
+else
+ export EDITOR='nvim'
+fi
+export VISUAL="$EDITOR"
+export PYTHONSTARTUP="$HOME/scripts/pythonstartup.py"
+export MYVIMKEYMAPS='$HOME/.dotfiles/nvim/.config/nvim/lua/config/keymaps.lua'
+export MYVIMOPTIONS='$HOME/.dotfiles/nvim/.config/nvim/lua/config/options.lua'
+
+# Tmux setup
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 ensure_tmux_is_running() {
   if _not_inside_tmux; then
     tat
   fi
 }
-ensure_tmux_is_running
-
+# ensure_tmux_is_running
 bindkey -s ^f "tmux-sessionizer\n"
 
-export MYDIRS=(~/.dotfiles/ ~/dev/work ~/dev/personal)
-export FABIB=~/.dotfiles/latex/fabib.bib
-export EDITOR=nvim
-export VISUAL="$EDITOR"
-
-# Using starship prompt
+# Activate starship prompt
 eval "$(starship init zsh)"
 
-# Personal scripts
+# Activate z
+. /opt/homebrew/etc/profile.d/z.sh
+
+
+# Add personal scripts to path
 export PATH="$HOME/bin:$PATH"
 
 # GNU instead of BSD coreutils
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
-
-# Poetry 
-export PATH="$HOME/.local/bin:$PATH"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -184,32 +141,30 @@ export FZF_BASE="$HOME/.fzf"
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files -g "!.git/"'
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 
+
 # Search
 alias fp="fd --hidden | fzf --multi --preview 'bat --style=numbers --color=always {}'"
 alias vii='fp | xargs -o nvim'
 
-# Set quarto python environment
-export QUARTO_PYTHON="$HOME/.venvs/quarto3.10/bin/python3.10"
+# Enable zsh autocompletion
+autoload -Uz compinit && compinit
+#Pyenv setup
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
-# ChatGPT authentication
-source "$HOME/.openai_key.zsh"
+# Github config
 
-# Homebrew
-if [ "$(whoami)" = "fabian.gunzinger" ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
+export GH_CONFIG_DIR=~/.config/gh/work
+export GIT_SSH_COMMAND="ssh -i ~/.ssh/github_work"
+export GH_CONFIG_DIR=~/.config/gh/personal
+export GIT_SSH_COMMAND="ssh -i ~/.ssh/github_personal"
 
-# Editor for remote and local sessions
-if [[ -n $ssh_connection ]]; then
- export editor='vim'
-else
- export editor='nvim'
-fi
-
-# Python startup script
-export PYTHONSTARTUP="$HOME/scripts/pythonstartup.py"
+# AWS CLI completion
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
 
 
-# Misc environment variables
-export MYVIMKEYMAPS='$HOME/.dotfiles/nvim/.config/nvim/lua/config/keymaps.lua'
-export MYVIMOPTIONS='$HOME/.dotfiles/nvim/.config/nvim/lua/config/options.lua'
+# Pipx
+# Created by `pipx` on 2024-10-29 13:02:59
+export PATH="$PATH:/Users/fgunzinger/.local/bin"

@@ -1,18 +1,18 @@
-[includeIf "gitdir:~/dev/personal/"]
-  path = ~/.gitconfig.personal
+[includeIf "gitdir:/Users/fgunzinger/dev/personal/"]
+    path = /Users/fgunzinger/.dotfiles/git/.gitconfig.personal
 
-[includeIf "gitdir:~/dev/work/"]
-  path = ~/.gitconfig.work
+[includeIf "gitdir:/Users/fgunzinger/dev/work/"]
+    path = /Users/fgunzinger/.dotfiles/git/.gitconfig.work
 
-[includeIf "gitdir:~/.dotfiles/"]
-  path = ~/.gitconfig.personal
+[includeIf "gitdir:/Users/fgunzinger/.dotfiles/"]
+    path = /Users/fgunzinger/.dotfiles/git/.gitconfig.personal
 
 [core]
   editor = nvim
-  excludesfile = ~/.gitignore_global
+  excludesfile = /Users/fgunzinger/.gitignore_global
 [init]
 	defaultBranch = main
-[user]
-	name = fabiangunzinger
 [push]
 	autoSetupRemote = true
+[url "ssh://git@github.bus.zalan.do/"]
+	insteadOf = https://github.bus.zalan.do/

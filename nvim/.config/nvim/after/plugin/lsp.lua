@@ -31,111 +31,111 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Custom diagnostic settings
-vim.diagnostic.config({
-  virtual_text = false,
-})
+-- vim.diagnostic.config({
+--   virtual_text = false,
+-- })
 
 -- enable syntax highlighting inside code blocks in markdown
-vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r' }
+-- vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r' }
 
 -- Install and activate LSP servers
 -- Servers are installed with Mason and activated with lspconfig
-require("mason").setup()
-require("mason-lspconfig").setup({
-  auto_install = true,
-  ensure_installed = {
-    "pyright",
-    "marksman",
-    "ltex",
-    -- "lua_ls",
-    "bashls",
-  },
-})
+-- require("mason").setup()
+-- require("mason-lspconfig").setup({
+--   auto_install = true,
+--   ensure_installed = {
+--     "pyright",
+--     "marksman",
+--     "ltex",
+--     -- "lua_ls",
+--     "bashls",
+--   },
+-- })
 
-lspconfig.pyright.setup {
-  single_file_support = true,
-}
+-- lspconfig.pyright.setup {
+--   single_file_support = true,
+-- }
 
 -- marksman setup also requires a config file
 -- $home/.config/marksman/config.toml
 -- [core]
 -- markdown.file_extensions = ["md", "markdown", "qmd"]
-lspconfig.marksman.setup {
-  filetypes = { 'markdown', 'quarto' },
-  root_dir = util.root_pattern(".git", ".marksman.toml", "_quarto.yml"),
-}
+-- lspconfig.marksman.setup {
+--   filetypes = { 'markdown', 'quarto' },
+--   root_dir = util.root_pattern(".git", ".marksman.toml", "_quarto.yml"),
+-- }
 
-lspconfig.ltex.setup{
-  filetypes = { "markdown", "tex", "quarto" },
-}
+-- lspconfig.ltex.setup{
+--   filetypes = { "markdown", "tex", "quarto" },
+-- }
 
-local function strsplit(s, delimiter)
-  local result = {}
-  for match in (s .. delimiter):gmatch("(.-)" .. delimiter) do
-    table.insert(result, match)
-  end
-  return result
-end
+-- local function strsplit(s, delimiter)
+--   local result = {}
+--   for match in (s .. delimiter):gmatch("(.-)" .. delimiter) do
+--     table.insert(result, match)
+--   end
+--   return result
+-- end
 
-local function get_quarto_resource_path()
-  local f = assert(io.popen('quarto --paths', 'r'))
-  local s = assert(f:read('*a'))
-  f:close()
-  return strsplit(s, '\n')[2]
-end
+-- local function get_quarto_resource_path()
+--   local f = assert(io.popen('quarto --paths', 'r'))
+--   local s = assert(f:read('*a'))
+--   f:close()
+--   return strsplit(s, '\n')[2]
+-- end
 
-local lua_library_files = vim.api.nvim_get_runtime_file("", true)
-local resource_path = get_quarto_resource_path()
-table.insert(lua_library_files, resource_path .. '/lua-types')
-local lua_plugin_paths = {}
-table.insert(lua_plugin_paths, resource_path .. '/lua-plugin/plugin.lua')
+-- local lua_library_files = vim.api.nvim_get_runtime_file("", true)
+-- local resource_path = get_quarto_resource_path()
+-- table.insert(lua_library_files, resource_path .. '/lua-types')
+-- local lua_plugin_paths = {}
+-- table.insert(lua_plugin_paths, resource_path .. '/lua-plugin/plugin.lua')
 
 -- Overview of all options is available at:
 -- https://github.com/luals/lua-language-server/blob/master/locale/en-us/setting.lua
-lspconfig.lua_ls.setup {
-  -- on_attach = on_attach,
-  -- capabilities = capabilities,
-  -- flags = lsp_flags,
-  settings = {
-    Lua = {
-      completion = {
-        callSnippet = "Replace"
-      },
-      runtime = {
-        version = 'LuaJIT',
-        plugin = lua_plugin_paths,
-      },
-      diagnostics = {
-        globals = { 'vim', 'quarto', 'pandoc', 'io', 'string', 'print', 'require', 'table', },
-        disable = { 'trailing-space' },
-      },
-      workspace = {
-        library = lua_library_files,
-        checkThirdParty = false,
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
+-- lspconfig.lua_ls.setup {
+--   -- on_attach = on_attach,
+--   -- capabilities = capabilities,
+--   -- flags = lsp_flags,
+--   settings = {
+--     Lua = {
+--       completion = {
+--         callSnippet = "Replace"
+--       },
+--       runtime = {
+--         version = 'LuaJIT',
+--         plugin = lua_plugin_paths,
+--       },
+--       diagnostics = {
+--         globals = { 'vim', 'quarto', 'pandoc', 'io', 'string', 'print', 'require', 'table', },
+--         disable = { 'trailing-space' },
+--       },
+--       workspace = {
+--         library = lua_library_files,
+--         checkThirdParty = false,
+--       },
+--       telemetry = {
+--         enable = false,
+--       },
+--     },
+--   },
+-- }
 
-lspconfig.bashls.setup {
-  filetypes = { 'sh', 'bash' },
-}
+-- lspconfig.bashls.setup {
+--   filetypes = { 'sh', 'bash' },
+-- }
 
--- Formatting and linting
-local null_servers = {
-  "isort",
-  "black",
-  "flake8",
-}
-require("mason-null-ls").setup({
-  ensure_installed = null_servers,
-  automatic_setup = true,
-  handlers = {}
-})
-require("null-ls").setup()
+-- -- Formatting and linting
+-- local null_servers = {
+--   "isort",
+--   "black",
+--   "flake8",
+-- }
+-- require("mason-null-ls").setup({
+--   ensure_installed = null_servers,
+--   automatic_setup = true,
+--   handlers = {}
+-- })
+-- require("null-ls").setup()
 
 
 
