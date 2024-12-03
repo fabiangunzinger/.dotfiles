@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+# GitHub Repositories Backup Script
+# Fabian Gunzinger, 3 Dec 2024
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/fab/github-backup
+rm -rf repos
+mkdir repos
+cd repos 
+
+# Check if GitHub CLI (gh) is installed
+if ! command -v gh &> /dev/null; then
+    echo "GitHub CLI (gh) could not be found. Please install it first."
+    exit 1
+fi
+
+# List up to 1000 repositories and clone them
+gh repo list --limit 1000 --json nameWithOwner -q '.[].nameWithOwner' | \
+    xargs -I {} gh repo clone {}

@@ -20,6 +20,13 @@ alias pwdc='pwd | pbcopy'
 alias rmf='rm -rf'
 alias so='source ~/.zshrc'
 
+# Quick directory access
+alias dic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+
+# Github backup
+alias gbu='~/bin/github-backup'
+
+
 # Blog
 alias qp='quarto preview'
 alias qrh='quarto render && hugo'
@@ -99,7 +106,6 @@ alias gbD='git branch -D'          # force delete branch with uncommited edits
 
 # Set environment variables
 export MYDIRS=(~/.dotfiles/ ~/dev/work ~/dev/personal)
-export FABIB=$HOME/.dotfiles/latex/fabib.bib
 # Use vim for remote sessions because it's always available
 if [[ -n $ssh_connection ]]; then
  export EDITOR='vim'
@@ -148,10 +154,11 @@ alias vii='fp | xargs -o nvim'
 
 # Enable zsh autocompletion
 autoload -Uz compinit && compinit
+
 #Pyenv setup
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 # Github config
 
