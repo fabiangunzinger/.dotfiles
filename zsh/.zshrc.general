@@ -6,26 +6,24 @@
 
 alias ..='cd ..'
 
-alias ls='eza' # replace ls by exa and allow all other exa arguments
-alias l='ls -lbF' #   list, size, type
-alias ll='ls -la' # long, all
+alias l='eza -lbF' #   list, size, type
+alias ll='eza -la' # long, all
 alias llm='ll --sort=modified' # list, long, sort by modification date
-alias la='ls -lbhHigUmuSa' # all list
-alias lx='ls -lbhHigUmuSa@' # all list and extended
-alias lS='ls -1' # one column by just names
-alias lg='ls -la | grep $1'
+alias la='eza -lbhHigUmuSa' # all list
+alias lx='eza -lbhHigUmuSa@' # all list and extended
+alias lS='eza -1' # one column by just names
+alias lg='eza -la | grep $1'
 alias lt="eza --tree -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints|.DS_Store'"
 
 alias pwdc='pwd | pbcopy'
 alias rmf='rm -rf'
-alias so='source ~/.zshrc'
+alias soz='source ~/.zshrc'
 
 # Quick directory access
 alias dic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
 
 # Github backup
 alias gbu='~/bin/github-backup'
-
 
 # Blog
 alias qp='quarto preview'
@@ -43,7 +41,7 @@ function tmn() { tmux new-session -s $1; }
 function tma() { tmux attach-session -t $1; }
 function tmk() { tmux kill-session -t $1; }
 
-# Github
+# Git
 alias ghp='git help'                # ..git verb for which help is needed
 alias gs='git status'               # verbose status
 alias gss='git status --short'      # cols are staging area and working-tree
@@ -100,6 +98,7 @@ alias gbd='git branch -d'           # delete branch
 alias gbD='git branch -D'          # force delete branch with uncommited edits
 
 
+
 #################################################
 # Config
 #################################################
@@ -133,7 +132,6 @@ eval "$(starship init zsh)"
 # Activate z
 . /opt/homebrew/etc/profile.d/z.sh
 
-
 # Add personal scripts to path
 export PATH="$HOME/bin:$PATH"
 
@@ -146,7 +144,6 @@ export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export FZF_BASE="$HOME/.fzf"
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files -g "!.git/"'
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
-
 
 # Search
 alias fp="fd --hidden | fzf --multi --preview 'bat --style=numbers --color=always {}'"
@@ -171,7 +168,11 @@ export GIT_SSH_COMMAND="ssh -i ~/.ssh/github_personal"
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 
-
 # Pipx
 # Created by `pipx` on 2024-10-29 13:02:59
 export PATH="$PATH:/Users/fgunzinger/.local/bin"
+
+# Homebrew autocompletion
+if which brew > /dev/null; then
+  test -r $(brew --prefix)/etc/profile.d/bash_completion.sh && source $(brew --prefix)/etc/profile.d/bash_completion.sh
+fi
