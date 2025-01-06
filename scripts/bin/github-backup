@@ -1,42 +1,18 @@
-# #!/bin/zsh
-#
-# # GitHub Repositories Backup Script
-# # Fabian Gunzinger, 3 Dec 2024
-#
-# # Exit immediately if a command exits with a non-zero status
-# set -e
-#
-# cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/fab/github-backup
-# rm -rf repos
-# mkdir repos
-# cd repos 
-#
-# # Check if GitHub CLI (gh) is installed
-# if ! command -v gh &> /dev/null; then
-#     echo "GitHub CLI (gh) could not be found. Please install it first."
-#     exit 1
-# fi
-#
-# # List up to 1000 repositories and clone them
-# gh repo list --limit 1000 --json nameWithOwner -q '.[].nameWithOwner' | \
-#     xargs -I {} gh repo clone {}
-#
-
 #!/bin/zsh
 
-# GitHub Repositories Backup Script
+# Script to back up GitHub repositories
 # Fabian Gunzinger, 3 Dec 2024
 
 # Exit immediately if a command exits with a non-zero status
 set -e
 
 # Define the backup locations
-BACKUP_LOCATION_GITHUB="~/Library/Mobile\ Documents/com~apple~CloudDocs"
-BACKUP_LOCATION_PROTON="~/Library/CloudStorage/ProtonDrive"
+BACKUP_LOCATION_ICLOUD="~/Library/Mobile\ Documents/com~apple~CloudDocs/backups/github"
+BACKUP_LOCATION_PROTON="~/Library/CloudStorage/ProtonDrive/backups/github"
 
 # Create directories if they don't exist
-mkdir -p "$BACKUP_LOCATION_GITHUB/github-backup"
-mkdir -p "$BACKUP_LOCATION_PROTON/github-backup"
+mkdir -p "$BACKUP_LOCATION_ICLOUD"
+mkdir -p "$BACKUP_LOCATION_PROTON"
 
 # Check if GitHub CLI (gh) is installed
 if ! command -v gh &> /dev/null; then
@@ -44,20 +20,16 @@ if ! command -v gh &> /dev/null; then
     exit 1
 fi
 
-# # List up to 1000 repositories and clone them to both locations
-# gh repo list --limit 1000 --json nameWithOwner -q '.[].nameWithOwner' | \
-#   xargs -I {} bash -c "gh repo clone {} $BACKUP_LOCATION_GITHUB/github-backup/$(basename {}) && gh repo clone {} $BACKUP_LOCATION_PROTON/github-backup/$(basename {})"
-#
-
+# List up to 1000 repositories and clone them to both locations
 repos=$(gh repo list --limit 1000 --json nameWithOwner -q '.[].nameWithOwner')
 
 for repo in $repos; do
     repo_name=$(basename "$repo")
     echo "Cloning $repo into both locations..."
 
-    # Clone to GitHub backup location
-    gh repo clone "$repo" "$BACKUP_LOCATION_GITHUB/repos/$repo_name"
+    # Clone to iCloud backup location
+    gh repo clone "$repo" "$BACKUP_LOCATION_ICLOUD/$repo_name"
 
     # Clone to ProtonDrive backup location
-    gh repo clone "$repo" "$BACKUP_LOCATION_PROTON/repos/$repo_name"
+    gh repo clone "$repo" "$BACKUP_LOCATION_PROTON/$repo_name"
 done
