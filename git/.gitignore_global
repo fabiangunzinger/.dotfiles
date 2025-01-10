@@ -27,8 +27,21 @@ Temporary Items
 
 # VS Code #
 ###########
-.vscode/
+.vscode/*
 *.code-workspace
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+.history/
+*.vsix
+.history
+.ionide
+
+# Obsidian #
+############
+.obsidian/
 
 # Vim #
 #######
