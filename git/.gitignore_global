@@ -28,6 +28,7 @@ Temporary Items
 # VS Code #
 ###########
 .vscode/
+*.code-workspace
 
 # Vim #
 #######
