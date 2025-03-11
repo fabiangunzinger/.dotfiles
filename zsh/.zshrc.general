@@ -129,9 +129,6 @@ bindkey -s ^f "tmux-sessionizer\n"
 # Activate starship prompt
 eval "$(starship init zsh)"
 
-# Activate z
-. /opt/homebrew/etc/profile.d/z.sh
-
 # Add personal scripts to path
 export PATH="$HOME/bin:$PATH"
 
@@ -176,3 +173,7 @@ export PATH="$PATH:/Users/fgunzinger/.local/bin"
 if which brew > /dev/null; then
   test -r $(brew --prefix)/etc/profile.d/bash_completion.sh && source $(brew --prefix)/etc/profile.d/bash_completion.sh
 fi
+
+# Activate zoxide
+eval "$(zoxide init zsh)"
+
