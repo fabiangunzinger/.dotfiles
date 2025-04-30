@@ -166,3 +166,6 @@ fi
 # Activate zoxide
 eval "$(zoxide init zsh)"
 
+# Activate direnv
+eval "$(direnv hook zsh)"  # or bash, depending on shell
+
